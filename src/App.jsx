@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom"
 
 import Navbar from "./components/Navbar/Navbar"
 import SignupPage from "./pages/SignupPage"
-
+import LoginPage from "./pages/LoginPage"
 import './App.css'
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
 
       <Routes>
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>
   )

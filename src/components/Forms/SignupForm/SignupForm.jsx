@@ -27,8 +27,8 @@ const SignupForm = () => {
 
         e.preventDefault();
 
-        const { email, password, name } = userData
-        const requestBody = { email, password, name };
+        const { email, password, username } = userData
+        const requestBody = { email, password, username };
 
         axios
             .post(`${API_URL}/api/auth/signup`, requestBody)
@@ -36,8 +36,8 @@ const SignupForm = () => {
                 navigate('/login');
             })
             .catch((error) => {
-                const errorDescription = error.response.data.message;
-                setErrorMessage(errorDescription);
+                // const errorDescription = error.response.data.message;
+                // setErrorMessage(errorDescription);
             })
     }
 
@@ -63,8 +63,8 @@ const SignupForm = () => {
                 <label>Name:</label>
                 <input
                     type="text"
-                    name="name"
-                    value={userData.name}
+                    name="username"
+                    value={userData.username}
                     onChange={handleInputChange}
                 />
 
