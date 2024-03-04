@@ -30,6 +30,7 @@ const LoginForm = () => {
 
         e.preventDefault()
 
+        const { email, password } = userData
         const requestBody = { email, password }
 
         axios

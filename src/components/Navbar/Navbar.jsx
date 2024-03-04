@@ -16,12 +16,12 @@ function Navbar() {
                 isLoggedIn && (
                     <>
                         <Link to="/projects">
-                            <button>Projects</button>
+                            <button>Dashboard</button>
                         </Link>
 
                         <button onClick={logout}>Logout</button>
 
-                        <p>¡Hola, {user.name}!</p>
+                        <p>¡Hola, {user.username}!</p>
                     </>
                 )
             }
