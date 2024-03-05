@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
-import { Form, Button, ProgressBar } from 'react-bootstrap'
+import { Form, Button, ProgressBar, ToggleButton, ToggleButtonGroup } from 'react-bootstrap'
 import MoodAnimation from '../../Animations/MoodAnimation'
+import { WORRIES } from '../../../consts/record.constants'
 
 const RecordForm = () => {
 
     const [step, setStep] = useState(0)
-    const [formData, setFormData] = useState({})
+    const [recordData, setRecordData] = useState({
+        mood: '',
+        rateDay: '',
+        worries: [],
+        didExercise: false,
+        weather: '',
+        reflection: ''
+    })
 
     const handleNext = () => {
         setStep(step + 1);
@@ -17,12 +25,12 @@ const RecordForm = () => {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
+        setRecordData({ ...recordData, [name]: value });
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // handle form submission
+        // falta el handle del submit
     };
 
     return (
@@ -30,42 +38,60 @@ const RecordForm = () => {
             <ProgressBar now={(step / 5) * 100} />
             {step === 0 && (
                 <Form.Group controlId="formStep0">
+                    <MoodAnimation />
                     <Form.Label>Mood</Form.Label>
-                    <Form.Range />
-                    <Form.Control
-                        type="text"
-                        name="mood"
-                        value={formData.name}
+                    <Form.Range
+                        min="0"
+                        max="6"
+                        step="1"
                         onChange={handleInputChange}
+                        value={recordData.mood}
+                        name="mood"
                     />
                 </Form.Group>
             )}
             {step === 1 && (
                 <Form.Group controlId="formStep1">
 
-                    <Form.Select aria-label="Default select example">
-                        <option>¡Pónle nota a tu día!</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </Form.Select>
-                    <Form.Control
-                        type="text"
-                        name="name"
-                        value={formData.name}
+                    <Form.Select
+                        aria-label="Default select example"
                         onChange={handleInputChange}
-                    />
+                        name='rateDay'
+                        value={recordData.rateDay}>
+                        <option>¡Pónle nota a tu día!</option>
+                        <option >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                        <option >4</option>
+                        <option >5</option>
+                        <option >6</option>
+                        <option >7</option>
+                        <option >8</option>
+                        <option >9</option>
+                        <option >10</option>
+
+                    </Form.Select>
+
                 </Form.Group>
             )}
             {step === 2 && (
                 <Form.Group controlId="formStep2">
                     <Form.Label>¿Cuáles son tus preocupaciones hoy?</Form.Label>
-                    <Form.Control
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                    />
+                    <ToggleButtonGroup type="checkbox">
+
+                        {
+                            WORRIES.map((elm, id) => (
+                                <ToggleButton
+                                    onChange={handleInputChange}
+                                    name='worries'
+                                    key={id}
+                                    value={recordData.worries}>
+                                    {elm.label}
+                                </ToggleButton>
+                            ))
+                        }
+
+                    </ToggleButtonGroup>
                 </Form.Group>
             )}
             {step === 3 && (
@@ -75,7 +101,7 @@ const RecordForm = () => {
                         as="textarea"
                         rows={3}
                         name="message"
-                        value={formData.message}
+                        value={recordData.didExercise}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
@@ -86,8 +112,8 @@ const RecordForm = () => {
                     <Form.Control
                         as="textarea"
                         rows={3}
-                        name="message"
-                        value={formData.message}
+                        name="weather"
+                        value={recordData.weather}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
@@ -98,8 +124,8 @@ const RecordForm = () => {
                     <Form.Control
                         as="textarea"
                         rows={3}
-                        name="message"
-                        value={formData.message}
+                        name="reflection"
+                        value={recordData.reflection}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
