@@ -27,13 +27,14 @@ const RecordForm = () => {
 
     return (
         <Form onSubmit={handleSubmit}>
-            <ProgressBar now={(step / 4) * 100} />
+            <ProgressBar now={(step / 5) * 100} />
             {step === 0 && (
                 <Form.Group controlId="formStep0">
-                    <Form.Label>¿Cómo te sientes hoy?</Form.Label>
+                    <Form.Label>Mood</Form.Label>
+                    <Form.Range />
                     <Form.Control
                         type="text"
-                        name="name"
+                        name="mood"
                         value={formData.name}
                         onChange={handleInputChange}
                     />
@@ -41,7 +42,13 @@ const RecordForm = () => {
             )}
             {step === 1 && (
                 <Form.Group controlId="formStep1">
-                    <Form.Label>Name</Form.Label>
+
+                    <Form.Select aria-label="Default select example">
+                        <option>¡Pónle nota a tu día!</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </Form.Select>
                     <Form.Control
                         type="text"
                         name="name"
@@ -52,7 +59,7 @@ const RecordForm = () => {
             )}
             {step === 2 && (
                 <Form.Group controlId="formStep2">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label>¿Cuáles son tus preocupaciones hoy?</Form.Label>
                     <Form.Control
                         type="email"
                         name="email"
@@ -63,7 +70,7 @@ const RecordForm = () => {
             )}
             {step === 3 && (
                 <Form.Group controlId="formStep3">
-                    <Form.Label>Message</Form.Label>
+                    <Form.Label>Responde a estas preguntas:</Form.Label>
                     <Form.Control
                         as="textarea"
                         rows={3}
@@ -75,7 +82,19 @@ const RecordForm = () => {
             )}
             {step === 4 && (
                 <Form.Group controlId="formStep3">
-                    <Form.Label>Prueba</Form.Label>
+                    <Form.Label>¿Qué tiempo ha hecho hoy?</Form.Label>
+                    <Form.Control
+                        as="textarea"
+                        rows={3}
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                    />
+                </Form.Group>
+            )}
+            {step === 5 && (
+                <Form.Group controlId="formStep3">
+                    <Form.Label>Reflexión del día</Form.Label>
                     <Form.Control
                         as="textarea"
                         rows={3}
@@ -91,7 +110,7 @@ const RecordForm = () => {
                         Previous
                     </Button>
                 )}
-                {step < 4 ? (
+                {step < 5 ? (
                     <Button variant="primary" onClick={handleNext}>
                         Next
                     </Button>
