@@ -16,7 +16,7 @@ function NavBar() {
     return (
         <Navbar expand="md" className="bg-body-tertiary mb-3">
             <Container fluid>
-                <Navbar.Brand href="/">MENTALIA</Navbar.Brand>
+                <Link to={'/'}>MENTALIA</Link>
                 <Navbar.Toggle
                     aria-controls="offcanvasNavbar-expand-md"
                     onClick={() => setShowOffcanvas(!showOffcanvas)}
