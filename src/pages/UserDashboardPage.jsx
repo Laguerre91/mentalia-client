@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Button, Modal } from "react-bootstrap"
 import RecordForm from "../components/Forms/RecordForm/RecordForm"
+import UserCard from "../components/UserCard/UserCard"
 
 const UserDashboardPage = () => {
 
@@ -10,7 +11,7 @@ const UserDashboardPage = () => {
     return (
         <div className="UserDashboardPage">
 
-            <h1>Hola User!</h1>
+            < UserCard />
 
             <Button variant="primary" onClick={() => setShow(true)}>
                 Mood Diario

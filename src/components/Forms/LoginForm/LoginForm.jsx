@@ -24,29 +24,27 @@ const LoginForm = () => {
         }))
     }
 
-    const { storeToken, authenticateUser } = useContext(AuthContext)
+    const { storeToken, authenticateUser, user } = useContext(AuthContext)
 
     const handleLoginSubmit = (e) => {
 
         e.preventDefault()
 
-        const { email, password } = userData
-        const requestBody = { email, password }
+        const { email, password, _id } = userData
+        const requestBody = { email, password, _id }
 
         axios
             .post(`${API_URL}/api/auth/login`, requestBody)
             .then((response) => {
                 storeToken(response.data.authToken)
                 authenticateUser()
-                navigate('/')
+                navigate(`/usuario/${user._id}`)
             })
             .catch((error) => {
                 const errorDescription = error.response.data.message;
                 setErrorMessage(errorDescription);
             })
     }
-
-
 
     return (
         <div className="LoginForm">
