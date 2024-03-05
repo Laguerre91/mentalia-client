@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom"
-import NavBar from "./components/Navbar/NavBar"
+import NavBar from "./components/Navbar/Navbar"
 import "bootstrap/dist/css/bootstrap.css"
 import SignupPage from "./pages/SignupPage"
 import LoginPage from "./pages/LoginPage"
 import './App.css'
 import AppRoutes from './routes/AppRoutes'
-import NavBar from './components/Navbar/Navbar'
+
 
 function App() {
 
