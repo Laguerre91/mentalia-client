@@ -4,17 +4,17 @@ import "bootstrap/dist/css/bootstrap.css"
 import SignupPage from "./pages/SignupPage"
 import LoginPage from "./pages/LoginPage"
 import './App.css'
+import AppRoutes from './routes/AppRoutes'
+import NavBar from './components/Navbar/Navbar'
 
 function App() {
 
   return (
     <div className='App'>
-      <NavBar />
 
-      <Routes>
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
+      <NavBar />
+      <AppRoutes />
+
     </div>
   )
 }
