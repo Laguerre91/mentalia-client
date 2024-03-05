@@ -23,8 +23,8 @@ class PsycologistService {
         return this.axiosApp.get('/api/psic')
     }
 
-    getPsycologist = () => {
-        return this.axiosApp.get('/api/psic/:psycId')
+    getPsycologist = (psycId) => {
+        return this.axiosApp.get(`/api/psic/${psycId}`)
     }
 }
 

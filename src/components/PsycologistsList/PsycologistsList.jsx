@@ -22,7 +22,11 @@ const PsycologistsList = () => {
         <section className="PsycologistsList">
             {
                 psycologists.map((psyc) => (
-                    <PsycologistCard key={psycologists._id}{...psyc} />
+
+                    <article key={psyc._id}>
+                        <PsycologistCard {...psyc} />
+                    </article>
+
                 ))
             }
         </section>
