@@ -38,7 +38,7 @@ const LoginForm = () => {
             .then((response) => {
                 storeToken(response.data.authToken)
                 authenticateUser()
-                user && navigate(`/usuario/${user._id}`)
+                navigate(`/usuario/${user._id}`)
             })
             .catch((error) => {
                 const errorDescription = error.response.data.message;
