@@ -1,38 +1,72 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import "./NavBar.css"
 import React from "react";
-
 import { Navbar, Container, Nav, NavDropdown, Form, Button, Offcanvas } from 'react-bootstrap';
 
 
 function NavBar() {
 
     const { user, isLoggedIn, logout } = useContext(AuthContext)
+    const [showOffcanvas, setShowOffcanvas] = useState(false)
+
+    const handleOffcanvasClose = () => setShowOffcanvas(false)
 
     return (
         <Navbar expand="md" className="bg-body-tertiary mb-3">
             <Container fluid>
                 <Navbar.Brand href="/">MENTALIA</Navbar.Brand>
-                <Navbar.Toggle aria-controls="offcanvasNavbar-expand-md" />
+                <Navbar.Toggle
+                    aria-controls="offcanvasNavbar-expand-md"
+                    onClick={() => setShowOffcanvas(!showOffcanvas)}
+                />
                 <Navbar.Offcanvas
                     id="offcanvasNavbar-expand-md"
                     aria-labelledby="offcanvasNavbarLabel-expand-md"
                     placement="end"
+                    show={showOffcanvas}
+                    onHide={handleOffcanvasClose}
                 >
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title id="offcanvasNavbarLabel-expand-md">MENTALIA</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav className="justify-content-end flex-grow-1 pe-3">
-                            <Link href="/login">Loguéate</Link>
-                            <Link href="/signup">Registro</Link>
+
+                            {
+                                isLoggedIn && (
+                                    <button onClick={() => { logout(); handleOffcanvasClose(); }}>Log out</button>
+                                )
+                            }
+
+                            {
+                                !isLoggedIn && (
+                                    <>
+                                        <Link
+                                            to="/signup"
+                                            onClick={handleOffcanvasClose}>
+
+                                            <button>Sign Up</button>
+                                        </Link>
+
+                                        <Link
+                                            to="/login"
+                                            onClick={handleOffcanvasClose}>
+
+                                            <button>Login</button>
+
+                                        </Link>
+                                    </>
+                                )
+                            }
+
                             <NavDropdown title="Páginas" id="offcanvasNavbarDropdown-expand-md">
-                                <NavDropdown.Item href="/usuario/:id">Tu página</NavDropdown.Item>
-                                <NavDropdown.Item href="/psicologos">Psicólogos</NavDropdown.Item>
+                                <Link to="/usuario/:id" onClick={handleOffcanvasClose}>Tu página</Link>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="/comunidad">Comunidad</NavDropdown.Item>
+                                <Link to="/psicologos" onClick={handleOffcanvasClose}>Psicólogos</Link>
+                                <NavDropdown.Divider />
+                                <Link to="/comunidad" onClick={handleOffcanvasClose}>Comunidad</Link>
                             </NavDropdown>
                         </Nav>
                         {/* <Form className="d-flex">
@@ -47,32 +81,9 @@ function NavBar() {
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>
             </Container>
-        </Navbar>
+        </Navbar >
 
     )
 }
 
 export default NavBar
-
-// {
-//     isLoggedIn && (
-//         <>
-//             <Link to="/projects">
-//                 <button>Dashboard</button>
-//             </Link>
-
-//             <button onClick={logout}>Logout</button>
-
-//             <p>¡Hola, {user.username}!</p>
-//         </>
-//     )
-// }
-
-// {
-//     !isLoggedIn && (
-//         <>
-//             <Link to="/signup"> <button>Sign Up</button> </Link>
-//             <Link to="/login"> <button>Login</button> </Link>
-//         </>
-//     )
-// }
