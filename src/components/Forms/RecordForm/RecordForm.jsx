@@ -1,3 +1,4 @@
+import './RecordForm.css'
 import React, { useState } from 'react'
 import { Form, Button, ProgressBar, ToggleButton, ToggleButtonGroup } from 'react-bootstrap'
 import MoodAnimation from '../../Animations/MoodAnimation'
@@ -14,24 +15,25 @@ const RecordForm = () => {
         weather: '',
         reflection: ''
     })
+    const [checked, setChecked] = useState(false)
 
     const handleNext = () => {
-        setStep(step + 1);
-    };
+        setStep(step + 1)
+    }
 
     const handlePrevious = () => {
-        setStep(step - 1);
-    };
+        setStep(step - 1)
+    }
 
     const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setRecordData({ ...recordData, [name]: value });
-    };
+        const { name, value } = event.target
+        setRecordData({ ...recordData, [name]: value })
+    }
 
     const handleSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault()
         // falta el handle del submit
-    };
+    }
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -58,18 +60,12 @@ const RecordForm = () => {
                         onChange={handleInputChange}
                         name='rateDay'
                         value={recordData.rateDay}>
-                        <option>¡Pónle nota a tu día!</option>
-                        <option >1</option>
-                        <option >2</option>
-                        <option >3</option>
-                        <option >4</option>
-                        <option >5</option>
-                        <option >6</option>
-                        <option >7</option>
-                        <option >8</option>
-                        <option >9</option>
-                        <option >10</option>
 
+                        <option>¡Pónle nota a tu día!</option>
+
+                        {[...Array(10).keys()].map((value) => (
+                            <option key={value + 1}>{value + 1}</option>
+                        ))}
                     </Form.Select>
 
                 </Form.Group>
@@ -77,23 +73,27 @@ const RecordForm = () => {
             {step === 2 && (
                 <Form.Group controlId="formStep2">
                     <Form.Label>¿Cuáles son tus preocupaciones hoy?</Form.Label>
-                    <ToggleButtonGroup type="checkbox">
+                    <ToggleButtonGroup type="checkbox" className='worries-btns'>
 
-                        {
-                            WORRIES.map((elm, id) => (
-                                <ToggleButton
-                                    onChange={handleInputChange}
-                                    name='worries'
-                                    key={id}
-                                    value={recordData.worries}>
-                                    {elm.label}
-                                </ToggleButton>
-                            ))
-                        }
+                        {WORRIES.map((elm, id) => (
+
+                            <ToggleButton
+                                key={id}
+                                type="checkbox"
+                                value={elm.value}
+                                name='worries'
+                                variant="outline-primary"
+                                checked={checked}
+                                onChange={(e) => setChecked(e.currentTarget.checked)}
+                            >
+                                {elm.label}
+                            </ToggleButton>
+                        ))}
 
                     </ToggleButtonGroup>
                 </Form.Group>
             )}
+
             {step === 3 && (
                 <Form.Group controlId="formStep3">
                     <Form.Label>Responde a estas preguntas:</Form.Label>
