@@ -1,6 +1,6 @@
 import './RecordForm.css'
 import React, { useState } from 'react'
-import { Form, Button, ProgressBar, ToggleButton, ToggleButtonGroup } from 'react-bootstrap'
+import { Form, Button, ProgressBar, ToggleButton, ToggleButtonGroup, Row, Col } from 'react-bootstrap'
 import MoodAnimation from '../../Animations/MoodAnimation'
 import { WORRIES } from '../../../consts/record.constants'
 
@@ -12,6 +12,12 @@ const RecordForm = () => {
         rateDay: '',
         worries: [],
         didExercise: false,
+        didHidrate: false,
+        ateHealthy: false,
+        hasPsyc: false,
+        isMedicated: false,
+        isMenstruating: false,
+        hasPeriodPain: false,
         weather: '',
         reflection: ''
     })
@@ -83,8 +89,8 @@ const RecordForm = () => {
                                 value={elm.value}
                                 name='worries'
                                 variant="outline-primary"
-                                checked={checked}
-                                onChange={(e) => setChecked(e.currentTarget.checked)}
+                            // checked={checked}
+                            // onClick={(e) => setChecked(e.currentTarget.checked)}
                             >
                                 {elm.label}
                             </ToggleButton>
@@ -97,21 +103,86 @@ const RecordForm = () => {
             {step === 3 && (
                 <Form.Group controlId="formStep3">
                     <Form.Label>Responde a estas preguntas:</Form.Label>
-                    <Form.Control
-                        as="textarea"
-                        rows={3}
-                        name="message"
-                        value={recordData.didExercise}
-                        onChange={handleInputChange}
-                    />
+                    <div className="form-questions">
+                        <Form.Check
+                            type="switch"
+                            id="didexercize-switch"
+                            label="¿Hiciste ejercicio hoy?"
+                            value={recordData.didExercise}
+                            onChange={handleInputChange}
+                            name="didExercise"
+                        />
+                        <Form.Check
+                            type="switch"
+                            id="didhidrate-switch"
+                            label="¿Te hidrataste bien?"
+                            value={recordData.didHidrate}
+                            onChange={handleInputChange}
+                            name="didHidrate"
+                        />
+                        <Form.Check
+                            type="switch"
+                            id="atehealthy-switch"
+                            label="¿Te alimentaste de manera saludable?"
+                            value={recordData.ateHealthy}
+                            onChange={handleInputChange}
+                            name="ateHealthy"
+                        />
+                        <br />
+                        <Form.Check
+                            type="switch"
+                            id="haspsyc-switch"
+                            label="¿Tienes terapeuta psicológico?"
+                            value={recordData.hasPsyc}
+                            onChange={handleInputChange}
+                            name="hasPsyc"
+                        />
+                        <Form.Check
+                            type="switch"
+                            id="ismedicated-switch"
+                            label="¿Estás tomando medicación?"
+                            value={recordData.isMedicated}
+                            onChange={handleInputChange}
+                            name="ateHealthy"
+                        />
+                        <br />
+                        <Row>
+                            <Col>
+                                <Form.Check
+                                    type="switch"
+                                    id="ismenstruating-switch"
+                                    label="¿Estas menstruando?"
+                                    value={recordData.isMenstruating}
+                                    onChange={handleInputChange}
+                                    name="isMenstruating"
+                                />
+                            </Col>
+                            <Col>
+                                <Form.Check
+                                    type="switch"
+                                    id="hasperiodpain-switch"
+                                    label="¿Tienes dolor?"
+                                    value={recordData.hasPeriodPain}
+                                    onChange={handleInputChange}
+                                    name="hasPeriodPain"
+                                />
+                            </Col>
+                        </Row>
+
+                    </div>
                 </Form.Group>
             )}
             {step === 4 && (
                 <Form.Group controlId="formStep3">
+
+                    <h1>Aqui irán imágenes chulis del tiempo :)</h1>
+
                     <Form.Label>¿Qué tiempo ha hecho hoy?</Form.Label>
-                    <Form.Control
-                        as="textarea"
-                        rows={3}
+                    <Form.Range
+                        as="range"
+                        min="0"
+                        max="4"
+                        step="1"
                         name="weather"
                         value={recordData.weather}
                         onChange={handleInputChange}
