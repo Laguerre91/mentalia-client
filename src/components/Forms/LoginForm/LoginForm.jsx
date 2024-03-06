@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../../context/auth.context";
@@ -26,6 +26,10 @@ const LoginForm = () => {
 
     const { storeToken, authenticateUser, user } = useContext(AuthContext)
 
+    useEffect(() => {
+        user && navigate(`/usuario/${user._id}`)
+    }, [user])
+
     const handleLoginSubmit = (e) => {
 
         e.preventDefault()
@@ -38,7 +42,6 @@ const LoginForm = () => {
             .then((response) => {
                 storeToken(response.data.authToken)
                 authenticateUser()
-                navigate(`/usuario/${user._id}`)
             })
             .catch((error) => {
                 const errorDescription = error.response.data.message;
