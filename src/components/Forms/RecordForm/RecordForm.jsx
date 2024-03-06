@@ -21,7 +21,16 @@ const RecordForm = () => {
         weather: '',
         reflection: ''
     })
-    const [checked, setChecked] = useState(false)
+    const [checked, setChecked] = useState({})
+
+    const handleToggle = (value) => {
+        setChecked((prevChecked) => {
+            const updatedChecked = { ...prevChecked }
+            updatedChecked[value] = !prevChecked[value]
+            console.log(`you clicked ${value}`)
+            return updatedChecked
+        })
+    }
 
     const handleNext = () => {
         setStep(step + 1)
@@ -79,18 +88,19 @@ const RecordForm = () => {
             {step === 2 && (
                 <Form.Group controlId="formStep2">
                     <Form.Label>¿Cuáles son tus preocupaciones hoy?</Form.Label>
-                    <ToggleButtonGroup type="checkbox" className='worries-btns'>
+                    <ToggleButtonGroup
+                        type="checkbox"
+                        className='worries-btns'>
 
                         {WORRIES.map((elm, id) => (
 
                             <ToggleButton
                                 key={id}
                                 type="checkbox"
-                                value={elm.value}
+                                value={elm.label}
                                 name='worries'
-                                variant="outline-primary"
-                            // checked={checked}
-                            // onClick={(e) => setChecked(e.currentTarget.checked)}
+                                variant={checked[elm.label] ? "primary" : "outline-primary"}
+                                onClick={() => handleToggle(elm.label)}
                             >
                                 {elm.label}
                             </ToggleButton>
