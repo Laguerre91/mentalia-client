@@ -20,7 +20,9 @@ class UserService {
     }
 
     getUser = (userId) => {
+
         return this.axiosApp.get(`/api/usuarios/${userId}`)
+
     }
 }
 
