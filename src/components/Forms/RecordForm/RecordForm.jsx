@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { Form, Button, ProgressBar, ToggleButton, ToggleButtonGroup, Row, Col } from 'react-bootstrap'
 import MoodAnimation from '../../Animations/MoodAnimation'
 import { WORRIES } from '../../../consts/record.constants'
+import axios from 'axios'
+
+const API_BASE_URL = "http://localhost:5005"
 
 const RecordForm = () => {
 
@@ -42,13 +45,20 @@ const RecordForm = () => {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
-        setRecordData({ ...recordData, [name]: value })
+        setRecordData({ ...recordData, [name]: name === 'mood' ? moodLabels[value] : name === 'weather' ? weatherLabels[value] : value })
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        // falta el handle del submit
+
+        // axios
+        //     .put(`${API_BASE_URL}/api/usuarios/:id`, recordData)
+        //     .then(() => console.log(`${recordData}`))
+        //     .catch(err => )
     }
+
+    const moodLabels = ['Muy mal', 'Mal', 'Algo mal', 'Normal', 'Algo bien', 'Bien', 'Muy bien']
+    const weatherLabels = ['Sol', 'Nubes', 'Lluvia', 'Tormenta', 'Nieve']
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -56,13 +66,13 @@ const RecordForm = () => {
             {step === 0 && (
                 <Form.Group controlId="formStep0">
                     <MoodAnimation />
-                    <Form.Label>Mood</Form.Label>
+                    <Form.Label>Mood = <span>{recordData.mood}</span></Form.Label>
                     <Form.Range
                         min="0"
                         max="6"
                         step="1"
-                        onChange={handleInputChange}
-                        value={recordData.mood}
+                        onChange={(handleInputChange)}
+                        value={moodLabels.indexOf(recordData.mood)}
                         name="mood"
                     />
                 </Form.Group>
@@ -187,17 +197,19 @@ const RecordForm = () => {
 
                     <h1>Aqui irán imágenes chulis del tiempo :)</h1>
 
-                    <Form.Label>¿Qué tiempo ha hecho hoy?</Form.Label>
+                    <Form.Label>¿Qué tiempo ha hecho hoy? - {recordData.weather}</Form.Label>
+
                     <Form.Range
                         as="range"
                         min="0"
                         max="4"
                         step="1"
                         name="weather"
-                        value={recordData.weather}
-                        onChange={handleInputChange}
+                        value={weatherLabels.indexOf(recordData.weather)}
+                        onChange={(handleInputChange)}
                     />
                 </Form.Group>
+
             )}
             {step === 5 && (
                 <Form.Group controlId="formStep3">
