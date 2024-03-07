@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form'
 import PsycologistService from './../../../services/psyc.services'
 import appointmentServices from '../../../services/appointment.services'
 
-const AppointmentForm = () => {
+const AppointmentForm = (props) => {
 
     const { user } = useContext(AuthContext)
 
@@ -51,11 +51,8 @@ const AppointmentForm = () => {
 
         e.preventDefault()
 
-        const { date, psycologist, client, comments } = appointment
-        const requestBody = { date, psycologist, client, comments }
-
         appointmentServices
-            .createAppointment(requestBody)
+            .createAppointment(appointment)
             .then((response) => {
                 console.log(response)
             })
@@ -74,7 +71,7 @@ const AppointmentForm = () => {
                 >
                     <option>Seleccione un psicólogo</option>
                     {psycologists.map((psyc) => (
-                        <option key={psyc._id} value={psyc?._id}>
+                        <option key={psyc._id} value={psyc._id}>
                             {psyc.name} {psyc.lastName}
                         </option>
                     ))}
