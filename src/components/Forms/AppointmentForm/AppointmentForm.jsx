@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form'
 import PsycologistService from './../../../services/psyc.services'
 import appointmentServices from '../../../services/appointment.services'
 
-const AppointmentForm = (props) => {
+const AppointmentForm = () => {
 
     const { user } = useContext(AuthContext)
 

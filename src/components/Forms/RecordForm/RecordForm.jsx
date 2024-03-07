@@ -3,9 +3,8 @@ import React, { useState } from 'react'
 import { Form, Button, ProgressBar, ToggleButton, ToggleButtonGroup, Row, Col } from 'react-bootstrap'
 import MoodAnimation from '../../Animations/MoodAnimation'
 import { WORRIES } from '../../../consts/record.constants'
-import axios from 'axios'
+import recordServices from '../../../services/record.services'
 
-const API_BASE_URL = "http://localhost:5005"
 
 const RecordForm = () => {
 
