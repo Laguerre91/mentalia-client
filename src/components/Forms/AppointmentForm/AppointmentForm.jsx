@@ -7,6 +7,7 @@ import 'react-calendar/dist/Calendar.css'
 import Form from 'react-bootstrap/Form'
 
 import PsycologistService from './../../../services/psyc.services'
+import appointmentServices from '../../../services/appointment.services'
 
 const AppointmentForm = () => {
 
@@ -15,7 +16,8 @@ const AppointmentForm = () => {
     const [appointment, setAppointment] = useState({
         date: new Date(),
         psycologist: '',
-        client: user._id
+        client: user._id,
+        comments: ''
     })
 
     const [psycologists, setPsycologists] = useState([])
@@ -41,33 +43,28 @@ const AppointmentForm = () => {
         setAppointment({ ...appointment, date: date });
     }
 
+    const handleCommentsChange = (e) => {
+        setAppointment({ ...appointment, comments: e.target.value })
+    }
+
     const handleFormSubmit = e => {
 
         e.preventDefault()
 
-        const { date, psycologist, client } = appointment
-        const requestBody = { date, psycologist, client }
+        const { date, psycologist, client, comments } = appointment
+        const requestBody = { date, psycologist, client, comments }
 
-
-
-        PsycologistService
-            .updatePsycologist(psycologist, requestBody)
-            .then(({ data }) => {
-                const updatedPsycologist = data
-
-                updatedPsycologist.appointments.push(appointment)
-
-                PsycologistService
-                    .updatePsycologist(psycologist._id, updatedPsycologist)
-                    .then(({ data }) => console.log(data))
-                    .catch((err) => console.log(err));
+        appointmentServices
+            .createAppointment(requestBody)
+            .then((response) => {
+                console.log(response)
             })
             .catch((err) => console.log(err))
 
     }
 
     return (
-        <Form className='AppointmentForm' onSubmit={handleFormSubmit}>
+        <Form className='AppointmentForm' onSubmit={handleFormSubmit} >
             <Form.Group controlId='psycologistSelect'>
                 <Form.Label>Elige tu psicólogo</Form.Label>
                 <Form.Select
@@ -91,6 +88,15 @@ const AppointmentForm = () => {
                     value={date}
                     required={true}
                     clearIcon={null} />
+            </Form.Group>
+
+            <Form.Group>
+                <Form.Label>Agrega comentarios sobre tu consulta</Form.Label>
+                <Form.Control
+                    as="textarea"
+                    rows={3}
+                    onChange={handleCommentsChange}
+                    value={appointment.comments} />
             </Form.Group>
 
             <button type="submit">Solicitar</button>

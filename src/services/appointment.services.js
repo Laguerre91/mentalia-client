@@ -19,18 +19,24 @@ class AppointmentService {
         })
     }
 
+    createAppointment = (requestBody) => {
+        return this.axiosApp.post('/api/appointments', requestBody)
+    }
+
     getAllAppointments = () => {
-        return this.axiosApp.get('/api/appointment')
+        return this.axiosApp.get('/api/appointments')
     }
 
     getAppointment = (appointmentId) => {
-        return this.axiosApp.get(`/api/appointment/${appointmentId}`)
+        return this.axiosApp.get(`/api/appointments/${appointmentId}`)
     }
 
-    createAppointment
-
     updateAppointment = (appointmentId, requestBody) => {
-        return this.axiosApp.put(`/api/appointment/${appointmentId}`, requestBody)
+        return this.axiosApp.put(`/api/appointments/${appointmentId}`, requestBody)
+    }
+
+    deleteAppointment = (appointmentId) => {
+        return this.axiosApp.delete(`/api/appointments/${appointmentId}`)
     }
 
 
