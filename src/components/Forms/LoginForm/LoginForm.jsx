@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../../context/auth.context";
 
-const API_URL = "http://localhost:5005"
+import AuthService from './../../../services/auth.services'
 
 const LoginForm = () => {
 
@@ -37,15 +36,15 @@ const LoginForm = () => {
         const { email, password, _id } = userData
         const requestBody = { email, password, _id }
 
-        axios
-            .post(`${API_URL}/api/auth/login`, requestBody)
+        AuthService
+            .loginUser(requestBody)
             .then((response) => {
                 storeToken(response.data.authToken)
                 authenticateUser()
             })
             .catch((error) => {
                 const errorDescription = error.response.data.message;
-                setErrorMessage(errorDescription);
+                setErrorMessage(errorDescription)
             })
     }
 

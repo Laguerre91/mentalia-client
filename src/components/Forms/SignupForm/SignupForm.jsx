@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
-const API_URL = "http://localhost:5005";
+import AuthService from './../../../services/auth.services'
 
 const SignupForm = () => {
 
@@ -30,8 +29,8 @@ const SignupForm = () => {
         const { email, password, username } = userData
         const requestBody = { email, password, username };
 
-        axios
-            .post(`${API_URL}/api/auth/signup`, requestBody)
+        AuthService
+            .signUpUser(requestBody)
             .then(() => {
                 navigate('/login');
             })
