@@ -79,10 +79,12 @@ const RecordForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        // axios
-        //     .put(`${API_BASE_URL}/api/usuarios/:id`, recordData)
-        //     .then(() => console.log(`${recordData}`))
-        //     .catch(err => )
+        recordServices
+            .createRecord(record)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((err) => console.log(err))
     }
 
     const moodLabels = ['Muy mal', 'Mal', 'Algo mal', 'Normal', 'Algo bien', 'Bien', 'Muy bien']
