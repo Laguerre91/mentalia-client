@@ -2,9 +2,8 @@ import './RecordForm.css'
 import React, { useState } from 'react'
 import { Form, Button, ProgressBar, ToggleButton, ToggleButtonGroup, Row, Col } from 'react-bootstrap'
 import MoodAnimation from '../../Animations/MoodAnimation'
-import { WORRIES } from '../../../consts/record.constants'
+import { HOURSOFSLEEP, MOOD_LABELS, WEATHER_LABELS, WORRIES } from '../../../consts/record.constants'
 import recordServices from '../../../services/record.services'
-
 
 const RecordForm = () => {
 
@@ -16,6 +15,7 @@ const RecordForm = () => {
         didExercise: false,
         didHidrate: false,
         ateHealthy: false,
+        hoursOfSleep: 0,
         hasPsyc: false,
         isMedicated: false,
         isMenstruating: false,
@@ -25,12 +25,9 @@ const RecordForm = () => {
     })
     const [checked, setChecked] = useState({})
 
-    const handleNext = () => {
-        setStep(step + 1)
-    }
-
-    const handlePrevious = () => {
-        setStep(step - 1)
+    const handleStep = (count = 1) => {
+        const currentStep = step + count
+        setStep(currentStep)
     }
 
     const handleInputChange = (event) => {
@@ -38,12 +35,20 @@ const RecordForm = () => {
 
         setRecordData((prevData) => ({
             ...prevData,
-            [name]: name === 'mood' ? moodLabels[value] : name === 'weather' ? weatherLabels[value] : value
+            [name]: name === 'mood'
+                ? MOOD_LABELS[value]
+                : name === 'weather'
+                    ? WEATHER_LABELS[value]
+                    : name === 'hoursOfSleep'
+                        ? HOURSOFSLEEP[value]
+                        : value
         }))
     }
 
     const handleToggleWorries = (value) => {
+
         setChecked((prevChecked) => {
+
             const updatedChecked = { ...prevChecked }
             updatedChecked[value] = !prevChecked[value]
 
@@ -86,12 +91,12 @@ const RecordForm = () => {
             .catch((err) => console.log(err))
     }
 
-    const moodLabels = ['Muy mal', 'Mal', 'Algo mal', 'Normal', 'Algo bien', 'Bien', 'Muy bien']
-    const weatherLabels = ['Sol', 'Nubes', 'Lluvia', 'Tormenta', 'Nieve']
+
 
     return (
         <Form onSubmit={handleSubmit}>
-            <ProgressBar now={(step / 5) * 100} />
+            <ProgressBar now={(step / 6) * 100} />
+
             {step === 0 && (
                 <Form.Group controlId="formStep0">
                     <MoodAnimation />
@@ -101,14 +106,14 @@ const RecordForm = () => {
                         max="6"
                         step="1"
                         onChange={handleInputChange}
-                        value={moodLabels.indexOf(recordData.mood)}
+                        value={MOOD_LABELS.indexOf(recordData.mood)}
                         name="mood"
                     />
                 </Form.Group>
             )}
+
             {step === 1 && (
                 <Form.Group controlId="formStep1">
-
                     <Form.Select
                         aria-label="Default select example"
                         onChange={handleInputChange}
@@ -121,9 +126,9 @@ const RecordForm = () => {
                             <option key={value + 1}>{value + 1}</option>
                         ))}
                     </Form.Select>
-
                 </Form.Group>
             )}
+
             {step === 2 && (
                 <Form.Group controlId="formStep2">
                     <Form.Label>¿Cuáles son tus preocupaciones hoy?</Form.Label>
@@ -151,6 +156,20 @@ const RecordForm = () => {
 
             {step === 3 && (
                 <Form.Group controlId="formStep3">
+                    <Form.Label>Indica tus horas de sueño = <span>{recordData.hoursOfSleep}</span></Form.Label>
+                    <Form.Range
+                        min="0"
+                        max="23"
+                        step="1"
+                        onChange={handleInputChange}
+                        value={HOURSOFSLEEP.indexOf(recordData.hoursOfSleep)}
+                        name="hoursOfSleep"
+                    />
+                </Form.Group>
+            )}
+
+            {step === 4 && (
+                <Form.Group controlId="formStep4">
                     <Form.Label>Responde a estas preguntas:</Form.Label>
                     <div className="form-questions">
                         <Form.Check
@@ -221,8 +240,8 @@ const RecordForm = () => {
                     </div>
                 </Form.Group>
             )}
-            {step === 4 && (
-                <Form.Group controlId="formStep3">
+            {step === 5 && (
+                <Form.Group controlId="formStep5">
 
                     <h1>Aqui irán imágenes chulis del tiempo :)</h1>
 
@@ -234,14 +253,14 @@ const RecordForm = () => {
                         max="4"
                         step="1"
                         name="weather"
-                        value={weatherLabels.indexOf(recordData.weather)}
+                        value={WEATHER_LABELS.indexOf(recordData.weather)}
                         onChange={(handleInputChange)}
                     />
                 </Form.Group>
 
             )}
-            {step === 5 && (
-                <Form.Group controlId="formStep3">
+            {step === 6 && (
+                <Form.Group controlId="formStep6">
                     <Form.Label>Reflexión del día</Form.Label>
                     <Form.Control
                         as="textarea"
@@ -254,12 +273,12 @@ const RecordForm = () => {
             )}
             <div className="d-flex justify-content-between">
                 {step > 0 && (
-                    <Button variant="secondary" onClick={handlePrevious}>
+                    <Button variant="secondary" onClick={() => handleStep(-1)}>
                         Previous
                     </Button>
                 )}
                 {step < 5 ? (
-                    <Button variant="primary" onClick={handleNext}>
+                    <Button variant="primary" onClick={() => handleStep()}>
                         Next
                     </Button>
                 ) : (

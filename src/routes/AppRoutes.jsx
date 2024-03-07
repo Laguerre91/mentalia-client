@@ -17,6 +17,11 @@ const AppRoutes = () => {
         <Routes>
             <Route path="/" element={<HomePage />} />
 
+            <Route path="/sobre-nosotros" element={<AboutUsPage />} />
+
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/login" element={<LoginPage />} />
+
             <Route element={<PrivateRoute />}>
                 <Route path="/usuario/:userId" element={<UserDashboardPage />} />
                 <Route path="/psicologo/:psycId" element={< PsycologistDetailsPage />} />
@@ -24,12 +29,8 @@ const AppRoutes = () => {
                 <Route path="/comunidad" element={<CommunityPage />} />
             </Route>
 
-            <Route path="/sobre-nosotros" element={<AboutUsPage />} />
-
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/login" element={<LoginPage />} />
-
             <Route path="*" element={<NotFoundPage />} />
+
         </Routes>
     )
 }

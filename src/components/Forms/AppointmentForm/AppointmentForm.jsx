@@ -40,7 +40,7 @@ const AppointmentForm = () => {
 
     const handleCalendarChange = (date) => {
         setDate(date)
-        setAppointment({ ...appointment, date: date });
+        setAppointment({ ...appointment, date });
     }
 
     const handleCommentsChange = (e) => {
@@ -54,6 +54,7 @@ const AppointmentForm = () => {
         appointmentServices
             .createAppointment(appointment)
             .then((response) => {
+                // TODO
                 console.log(response)
             })
             .catch((err) => console.log(err))
@@ -70,11 +71,13 @@ const AppointmentForm = () => {
                     value={appointment.psycologist}
                 >
                     <option>Seleccione un psicólogo</option>
-                    {psycologists.map((psyc) => (
-                        <option key={psyc._id} value={psyc._id}>
-                            {psyc.name} {psyc.lastName}
-                        </option>
-                    ))}
+                    {
+                        psycologists.map((psyc) => (
+                            <option key={psyc._id} value={psyc._id}>
+                                {psyc.name} {psyc.lastName}
+                            </option>
+                        ))
+                    }
                 </Form.Select>
             </Form.Group>
 

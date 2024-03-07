@@ -6,28 +6,24 @@ import AppointmentForm from "../components/Forms/AppointmentForm/AppointmentForm
 
 const UserDashboardPage = () => {
 
-    const [show, setShow] = useState(false)
-
+    const [showModal, setShowModal] = useState(false)
 
     return (
         <div className="UserDashboardPage">
 
-            < UserCard />
+            <UserCard />
 
-            <Button variant="primary" onClick={() => setShow(true)}>
+            <Button variant="primary" onClick={() => setShowModal(true)}>
                 Mood Diario
             </Button>
 
             <Modal
-                show={show}
-                onHide={() => setShow(false)}
+                show={showModal}
+                onHide={() => setShowModal(false)}
                 dialogClassName="modal-90w"
-                aria-labelledby="example-custom-modal-styling-title"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                        COMO TE SIENTES HOY?
-                    </Modal.Title>
+                    <Modal.Title>COMO TE SIENTES HOY?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
 
@@ -36,7 +32,7 @@ const UserDashboardPage = () => {
                 </Modal.Body>
             </Modal>
 
-            < AppointmentForm />
+            <AppointmentForm />
 
         </div>
     )

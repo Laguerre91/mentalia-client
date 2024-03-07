@@ -21,13 +21,7 @@ const PsycologistsList = () => {
     return (
         <section className="PsycologistsList">
             {
-                psycologists.map((psyc) => (
-
-                    <article key={psyc._id}>
-                        <PsycologistCard {...psyc} />
-                    </article>
-
-                ))
+                psycologists.map((psyc) => <PsycologistCard {...psyc} key={psyc._id} />)
             }
         </section>
     )
