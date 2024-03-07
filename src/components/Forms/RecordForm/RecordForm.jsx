@@ -26,15 +26,6 @@ const RecordForm = () => {
     })
     const [checked, setChecked] = useState({})
 
-    const handleToggle = (value) => {
-        setChecked((prevChecked) => {
-            const updatedChecked = { ...prevChecked }
-            updatedChecked[value] = !prevChecked[value]
-            console.log(`you clicked ${value}`)
-            return updatedChecked
-        })
-    }
-
     const handleNext = () => {
         setStep(step + 1)
     }
@@ -45,7 +36,44 @@ const RecordForm = () => {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
-        setRecordData({ ...recordData, [name]: name === 'mood' ? moodLabels[value] : name === 'weather' ? weatherLabels[value] : value })
+
+        setRecordData((prevData) => ({
+            ...prevData,
+            [name]: name === 'mood' ? moodLabels[value] : name === 'weather' ? weatherLabels[value] : value
+        }))
+    }
+
+    const handleToggleWorries = (value) => {
+        setChecked((prevChecked) => {
+            const updatedChecked = { ...prevChecked }
+            updatedChecked[value] = !prevChecked[value]
+
+            setRecordData((prevData) => {
+                const updatedWorries = [...prevData.worries]
+
+                if (updatedChecked[value]) {
+                    updatedWorries.push(value)
+                } else {
+                    const index = updatedWorries.indexOf(value)
+                    if (index !== -1) {
+                        updatedWorries.splice(index, 1)
+                    }
+                }
+                return {
+                    ...prevData,
+                    worries: updatedWorries,
+                }
+            })
+
+            return updatedChecked
+        })
+    }
+
+    const handleSwitch = (name) => {
+        setRecordData((prevData) => ({
+            ...prevData,
+            [name]: !prevData[name]
+        }))
     }
 
     const handleSubmit = (event) => {
@@ -71,7 +99,7 @@ const RecordForm = () => {
                         min="0"
                         max="6"
                         step="1"
-                        onChange={(handleInputChange)}
+                        onChange={handleInputChange}
                         value={moodLabels.indexOf(recordData.mood)}
                         name="mood"
                     />
@@ -110,7 +138,7 @@ const RecordForm = () => {
                                 value={elm.label}
                                 name='worries'
                                 variant={checked[elm.label] ? "primary" : "outline-primary"}
-                                onClick={() => handleToggle(elm.label)}
+                                onClick={() => handleToggleWorries(elm.label)}
                             >
                                 {elm.label}
                             </ToggleButton>
@@ -129,7 +157,7 @@ const RecordForm = () => {
                             id="didexercize-switch"
                             label="¿Hiciste ejercicio hoy?"
                             value={recordData.didExercise}
-                            onChange={handleInputChange}
+                            onChange={() => handleSwitch("didExercise")}
                             name="didExercise"
                         />
                         <Form.Check
@@ -137,7 +165,7 @@ const RecordForm = () => {
                             id="didhidrate-switch"
                             label="¿Te hidrataste bien?"
                             value={recordData.didHidrate}
-                            onChange={handleInputChange}
+                            onChange={() => handleSwitch("didHidrate")}
                             name="didHidrate"
                         />
                         <Form.Check
@@ -145,7 +173,7 @@ const RecordForm = () => {
                             id="atehealthy-switch"
                             label="¿Te alimentaste de manera saludable?"
                             value={recordData.ateHealthy}
-                            onChange={handleInputChange}
+                            onChange={() => handleSwitch("ateHealthy")}
                             name="ateHealthy"
                         />
                         <br />
@@ -154,7 +182,7 @@ const RecordForm = () => {
                             id="haspsyc-switch"
                             label="¿Tienes terapeuta psicológico?"
                             value={recordData.hasPsyc}
-                            onChange={handleInputChange}
+                            onChange={() => handleSwitch("hasPsyc")}
                             name="hasPsyc"
                         />
                         <Form.Check
@@ -162,7 +190,7 @@ const RecordForm = () => {
                             id="ismedicated-switch"
                             label="¿Estás tomando medicación?"
                             value={recordData.isMedicated}
-                            onChange={handleInputChange}
+                            onChange={() => handleSwitch("ateHealthy")}
                             name="ateHealthy"
                         />
                         <br />
@@ -173,7 +201,7 @@ const RecordForm = () => {
                                     id="ismenstruating-switch"
                                     label="¿Estas menstruando?"
                                     value={recordData.isMenstruating}
-                                    onChange={handleInputChange}
+                                    onChange={() => handleSwitch("isMenstruating")}
                                     name="isMenstruating"
                                 />
                             </Col>
@@ -183,7 +211,7 @@ const RecordForm = () => {
                                     id="hasperiodpain-switch"
                                     label="¿Tienes dolor?"
                                     value={recordData.hasPeriodPain}
-                                    onChange={handleInputChange}
+                                    onChange={() => handleSwitch("hasPeriodPain")}
                                     name="hasPeriodPain"
                                 />
                             </Col>
