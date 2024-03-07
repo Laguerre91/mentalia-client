@@ -26,15 +26,6 @@ const RecordForm = () => {
     })
     const [checked, setChecked] = useState({})
 
-    const handleToggle = (value) => {
-        setChecked((prevChecked) => {
-            const updatedChecked = { ...prevChecked }
-            updatedChecked[value] = !prevChecked[value]
-            console.log(`you clicked ${value}`)
-            return updatedChecked
-        })
-    }
-
     const handleNext = () => {
         setStep(step + 1)
     }
@@ -45,8 +36,40 @@ const RecordForm = () => {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
-        setRecordData({ ...recordData, [name]: name === 'mood' ? moodLabels[value] : name === 'weather' ? weatherLabels[value] : value })
+
+        setRecordData((prevData) => ({
+            ...prevData,
+            [name]: name === 'mood' ? moodLabels[value] : name === 'weather' ? weatherLabels[value] : value
+        }))
     }
+
+    const handleToggleWorries = (value) => {
+        setChecked((prevChecked) => {
+            const updatedChecked = { ...prevChecked };
+            updatedChecked[value] = !prevChecked[value];
+
+            setRecordData((prevData) => {
+                const updatedWorries = [...prevData.worries];
+
+                if (updatedChecked[value]) {
+                    updatedWorries.push(value);
+                } else {
+                    const index = updatedWorries.indexOf(value);
+                    if (index !== -1) {
+                        updatedWorries.splice(index, 1);
+                    }
+                }
+
+                return {
+                    ...prevData,
+                    worries: updatedWorries,
+                };
+            });
+
+            return updatedChecked;
+        });
+    };
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -110,7 +133,7 @@ const RecordForm = () => {
                                 value={elm.label}
                                 name='worries'
                                 variant={checked[elm.label] ? "primary" : "outline-primary"}
-                                onClick={() => handleToggle(elm.label)}
+                                onClick={() => handleToggleWorries(elm.label)}
                             >
                                 {elm.label}
                             </ToggleButton>
@@ -137,7 +160,7 @@ const RecordForm = () => {
                             id="didhidrate-switch"
                             label="¿Te hidrataste bien?"
                             value={recordData.didHidrate}
-                            onChange={handleInputChange}
+                            onChange={handleInputChange()}
                             name="didHidrate"
                         />
                         <Form.Check
