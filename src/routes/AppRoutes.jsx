@@ -9,16 +9,21 @@ import PsycologistsListPage from './../pages/PsycologistsListPage'
 import CommunityPage from './../pages/CommunityPage'
 import AboutUsPage from './../pages/AboutUsPage'
 import NotFoundPage from './../pages/NotFoundPage'
+import PrivateRoute from "./PrivateRoute"
 
 const AppRoutes = () => {
 
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/usuario/:userId" element={<UserDashboardPage />} />
-            <Route path="/psicologo/:psycId" element={< PsycologistDetailsPage />} />
-            <Route path="/psicologos" element={<PsycologistsListPage />} />
-            <Route path="/comunidad" element={<CommunityPage />} />
+
+            <Route element={<PrivateRoute />}>
+                <Route path="/usuario/:userId" element={<UserDashboardPage />} />
+                <Route path="/psicologo/:psycId" element={< PsycologistDetailsPage />} />
+                <Route path="/psicologos" element={<PsycologistsListPage />} />
+                <Route path="/comunidad" element={<CommunityPage />} />
+            </Route>
+
             <Route path="/sobre-nosotros" element={<AboutUsPage />} />
 
             <Route path="/signup" element={<SignupPage />} />

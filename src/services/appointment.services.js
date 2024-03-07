@@ -1,6 +1,6 @@
 import axios from "axios"
 
-class PsycologistService {
+class AppointmentService {
 
     constructor() {
 
@@ -19,17 +19,21 @@ class PsycologistService {
         })
     }
 
-    getAllPsycologists = () => {
-        return this.axiosApp.get('/api/psic')
+    getAllAppointments = () => {
+        return this.axiosApp.get('/api/appointment')
     }
 
-    getPsycologist = (psycId) => {
-        return this.axiosApp.get(`/api/psic/${psycId}`)
+    getAppointment = (appointmentId) => {
+        return this.axiosApp.get(`/api/appointment/${appointmentId}`)
     }
 
-    updatePsycologist = (psycId, requestBody) => {
-        return this.axiosApp.put(`/api/psic/${psycId}`, requestBody)
+    createAppointment
+
+    updateAppointment = (appointmentId, requestBody) => {
+        return this.axiosApp.put(`/api/appointment/${appointmentId}`, requestBody)
     }
+
+
 }
 
-export default new PsycologistService()
+export default new AppointmentService()

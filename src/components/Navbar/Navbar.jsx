@@ -61,13 +61,17 @@ function NavBar() {
                                 )
                             }
 
-                            <NavDropdown title="Páginas" id="offcanvasNavbarDropdown-expand-md">
-                                <Link to="/usuario/:id" onClick={handleOffcanvasClose}>Tu página</Link>
-                                <NavDropdown.Divider />
-                                <Link to="/psicologos" onClick={handleOffcanvasClose}>Psicólogos</Link>
-                                <NavDropdown.Divider />
-                                <Link to="/comunidad" onClick={handleOffcanvasClose}>Comunidad</Link>
-                            </NavDropdown>
+                            {
+                                isLoggedIn && (
+                                    <NavDropdown title="Páginas" id="offcanvasNavbarDropdown-expand-md">
+                                        <Link to="/usuario/:id" onClick={handleOffcanvasClose}>Tu página</Link>
+                                        <NavDropdown.Divider />
+                                        <Link to="/psicologos" onClick={handleOffcanvasClose}>Psicólogos</Link>
+                                        <NavDropdown.Divider />
+                                        <Link to="/comunidad" onClick={handleOffcanvasClose}>Comunidad</Link>
+                                    </NavDropdown>
+                                )
+                            }
                         </Nav>
                         {/* <Form className="d-flex">
                             <Form.Control
