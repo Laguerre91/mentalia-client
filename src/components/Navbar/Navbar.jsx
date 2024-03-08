@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import "./NavBar.css"
 import React from "react"
-import { Navbar, Container, Nav, NavDropdown, Form, Button, Offcanvas, Modal } from 'react-bootstrap'
+import { Navbar, Container, Nav, NavDropdown, Button, Offcanvas, Modal } from 'react-bootstrap'
 import LoginForm from "../Forms/LoginForm/LoginForm"
 
 function NavBar() {

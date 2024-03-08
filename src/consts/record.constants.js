@@ -15,4 +15,4 @@ export const WORRIES = [
 
 export const MOOD_LABELS = ['Muy mal', 'Mal', 'Algo mal', 'Normal', 'Algo bien', 'Bien', 'Muy bien']
 export const WEATHER_LABELS = ['Sol', 'Nubes', 'Lluvia', 'Tormenta', 'Nieve']
-export const HOURSOFSLEEP = [['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24']]
+export const HOURSOFSLEEP = [...Array(25).keys()]
