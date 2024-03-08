@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../../context/auth.context";
+import { Button, Form } from "react-bootstrap";
 
 import AuthService from './../../../services/auth.services'
 
@@ -49,29 +50,35 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="LoginForm">
-            <form onSubmit={handleLoginSubmit}>
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={userData.email}
-                    onChange={handleInputChange}
-                />
+        <>
+            <Form onSubmit={handleLoginSubmit} className="login-form">
+                <Form.Group className="mb-3">
+                    <Form.Label>Correo Electrónico</Form.Label>
+                    <Form.Control
+                        value={userData.email}
+                        type="email"
+                        name="email"
+                        placeholder="Introduce correo electrónico"
+                        onChange={handleInputChange} />
+                </Form.Group>
 
-                <label>Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={userData.password}
-                    onChange={handleInputChange}
-                />
+                <Form.Group className="mb-3">
+                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Control
+                        value={userData.password}
+                        type="password"
+                        name="password"
+                        placeholder="Contraseña"
+                        onChange={handleInputChange} />
+                </Form.Group>
 
-                <button type="submit">Login</button>
-            </form>
+                <Button variant="dark" type="submit">
+                    Submit
+                </Button>
+            </Form>
+
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-        </div>
+        </>
     )
 }
 

@@ -1,17 +1,19 @@
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/auth.context";
+import { useContext, useState } from "react"
+import { Link } from "react-router-dom"
+import { AuthContext } from "../../context/auth.context"
 import "./NavBar.css"
-import React from "react";
-import { Navbar, Container, Nav, NavDropdown, Form, Button, Offcanvas } from 'react-bootstrap';
-
+import React from "react"
+import { Navbar, Container, Nav, NavDropdown, Form, Button, Offcanvas, Modal } from 'react-bootstrap'
+import LoginForm from "../Forms/LoginForm/LoginForm"
 
 function NavBar() {
 
     const { user, isLoggedIn, logout } = useContext(AuthContext)
     const [showOffcanvas, setShowOffcanvas] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
     const handleOffcanvasClose = () => setShowOffcanvas(false)
+    const handleModalClose = () => setShowModal(false)
 
     return (
         <Navbar expand="md" className="bg-body-tertiary mb-3">
@@ -36,7 +38,10 @@ function NavBar() {
 
                             {
                                 isLoggedIn && (
-                                    <button onClick={() => { logout(); handleOffcanvasClose(); }}>Log out</button>
+                                    <Button variant="dark" onClick={() => {
+                                        logout()
+                                        handleOffcanvasClose()
+                                    }}>Log out</Button>
                                 )
                             }
 
@@ -47,14 +52,18 @@ function NavBar() {
                                             to="/signup"
                                             onClick={handleOffcanvasClose}>
 
-                                            <button>Sign Up</button>
+                                            <Button variant="dark">Sign Up</Button>
                                         </Link>
 
                                         <Link
                                             to="/login"
                                             onClick={handleOffcanvasClose}>
 
-                                            <button>Login</button>
+                                            <Button
+                                                variant="dark"
+                                                onClick={() => setShowModal(true)}>
+                                                Login
+                                            </Button>
 
                                         </Link>
                                     </>
@@ -73,17 +82,34 @@ function NavBar() {
                                 )
                             }
                         </Nav>
-                        {/* <Form className="d-flex">
-                            <Form.Control
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                            />
-                            <Button variant="outline-success">Search</Button>
-                        </Form> */}
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>
+
+                <Modal
+                    show={showModal}
+                    onHide={handleModalClose}
+                    size="sm"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    className="model-top-right"
+                >
+                    <Modal.Header closeButton>
+
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            Modal heading
+                        </Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        <h4>Centered Modal</h4>
+                        <LoginForm />
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button onClick={handleModalClose}>Close</Button>
+                    </Modal.Footer>
+
+                </Modal>
+
             </Container>
         </Navbar >
 
@@ -91,3 +117,4 @@ function NavBar() {
 }
 
 export default NavBar
+
