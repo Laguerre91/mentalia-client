@@ -55,9 +55,7 @@ function NavBar() {
                                             <Button variant="dark">Sign Up</Button>
                                         </Link>
 
-                                        <Link
-                                            to="/login"
-                                            onClick={handleOffcanvasClose}>
+                                        <Link onClick={handleOffcanvasClose}>
 
                                             <Button
                                                 variant="dark"
@@ -73,7 +71,7 @@ function NavBar() {
                             {
                                 isLoggedIn && (
                                     <NavDropdown title="Páginas" id="offcanvasNavbarDropdown-expand-md">
-                                        <Link to="/usuario/:id" onClick={handleOffcanvasClose}>Tu página</Link>
+                                        <Link to={`/usuario/${user._id}`} onClick={handleOffcanvasClose}>Tu página</Link>
                                         <NavDropdown.Divider />
                                         <Link to="/psicologos" onClick={handleOffcanvasClose}>Psicólogos</Link>
                                         <NavDropdown.Divider />
