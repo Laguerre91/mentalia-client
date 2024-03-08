@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import SignupForm from "../components/Forms/SignupForm/SignupForm";
+import SignupForm from "../../components/Forms/SignupForm/SignupForm";
 
 
 function SignupPage(props) {

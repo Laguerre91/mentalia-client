@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom"
 
-import SignupPage from "./../pages/SignupPage"
+import SignupPage from "../pages/SignUpPage/SignupPage"
 import LoginPage from "./../pages/LoginPage"
-import HomePage from "./../pages/HomePage"
-import UserDashboardPage from "./../pages/UserDashboardPage"
-import PsycologistDetailsPage from './../pages/PsycologistDetailsPage'
-import PsycologistsListPage from './../pages/PsycologistsListPage'
-import CommunityPage from './../pages/CommunityPage'
-import AboutUsPage from './../pages/AboutUsPage'
-import NotFoundPage from './../pages/NotFoundPage'
+import HomePage from "./../pages/HomePage/HomePage"
+import UserDashboardPage from "./../pages/UserDashboardPage/UserDashboardPage"
+import PsycologistDetailsPage from './../pages/PsycologistDetailsPage/PsycologistDetailsPage'
+import PsycologistsListPage from './../pages/PsycologistsListPage/PsycologistsListPage'
+import CommunityPage from './../pages/CommunityPage/CommunityPage'
+import AboutUsPage from './../pages/AboutUsPage/AboutUsPage'
+import NotFoundPage from './../pages/NotFoundPage/NotFoundPage'
 import PrivateRoute from "./PrivateRoute"
 
 const AppRoutes = () => {

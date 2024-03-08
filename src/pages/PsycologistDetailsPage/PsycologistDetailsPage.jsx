@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import PsycologistService from './../services/psyc.services'
+import PsycologistService from '../../services/psyc.services'
 
 const PsycologistDetailsPage = () => {
 
