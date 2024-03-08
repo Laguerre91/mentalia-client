@@ -1,4 +1,4 @@
-import PsycologistsList from "../components/PsycologistsList/PsycologistsList"
+import PsycologistsList from "../../components/PsycologistsList/PsycologistsList"
 
 const PsycologistsListPage = () => {
 

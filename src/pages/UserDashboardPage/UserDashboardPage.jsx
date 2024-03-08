@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Button, Modal } from "react-bootstrap"
-import RecordForm from "../components/Forms/RecordForm/RecordForm"
-import UserCard from "../components/UserCard/UserCard"
-import AppointmentForm from "../components/Forms/AppointmentForm/AppointmentForm"
+import RecordForm from "../../components/Forms/RecordForm/RecordForm"
+import UserCard from "../../components/UserCard/UserCard"
+import AppointmentForm from "../../components/Forms/AppointmentForm/AppointmentForm"
 
 const UserDashboardPage = () => {
 
