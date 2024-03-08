@@ -14,10 +14,10 @@
     "bootstrap": "^5.3.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.1",
+    "react-bootstrap-time-picker": "^2.0.1",
     "react-date-picker": "^10.6.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.2",
-    "react-time-picker": "^6.6.0"
+    "react-router-dom": "^6.22.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
