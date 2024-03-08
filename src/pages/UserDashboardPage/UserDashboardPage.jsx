@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Button, Modal } from "react-bootstrap"
 import RecordForm from "../../components/Forms/RecordForm/RecordForm"
 import UserDetails from "../../components/UserDetails/UserDetails"
@@ -7,9 +6,29 @@ import AppointmentsList from "../../components/AppointmentsList/AppointmentsList
 import RecordsList from "../../components/RecordsList/RecordsList"
 
 
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+
+import UserService from './../../services/user.services'
+
 const UserDashboardPage = () => {
 
     const [showModal, setShowModal] = useState(false)
+    const [userDetails, setUserDetails] = useState([])
+
+    const { userId } = useParams()
+
+    useEffect(() => {
+        getUser()
+    }, [userId])
+
+    const getUser = () => {
+
+        UserService
+            .getUser(userId)
+            .then(({ data }) => setUserDetails(data))
+            .catch((err) => console.log(err))
+    }
 
     return (
         <div className="UserDashboardPage">
@@ -37,9 +56,9 @@ const UserDashboardPage = () => {
                 </Modal.Body>
             </Modal>
 
-            <AppointmentForm />
+            <AppointmentForm getUser={getUser} />
 
-            <AppointmentsList />
+            <AppointmentsList userDetails={userDetails} />
 
         </div>
     )

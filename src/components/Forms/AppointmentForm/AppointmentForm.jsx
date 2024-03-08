@@ -1,11 +1,9 @@
 import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from '../../../context/auth.context'
 import DatePicker from 'react-date-picker'
-import TimePicker from 'react-time-picker'
+import TimePicker from 'react-bootstrap-time-picker'
 import 'react-date-picker/dist/DatePicker.css'
 import 'react-calendar/dist/Calendar.css'
-import 'react-time-picker/dist/TimePicker.css';
-import 'react-clock/dist/Clock.css'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -13,13 +11,13 @@ import Button from 'react-bootstrap/Button'
 import PsycologistService from './../../../services/psyc.services'
 import appointmentServices from '../../../services/appointment.services'
 
-const AppointmentForm = () => {
+const AppointmentForm = ({ getUser }) => {
 
     const { user } = useContext(AuthContext)
 
     const initialAppointmentState = {
         date: new Date(),
-        time: '',
+        time: "",
         psycologist: '',
         client: user._id,
         comments: ''
@@ -30,7 +28,7 @@ const AppointmentForm = () => {
     const [psycologists, setPsycologists] = useState([])
 
     const [date, setDate] = useState(new Date())
-    const [time, setTime] = useState('10:00')
+    const [time, setTime] = useState(0)
 
     useEffect(() => {
         getAllPsycologists()
@@ -54,7 +52,8 @@ const AppointmentForm = () => {
 
     const handleTimeChange = (time) => {
         setTime(time)
-        setAppointment({ ...appointment, time })
+        const formattedTime = (time / 3600).toFixed(2)
+        setAppointment({ ...appointment, time: formattedTime })
     }
 
     const handleCommentsChange = (e) => {
@@ -69,6 +68,7 @@ const AppointmentForm = () => {
             .createAppointment(appointment)
             .then((response) => {
                 setAppointment(initialAppointmentState)
+                getUser()
             })
             .catch((err) => console.log(err))
 
@@ -108,6 +108,8 @@ const AppointmentForm = () => {
                 <Form.Label>Selecciona un horario</Form.Label>
                 <TimePicker
                     onChange={handleTimeChange}
+                    start="10:00"
+                    end="20:00"
                     value={time}
                     required={true}
                     clearIcon={null} />

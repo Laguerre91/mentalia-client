@@ -1,10 +1,15 @@
+import { Container } from 'react-bootstrap'
 
-const AppointmentDetailsCard = ({ _id, date, time, psycologist, client, comments }) => {
+import './AppointmentDetailsCard.css'
+
+const AppointmentDetailsCard = ({ date, time, psycologist, client, comments }) => {
 
     return (
-        <article className="AppointmentDetailsCard">
+        <Container className="AppointmentDetailsCard w-50">
             <p>Tienes fecha para el día {date} a la hora {time}</p>
-        </article>
+            <p>Tu psicólogo es {psycologist.name} {psycologist.lastName}</p>
+            <p>El motivo de la consulta que has añadido es: {comments}</p>
+        </Container>
     )
 }
 
