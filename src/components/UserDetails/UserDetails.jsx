@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import UserService from './../../services/user.services'
+import UserService from '../../services/user.services'
 
 // TODO: RENOMBRAR
-import './UserCard.css'
+import './UserDetails.css'
 
 const UserCard = () => {
 

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Button, Modal } from "react-bootstrap"
 import RecordForm from "../../components/Forms/RecordForm/RecordForm"
-import UserCard from "../../components/UserCard/UserCard"
+import UserDetails from "../../components/UserDetails/UserDetails"
 import AppointmentForm from "../../components/Forms/AppointmentForm/AppointmentForm"
 
 const UserDashboardPage = () => {
@@ -11,7 +11,7 @@ const UserDashboardPage = () => {
     return (
         <div className="UserDashboardPage">
 
-            <UserCard />
+            <UserDetails />
 
             <Button variant="primary" onClick={() => setShowModal(true)}>
                 Mood Diario
