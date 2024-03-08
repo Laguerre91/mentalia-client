@@ -247,8 +247,6 @@ const RecordForm = ({ onHide }) => {
             {step === 5 && (
                 <Form.Group controlId="formStep5">
 
-                    <h1>Aqui irán imágenes chulis del tiempo :)</h1>
-
                     <Form.Label>¿Qué tiempo ha hecho hoy? - {recordData.weather}</Form.Label>
 
                     <Form.Range

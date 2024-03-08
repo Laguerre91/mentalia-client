@@ -4,6 +4,8 @@ import RecordForm from "../../components/Forms/RecordForm/RecordForm"
 import UserDetails from "../../components/UserDetails/UserDetails"
 import AppointmentForm from "../../components/Forms/AppointmentForm/AppointmentForm"
 import AppointmentsList from "../../components/AppointmentsList/AppointmentsList"
+import RecordsList from "../../components/RecordsList/RecordsList"
+
 
 const UserDashboardPage = () => {
 
@@ -18,13 +20,15 @@ const UserDashboardPage = () => {
                 Mood Diario
             </Button>
 
+            <RecordsList />
+
             <Modal
                 show={showModal}
                 onHide={() => setShowModal(false)}
                 dialogClassName="modal-90w"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>COMO TE SIENTES HOY?</Modal.Title>
+                    <Modal.Title>¿Cómo te sientes hoy, cari?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
 
