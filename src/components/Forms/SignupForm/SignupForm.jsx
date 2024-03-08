@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 import AuthService from './../../../services/auth.services'
 
@@ -42,33 +44,40 @@ const SignupForm = () => {
 
     return (
         <div className="SignupForm">
-            <form onSubmit={handleSignupSubmit}>
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={userData.email}
-                    onChange={handleInputChange}
-                />
+            <Form onSubmit={handleSignupSubmit}>
 
-                <label>Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={userData.password}
-                    onChange={handleInputChange}
-                />
+                <Form.Group className="mb-3" controlId="formGroupEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                        type="email"
+                        name="email"
+                        placeholder="Ingresa tu email"
+                        value={userData.email}
+                        onChange={handleInputChange} />
+                </Form.Group>
 
-                <label>Name:</label>
-                <input
-                    type="text"
-                    name="username"
-                    value={userData.username}
-                    onChange={handleInputChange}
-                />
+                <Form.Group className="mb-3" controlId="formGroupPassword">
+                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Control
+                        type="password"
+                        name="password"
+                        placeholder="Ingresa tu contraseña"
+                        value={userData.password}
+                        onChange={handleInputChange} />
+                </Form.Group>
 
-                <button type="submit">Sign Up</button>
-            </form>
+                <Form.Group className="mb-3" controlId="formGroupName">
+                    <Form.Label>Nombre de usuario</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="username"
+                        placeholder="Elige tu nombre de usuario"
+                        value={userData.username}
+                        onChange={handleInputChange} />
+                </Form.Group>
+
+                <Button variant="warning" type="submit">Crear usuario</Button>
+            </Form>
 
             {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>

@@ -5,6 +5,7 @@ import 'react-date-picker/dist/DatePicker.css'
 import 'react-calendar/dist/Calendar.css'
 
 import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 import PsycologistService from './../../../services/psyc.services'
 import appointmentServices from '../../../services/appointment.services'
@@ -13,12 +14,14 @@ const AppointmentForm = () => {
 
     const { user } = useContext(AuthContext)
 
-    const [appointment, setAppointment] = useState({
+    const initialAppointmentState = {
         date: new Date(),
         psycologist: '',
         client: user._id,
         comments: ''
-    })
+    }
+
+    const [appointment, setAppointment] = useState(initialAppointmentState)
 
     const [psycologists, setPsycologists] = useState([])
     const [date, setDate] = useState(new Date());
@@ -54,8 +57,7 @@ const AppointmentForm = () => {
         appointmentServices
             .createAppointment(appointment)
             .then((response) => {
-                // TODO
-                console.log(response)
+                setAppointment(initialAppointmentState)
             })
             .catch((err) => console.log(err))
 
@@ -99,7 +101,7 @@ const AppointmentForm = () => {
                     value={appointment.comments} />
             </Form.Group>
 
-            <button type="submit">Solicitar</button>
+            <Button variant="warning" type="submit">Solicitar</Button>
         </Form>
     )
 }
