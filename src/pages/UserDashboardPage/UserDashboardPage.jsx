@@ -27,7 +27,7 @@ const UserDashboardPage = () => {
                 </Modal.Header>
                 <Modal.Body>
 
-                    <RecordForm />
+                    <RecordForm onHide={() => setShowModal(false)} />
 
                 </Modal.Body>
             </Modal>

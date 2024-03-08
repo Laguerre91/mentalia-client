@@ -1,14 +1,18 @@
 import './RecordForm.css'
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { AuthContext } from '../../../context/auth.context'
 import { Form, Button, ProgressBar, ToggleButton, ToggleButtonGroup, Row, Col } from 'react-bootstrap'
 import MoodAnimation from '../../Animations/MoodAnimation'
 import { HOURSOFSLEEP, MOOD_LABELS, WEATHER_LABELS, WORRIES } from '../../../consts/record.constants'
 import recordServices from '../../../services/record.services'
 
-const RecordForm = () => {
+const RecordForm = ({ onHide }) => {
+
+    const { user } = useContext(AuthContext)
 
     const [step, setStep] = useState(0)
     const [recordData, setRecordData] = useState({
+        user: user ? user._id : '',
         mood: '',
         rateDay: '',
         worries: [],
@@ -82,19 +86,18 @@ const RecordForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        console.log('Submitting recordData:', recordData)
 
         recordServices
-            .createRecord(record)
+            .createRecord(recordData)
             .then((response) => {
-                console.log(response)
+                onHide()
             })
             .catch((err) => console.log(err))
     }
 
-
-
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form className='record-form' onSubmit={handleSubmit}>
             <ProgressBar now={(step / 6) * 100} />
 
             {step === 0 && (
@@ -158,12 +161,13 @@ const RecordForm = () => {
                 <Form.Group controlId="formStep3">
                     <Form.Label>Indica tus horas de sueño = <span>{recordData.hoursOfSleep}</span></Form.Label>
                     <Form.Range
+                        as="range"
                         min="0"
-                        max="23"
+                        max="24"
                         step="1"
-                        onChange={handleInputChange}
-                        value={HOURSOFSLEEP.indexOf(recordData.hoursOfSleep)}
                         name="hoursOfSleep"
+                        value={HOURSOFSLEEP.indexOf(recordData.hoursOfSleep)}
+                        onChange={(handleInputChange)}
                     />
                 </Form.Group>
             )}
@@ -257,7 +261,6 @@ const RecordForm = () => {
                         onChange={(handleInputChange)}
                     />
                 </Form.Group>
-
             )}
             {step === 6 && (
                 <Form.Group controlId="formStep6">
@@ -277,11 +280,12 @@ const RecordForm = () => {
                         Previous
                     </Button>
                 )}
-                {step < 5 ? (
+                {step < 6 && (
                     <Button variant="primary" onClick={() => handleStep()}>
                         Next
                     </Button>
-                ) : (
+                )}
+                {step === 6 && (
                     <Button variant="primary" type="submit">
                         Submit
                     </Button>
