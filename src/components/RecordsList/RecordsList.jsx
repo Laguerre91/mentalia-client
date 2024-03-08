@@ -8,23 +8,7 @@ import RecordCard from '../RecordCard/RecordCard'
 import './RecordsList.css'
 import { Container, Row } from 'react-bootstrap'
 
-const RecordsList = () => {
-
-    const [userDetails, setUserDetails] = useState([])
-
-    const { userId } = useParams()
-
-    useEffect(() => {
-        getUser()
-    }, [userId])
-
-    const getUser = () => {
-
-        UserService
-            .getUser(userId)
-            .then(({ data }) => setUserDetails(data))
-            .catch((err) => console.log(err))
-    }
+const RecordsList = ({ userDetails }) => {
 
     return (
         <Container>

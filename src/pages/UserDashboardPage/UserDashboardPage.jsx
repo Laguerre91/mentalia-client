@@ -39,7 +39,7 @@ const UserDashboardPage = () => {
                 Mood Diario
             </Button>
 
-            <RecordsList />
+            <RecordsList userDetails={userDetails} />
 
             <Modal
                 show={showModal}
@@ -51,7 +51,9 @@ const UserDashboardPage = () => {
                 </Modal.Header>
                 <Modal.Body>
 
-                    <RecordForm onHide={() => setShowModal(false)} />
+                    <RecordForm
+                        onHide={() => setShowModal(false)}
+                        getUser={getUser} />
 
                 </Modal.Body>
             </Modal>
