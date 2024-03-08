@@ -1,8 +1,11 @@
 import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from '../../../context/auth.context'
 import DatePicker from 'react-date-picker'
+import TimePicker from 'react-time-picker'
 import 'react-date-picker/dist/DatePicker.css'
 import 'react-calendar/dist/Calendar.css'
+import 'react-time-picker/dist/TimePicker.css';
+import 'react-clock/dist/Clock.css'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -16,6 +19,7 @@ const AppointmentForm = () => {
 
     const initialAppointmentState = {
         date: new Date(),
+        time: '',
         psycologist: '',
         client: user._id,
         comments: ''
@@ -24,7 +28,9 @@ const AppointmentForm = () => {
     const [appointment, setAppointment] = useState(initialAppointmentState)
 
     const [psycologists, setPsycologists] = useState([])
-    const [date, setDate] = useState(new Date());
+
+    const [date, setDate] = useState(new Date())
+    const [time, setTime] = useState('10:00')
 
     useEffect(() => {
         getAllPsycologists()
@@ -44,6 +50,11 @@ const AppointmentForm = () => {
     const handleCalendarChange = (date) => {
         setDate(date)
         setAppointment({ ...appointment, date });
+    }
+
+    const handleTimeChange = (time) => {
+        setTime(time)
+        setAppointment({ ...appointment, time })
     }
 
     const handleCommentsChange = (e) => {
@@ -83,11 +94,21 @@ const AppointmentForm = () => {
                 </Form.Select>
             </Form.Group>
 
-            <Form.Group controlId='calendar'>
+            <Form.Group>
                 <Form.Label>Selecciona una fecha</Form.Label>
                 <DatePicker
                     onChange={handleCalendarChange}
                     value={date}
+                    required={true}
+                    clearIcon={null}
+                    dateFormat="Pp" />
+            </Form.Group>
+
+            <Form.Group>
+                <Form.Label>Selecciona un horario</Form.Label>
+                <TimePicker
+                    onChange={handleTimeChange}
+                    value={time}
                     required={true}
                     clearIcon={null} />
             </Form.Group>

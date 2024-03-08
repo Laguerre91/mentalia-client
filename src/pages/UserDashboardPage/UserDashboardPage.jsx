@@ -3,6 +3,7 @@ import { Button, Modal } from "react-bootstrap"
 import RecordForm from "../../components/Forms/RecordForm/RecordForm"
 import UserDetails from "../../components/UserDetails/UserDetails"
 import AppointmentForm from "../../components/Forms/AppointmentForm/AppointmentForm"
+import AppointmentsList from "../../components/AppointmentsList/AppointmentsList"
 
 const UserDashboardPage = () => {
 
@@ -33,6 +34,8 @@ const UserDashboardPage = () => {
             </Modal>
 
             <AppointmentForm />
+
+            <AppointmentsList />
 
         </div>
     )
