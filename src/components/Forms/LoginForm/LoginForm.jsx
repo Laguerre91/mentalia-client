@@ -5,7 +5,7 @@ import { Button, Form } from "react-bootstrap";
 
 import AuthService from './../../../services/auth.services'
 
-const LoginForm = () => {
+const LoginForm = ({ onSubmit }) => {
 
     const [userData, setUserData] = useState({
         email: '',
@@ -42,6 +42,7 @@ const LoginForm = () => {
             .then((response) => {
                 storeToken(response.data.authToken)
                 authenticateUser()
+                onSubmit()
             })
             .catch((error) => {
                 const errorDescription = error.response.data.message;

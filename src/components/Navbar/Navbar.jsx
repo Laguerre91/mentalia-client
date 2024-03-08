@@ -101,12 +101,8 @@ function NavBar() {
 
                     <Modal.Body>
                         <h4>Centered Modal</h4>
-                        <LoginForm />
+                        <LoginForm onSubmit={handleModalClose} />
                     </Modal.Body>
-
-                    <Modal.Footer>
-                        <Button onClick={handleModalClose}>Close</Button>
-                    </Modal.Footer>
 
                 </Modal>
 
