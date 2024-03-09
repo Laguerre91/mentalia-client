@@ -93,12 +93,11 @@ function NavBar() {
                     <Modal.Header closeButton>
 
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Modal heading
+                            Inicia sesión
                         </Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
-                        <h4>Centered Modal</h4>
                         <LoginForm onSubmit={handleModalClose} />
                     </Modal.Body>
 

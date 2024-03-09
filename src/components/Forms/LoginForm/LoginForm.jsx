@@ -5,6 +5,8 @@ import { Button, Form } from "react-bootstrap";
 
 import AuthService from './../../../services/auth.services'
 
+import "./LoginForm.css"
+
 const LoginForm = ({ onSubmit }) => {
 
     const [userData, setUserData] = useState({
@@ -51,15 +53,16 @@ const LoginForm = ({ onSubmit }) => {
     }
 
     return (
-        <>
+
+        <div className="LoginForm ">
             <Form onSubmit={handleLoginSubmit} className="login-form">
                 <Form.Group className="mb-3">
-                    <Form.Label>Correo Electrónico</Form.Label>
+                    <Form.Label>Email</Form.Label>
                     <Form.Control
                         value={userData.email}
                         type="email"
                         name="email"
-                        placeholder="Introduce correo electrónico"
+                        placeholder="Introduce tu email"
                         onChange={handleInputChange} />
                 </Form.Group>
 
@@ -72,14 +75,15 @@ const LoginForm = ({ onSubmit }) => {
                         placeholder="Contraseña"
                         onChange={handleInputChange} />
                 </Form.Group>
-
-                <Button variant="dark" type="submit">
-                    Submit
-                </Button>
+                <div className="d-flex justify-content-center">
+                    <Button className="login-button w-70" variant="dark" type="submit">
+                        Accede a tu cuenta
+                    </Button>
+                </div>
             </Form>
 
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-        </>
+        </div>
     )
 }
 
