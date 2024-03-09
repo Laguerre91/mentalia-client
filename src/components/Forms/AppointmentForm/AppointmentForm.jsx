@@ -2,11 +2,11 @@ import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from '../../../context/auth.context'
 import DatePicker from 'react-date-picker'
 import TimePicker from 'react-bootstrap-time-picker'
+import { format } from "@formkit/tempo"
 import 'react-date-picker/dist/DatePicker.css'
 import 'react-calendar/dist/Calendar.css'
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import { Form, Button, Container } from 'react-bootstrap'
 
 import PsycologistService from './../../../services/psyc.services'
 import appointmentServices from '../../../services/appointment.services'
@@ -16,7 +16,7 @@ const AppointmentForm = ({ getUser }) => {
     const { user } = useContext(AuthContext)
 
     const initialAppointmentState = {
-        date: new Date(),
+        date: format(new Date(), "full"),
         time: "",
         psycologist: '',
         client: user._id,
@@ -46,8 +46,9 @@ const AppointmentForm = ({ getUser }) => {
     }
 
     const handleCalendarChange = (date) => {
-        setDate(date)
-        setAppointment({ ...appointment, date });
+        setDate(date);
+        const formattedDate = format(date, "full");
+        setAppointment({ ...appointment, date: formattedDate })
     }
 
     const handleTimeChange = (time) => {
@@ -63,6 +64,8 @@ const AppointmentForm = ({ getUser }) => {
     const handleFormSubmit = e => {
 
         e.preventDefault()
+
+        console.log("Fecha antes de enviar al servidor:", appointment.date)
 
         appointmentServices
             .createAppointment(appointment)
@@ -100,8 +103,7 @@ const AppointmentForm = ({ getUser }) => {
                     onChange={handleCalendarChange}
                     value={date}
                     required={true}
-                    clearIcon={null}
-                    dateFormat="Pp" />
+                    clearIcon={null} />
             </Form.Group>
 
             <Form.Group>

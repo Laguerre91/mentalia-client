@@ -24,6 +24,10 @@ class UserService {
         return this.axiosApp.get(`/api/usuarios/${userId}`)
 
     }
+
+    updateUser = (userId, updatedUserData) => {
+        return this.axiosApp.put(`/api/usuarios/${userId}`, updatedUserData)
+    }
 }
 
 export default new UserService()

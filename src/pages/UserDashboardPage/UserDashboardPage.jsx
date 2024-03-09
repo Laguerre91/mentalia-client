@@ -1,4 +1,4 @@
-import { Button, Modal } from "react-bootstrap"
+import { Button, Modal, Container, Row, Col } from "react-bootstrap"
 import RecordForm from "../../components/Forms/RecordForm/RecordForm"
 import UserDetails from "../../components/UserDetails/UserDetails"
 import AppointmentForm from "../../components/Forms/AppointmentForm/AppointmentForm"
@@ -31,15 +31,20 @@ const UserDashboardPage = () => {
     }
 
     return (
-        <div className="UserDashboardPage">
+        <Container className="UserDashboardPage">
 
-            <UserDetails />
+            <Row>
+                <Col md={3}>
+                    <UserDetails />
+                </Col>
+                <Col>
 
-            <Button variant="primary" onClick={() => setShowModal(true)}>
-                Mood Diario
-            </Button>
-
-            <RecordsList userDetails={userDetails} />
+                    <Button variant="primary" onClick={() => setShowModal(true)}>
+                        Mood Diario
+                    </Button>
+                    <RecordsList userDetails={userDetails} />
+                </Col>
+            </Row>
 
             <Modal
                 show={showModal}
@@ -62,7 +67,7 @@ const UserDashboardPage = () => {
 
             <AppointmentsList userDetails={userDetails} />
 
-        </div>
+        </Container>
     )
 }
 

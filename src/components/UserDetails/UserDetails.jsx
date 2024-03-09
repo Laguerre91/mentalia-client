@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 
 import UserService from '../../services/user.services'
 
-// TODO: RENOMBRAR
 import './UserDetails.css'
 
 const UserCard = () => {
@@ -24,9 +23,10 @@ const UserCard = () => {
     }
 
     return (
-        <div className="UserCard">
-            <h2>¡Hola {user.username}!</h2>
-        </div>
+        <section className="UserCard">
+            <h2>¡Hola, {user.username}!</h2>
+            <p>Lo estás haciendo genial</p>
+        </section>
     )
 }
 
