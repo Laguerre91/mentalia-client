@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import { Container, Row, Col, Card, Nav, Button } from 'react-bootstrap'
+import { Row, Col, Card, Nav, Button } from 'react-bootstrap'
+import recordServices from '../../services/record.services'
 import './RecordCard.css'
 import MoodAnimation from '../Animations/MoodAnimation'
 
@@ -20,7 +20,8 @@ const RecordCard = ({
     hasPeriodPain,
     weather,
     hoursOfSleep,
-    reflection
+    reflection,
+    getUser
 }) => {
 
     const [activeKey, setActiveKey] = useState('#mood')
@@ -28,6 +29,16 @@ const RecordCard = ({
     const handleNavSelect = (selectedKey) => {
         setActiveKey(selectedKey)
     }
+
+    const handleDelete = () => {
+        recordServices
+            .deleteRecord(_id)
+            .then(() => {
+                getUser()
+                res.sendStatus(204)
+            })
+            .catch(err => res.status(500).json(err))
+    };
 
 
     return (
@@ -98,7 +109,7 @@ const RecordCard = ({
                         </>
                     )}
                     <div className="mood-btns">
-                        <Button className="w-50" variant="danger">
+                        <Button className="w-50" variant="danger" onClick={handleDelete}>
                             Delete
                         </Button>
                         <Button className="w-50" variant="success">
