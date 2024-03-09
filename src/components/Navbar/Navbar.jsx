@@ -38,10 +38,12 @@ function NavBar() {
 
                             {
                                 isLoggedIn && (
-                                    <Button variant="dark" onClick={() => {
-                                        logout()
-                                        handleOffcanvasClose()
-                                    }}>Log out</Button>
+                                    <Button
+                                        variant="dark"
+                                        onClick={() => {
+                                            logout()
+                                            handleOffcanvasClose()
+                                        }}>Log out</Button>
                                 )
                             }
 

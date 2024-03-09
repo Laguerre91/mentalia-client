@@ -6,7 +6,7 @@ import MoodAnimation from '../../Animations/MoodAnimation'
 import { HOURSOFSLEEP, MOOD_LABELS, WEATHER_LABELS, WORRIES } from '../../../consts/record.constants'
 import recordServices from '../../../services/record.services'
 
-const RecordForm = ({ onHide }) => {
+const RecordForm = ({ onHide, getUser }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -91,6 +91,7 @@ const RecordForm = ({ onHide }) => {
         recordServices
             .createRecord(recordData)
             .then((response) => {
+                getUser()
                 onHide()
             })
             .catch((err) => console.log(err))
