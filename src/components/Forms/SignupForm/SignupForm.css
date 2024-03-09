@@ -1,0 +1,15 @@
+.SignupForm {
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+
+.SignupForm .form-input {
+    border: 0.9px solid black;
+}
+
+.SignupForm .signup-button {
+    background-color: #81c2de;
+    border: none;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

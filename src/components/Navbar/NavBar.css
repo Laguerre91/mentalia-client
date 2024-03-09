@@ -1,3 +1,30 @@
+.Navbar .navbar-button {
+    font-size: 0.9em;
+    padding: 7px 15px 7px 15px;
+}
+
+.Navbar .navbar-button-signup {
+    background-color: white;
+    color: #81c2de;
+    border: 2px solid #81c2de;
+}
+
+.Navbar .navbar-button-signup:hover {
+    background-color: #81c2de;
+    border: 2px solid #81c2de;
+}
+
+.Navbar .navbar-button-login {
+    background-color: #81c2de;
+    border: 2px solid #81c2de;
+}
+
+.Navbar .navbar-button-login:hover {
+    background-color: white;
+    color: #81c2de;
+    border: 2px solid #81c2de;
+}
+
 .modal-top-right {
     position: absolute;
     top: 400px;

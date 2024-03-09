@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+import './SignupForm.css'
+
 import AuthService from './../../../services/auth.services'
 
 const SignupForm = () => {
@@ -49,6 +51,7 @@ const SignupForm = () => {
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
+                        className="form-input w-75"
                         type="email"
                         name="email"
                         placeholder="Ingresa tu email"
@@ -59,6 +62,7 @@ const SignupForm = () => {
                 <Form.Group className="mb-3" controlId="formGroupPassword">
                     <Form.Label>Contraseña</Form.Label>
                     <Form.Control
+                        className="form-input w-75"
                         type="password"
                         name="password"
                         placeholder="Ingresa tu contraseña"
@@ -69,6 +73,7 @@ const SignupForm = () => {
                 <Form.Group className="mb-3" controlId="formGroupName">
                     <Form.Label>Nombre de usuario</Form.Label>
                     <Form.Control
+                        className="form-input w-75"
                         type="text"
                         name="username"
                         placeholder="Elige tu nombre de usuario"
@@ -76,7 +81,7 @@ const SignupForm = () => {
                         onChange={handleInputChange} />
                 </Form.Group>
 
-                <Button variant="warning" type="submit">Crear usuario</Button>
+                <Button className="signup-button w-75" type="submit">Crear usuario</Button>
             </Form>
 
             {errorMessage && <p className="error-message">{errorMessage}</p>}

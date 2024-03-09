@@ -1,0 +1,16 @@
+.SignupPage .signup-form-container {
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.SignupPage .signup-form {
+    position: relative;
+    left: 10%;
+    padding: 50px;
+}
+
+.SignupPage .image-form img {
+    position: relative;
+    right: 15%;
+    width: 120%;
+}

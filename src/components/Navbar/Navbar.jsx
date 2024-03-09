@@ -16,7 +16,7 @@ function NavBar() {
     const handleModalClose = () => setShowModal(false)
 
     return (
-        <Navbar expand="md" className="bg-body-tertiary mb-3">
+        <Navbar expand="md" className="Navbar">
             <Container fluid>
                 <Link to={'/'}>MENTALIA</Link>
                 <Navbar.Toggle
@@ -52,15 +52,13 @@ function NavBar() {
                                             to="/signup"
                                             onClick={handleOffcanvasClose}>
 
-                                            <Button variant="dark">Sign Up</Button>
+                                            <Button className="navbar-button navbar-button-signup me-4">Registrarse</Button>
                                         </Link>
 
                                         <Link onClick={handleOffcanvasClose}>
 
-                                            <Button
-                                                variant="dark"
-                                                onClick={() => setShowModal(true)}>
-                                                Login
+                                            <Button className="navbar-button navbar-button-login me-3" onClick={() => setShowModal(true)}>
+                                                Iniciar Sesión
                                             </Button>
 
                                         </Link>
