@@ -29,18 +29,29 @@ const UserCard = () => {
     }
 
     return (
-        <section className="UserCard">
+        <section className="UserCard p-4">
 
-            <h2>¡Hola, {user.username}!</h2>
+            <div>
+
+                <h2>¡Hola, {user.username}!</h2>
+            </div>
+
             <p>Lo estás haciendo genial</p>
+
             {loading ? (
                 <p>Cargando datos...</p>
-            ) : user.gender && user.sexualOrientation && user.sentimentalStatus !== undefined ? (
+            ) : user.gender &&
+                user.sexualOrientation &&
+                user.sentimentalStatus !== undefined ? (
                 <div className="user-details">
                     <p>Tu género seleccionado es {user.gender}</p>
                     <p>Tu orientación sexual es {user.sexualOrientation} </p>
                     <p>Situación sentimental: {user.sentimentalStatus}</p>
-                    {user.employed === false ? <p>Actualmente desempleado/a</p> : <p>Trabajando</p>}
+                    {
+                        user.employed === false ?
+                            <p>Actualmente desempleado/a</p>
+                            :
+                            <p>Trabajando</p>}
                 </div>
             ) : (
                 <p>

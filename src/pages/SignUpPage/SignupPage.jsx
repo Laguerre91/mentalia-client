@@ -16,7 +16,7 @@ function SignupPage() {
 
                     <SignupForm />
 
-                    <div className="signup-account">
+                    <div className="signup-account w-75">
                         <p>Ya tienes una cuenta? <Link to={"/login"}>Inicia Sesión</Link></p>
                     </div>
                 </Col>

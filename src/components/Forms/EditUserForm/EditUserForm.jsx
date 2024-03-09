@@ -1,7 +1,9 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { AuthContext } from '../../../context/auth.context'
 import UserService from './../../../services/user.services'
 import { GENDER_LABELS, SEXUAL_ORIENTATION_LABELS, SENTIMENTAL_STATUS_LABELS } from './../../../consts/user.constants'
+
+import './EditUserForm.css'
 
 import { Form, Button, Modal } from 'react-bootstrap'
 
@@ -11,12 +13,11 @@ const EditUserForm = ({ getUser }) => {
 
     const [updatedUser, setUpdatedUser] = useState({
         birth: user.birth || '',
-        gender: user.gender || '',
-        sexualOrientation: user.sexualOrientation || '',
+        gender: user.gender || 'Masculino',
+        sexualOrientation: user.sexualOrientation || 'Heterosexual',
         employed: user.employed || false,
-        sentimentalStatus: user.sentimentalStatus || '',
+        sentimentalStatus: user.sentimentalStatus || 'Soltero/a',
     })
-    const [fullscreen, setFullscreen] = useState(true);
     const [showUserModal, setShowUserModal] = useState(false);
 
     const handleInputChange = (e) => {
@@ -41,24 +42,30 @@ const EditUserForm = ({ getUser }) => {
     }
 
     const handleShow = () => {
-        setFullscreen(true);
         setShowUserModal(true);
     }
 
     return (
         <>
 
-            <Button className="me-2 mb-2" onClick={handleShow}>
+            <Button
+                variant='dark'
+                className="me-2 mb-2 w-100"
+                onClick={handleShow}>
                 Actualiza tu perfil
             </Button>
-            <Modal show={showUserModal} fullscreen={fullscreen} onHide={() => setShowUserModal(false)}>
+            <Modal
+                show={showUserModal}
+                backdrop="static"
+                keyboard={false}
+                onHide={() => setShowUserModal(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Editar Usuario</Modal.Title>
+                    <Modal.Title>Actualiza tu usuario</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="formBirth">
-                            <Form.Label>¿Cuál es tu fecha de nacimiento?</Form.Label>
+                    <Form onSubmit={handleSubmit} className='editUser-modal-form'>
+                        <Form.Group controlId="formBirth" className="group-userform mb-3">
+                            <Form.Label className="test">¿Cuál es tu fecha de nacimiento?</Form.Label>
                             <Form.Control
                                 type="date"
                                 name="birth"
@@ -68,8 +75,8 @@ const EditUserForm = ({ getUser }) => {
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formGender">
-                            <Form.Label>Selecciona tu género</Form.Label>
+                        <Form.Group controlId="formGender" className="group-userform mb-3">
+                            <Form.Label className="test">Selecciona tu género</Form.Label>
                             <Form.Select name="gender" value={updatedUser.gender} onChange={handleInputChange}>
                                 {GENDER_LABELS.map((gender) => (
                                     <option key={gender} value={gender}>
@@ -79,8 +86,8 @@ const EditUserForm = ({ getUser }) => {
                             </Form.Select>
                         </Form.Group>
 
-                        <Form.Group controlId="formSexualOrientation">
-                            <Form.Label>Selecciona tu orientación sexual</Form.Label>
+                        <Form.Group controlId="formSexualOrientation" className="group-userform mb-3">
+                            <Form.Label className="test">Selecciona tu orientación sexual</Form.Label>
                             <Form.Select name="sexualOrientation" value={updatedUser.sexualOrientation} onChange={handleInputChange}>
                                 {SEXUAL_ORIENTATION_LABELS.map((orientation) => (
                                     <option key={orientation} value={orientation}>
@@ -90,7 +97,7 @@ const EditUserForm = ({ getUser }) => {
                             </Form.Select>
                         </Form.Group>
 
-                        <Form.Group controlId="formEmployed">
+                        <Form.Group controlId="formEmployed" className="group-userform mb-3">
                             <Form.Check
                                 type="checkbox"
                                 label="¿Estás empleado/a?"
@@ -100,8 +107,8 @@ const EditUserForm = ({ getUser }) => {
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formSentimentalStatus">
-                            <Form.Label>Selecciona tu estado sentimental</Form.Label>
+                        <Form.Group controlId="formSentimentalStatus" className="group-userform mb-3">
+                            <Form.Label className="test">Selecciona tu estado sentimental</Form.Label>
                             <Form.Select name="sentimentalStatus" value={updatedUser.sentimentalStatus} onChange={handleInputChange}>
                                 {SENTIMENTAL_STATUS_LABELS.map((status) => (
                                     <option key={status} value={status}>
@@ -111,7 +118,7 @@ const EditUserForm = ({ getUser }) => {
                             </Form.Select>
                         </Form.Group>
 
-                        <Button variant="primary" type="submit">
+                        <Button className='w-100 btn-edituser-submit' variant="primary" type="submit">
                             Guardar cambios
                         </Button>
                     </Form>

@@ -9,6 +9,11 @@
     padding: 50px;
 }
 
+.SignupPage .signup-account {
+    text-align: center;
+    font-size: 0.8em;
+}
+
 .SignupPage .image-form img {
     position: relative;
     right: 15%;

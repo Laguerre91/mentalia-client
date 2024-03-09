@@ -5,6 +5,7 @@ import AppointmentForm from "../../components/Forms/AppointmentForm/AppointmentF
 import AppointmentsList from "../../components/AppointmentsList/AppointmentsList"
 import RecordsList from "../../components/RecordsList/RecordsList"
 
+import './UserDashboardPage.css'
 
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
@@ -31,43 +32,44 @@ const UserDashboardPage = () => {
     }
 
     return (
-        <Container className="UserDashboardPage">
+        <section className="UserDashboardPage">
+            <Container>
+                <Row>
+                    <Col md={3}>
+                        <UserDetails />
+                    </Col>
+                    <Col>
 
-            <Row>
-                <Col md={3}>
-                    <UserDetails />
-                </Col>
-                <Col>
+                        <Button variant="primary" onClick={() => setShowModal(true)}>
+                            Mood Diario
+                        </Button>
+                        <RecordsList userDetails={userDetails} />
+                    </Col>
+                </Row>
 
-                    <Button variant="primary" onClick={() => setShowModal(true)}>
-                        Mood Diario
-                    </Button>
-                    <RecordsList userDetails={userDetails} />
-                </Col>
-            </Row>
+                <Modal
+                    show={showModal}
+                    onHide={() => setShowModal(false)}
+                    dialogClassName="modal-90w"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>¿Cómo te sientes hoy, cari?</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
 
-            <Modal
-                show={showModal}
-                onHide={() => setShowModal(false)}
-                dialogClassName="modal-90w"
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>¿Cómo te sientes hoy, cari?</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+                        <RecordForm
+                            onHide={() => setShowModal(false)}
+                            getUser={getUser} />
 
-                    <RecordForm
-                        onHide={() => setShowModal(false)}
-                        getUser={getUser} />
+                    </Modal.Body>
+                </Modal>
 
-                </Modal.Body>
-            </Modal>
+                <AppointmentForm getUser={getUser} />
 
-            <AppointmentForm getUser={getUser} />
+                <AppointmentsList userDetails={userDetails} />
 
-            <AppointmentsList userDetails={userDetails} />
-
-        </Container>
+            </Container>
+        </section>
     )
 }
 

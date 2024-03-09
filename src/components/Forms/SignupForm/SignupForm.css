@@ -1,5 +1,5 @@
 .SignupForm {
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     margin-top: 30px;
 }
 
@@ -12,4 +12,9 @@
     border: none;
     color: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.SignupForm .signup-text {
+    font-size: 0.9em;
+    margin-bottom: 2px;
 }

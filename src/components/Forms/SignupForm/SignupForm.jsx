@@ -48,8 +48,8 @@ const SignupForm = () => {
         <div className="SignupForm">
             <Form onSubmit={handleSignupSubmit}>
 
-                <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label>Email</Form.Label>
+                <Form.Group className="mb-4" controlId="formGroupEmail">
+                    <Form.Label className="signup-text">Email</Form.Label>
                     <Form.Control
                         className="form-input w-75"
                         type="email"
@@ -59,8 +59,8 @@ const SignupForm = () => {
                         onChange={handleInputChange} />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formGroupPassword">
-                    <Form.Label>Contraseña</Form.Label>
+                <Form.Group className="mb-4" controlId="formGroupPassword">
+                    <Form.Label className="signup-text">Contraseña</Form.Label>
                     <Form.Control
                         className="form-input w-75"
                         type="password"
@@ -70,8 +70,8 @@ const SignupForm = () => {
                         onChange={handleInputChange} />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formGroupName">
-                    <Form.Label>Nombre de usuario</Form.Label>
+                <Form.Group className="mb-4" controlId="formGroupName">
+                    <Form.Label className="signup-text">Nombre de usuario</Form.Label>
                     <Form.Control
                         className="form-input w-75"
                         type="text"
@@ -81,7 +81,7 @@ const SignupForm = () => {
                         onChange={handleInputChange} />
                 </Form.Group>
 
-                <Button className="signup-button w-75" type="submit">Crear usuario</Button>
+                <Button className="signup-button w-75 mt-3" type="submit">Crear usuario</Button>
             </Form>
 
             {errorMessage && <p className="error-message">{errorMessage}</p>}
