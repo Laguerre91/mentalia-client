@@ -39,6 +39,7 @@ function NavBar() {
                             {
                                 isLoggedIn && (
                                     <Button
+                                        className="navbar-button navbar-button-logout me-3"
                                         variant="dark"
                                         onClick={() => {
                                             logout()
@@ -70,12 +71,30 @@ function NavBar() {
 
                             {
                                 isLoggedIn && (
-                                    <NavDropdown title="Páginas" id="offcanvasNavbarDropdown-expand-md">
-                                        <Link to={`/usuario/${user._id}`} onClick={handleOffcanvasClose}>Tu página</Link>
+                                    <NavDropdown
+                                        title="Páginas"
+                                        id="offcanvasNavbarDropdown-expand-md"
+                                        className="nav-dropdown">
+                                        <Link
+                                            to={`/usuario/${user._id}`}
+                                            onClick={handleOffcanvasClose}
+                                            className="nav-link">
+                                            Tu página
+                                        </Link>
                                         <NavDropdown.Divider />
-                                        <Link to="/psicologos" onClick={handleOffcanvasClose}>Psicólogos</Link>
+                                        <Link
+                                            to="/psicologos"
+                                            onClick={handleOffcanvasClose}
+                                            className="nav-link">
+                                            Psicólogos
+                                        </Link>
                                         <NavDropdown.Divider />
-                                        <Link to="/comunidad" onClick={handleOffcanvasClose}>Comunidad</Link>
+                                        <Link
+                                            to="/comunidad"
+                                            onClick={handleOffcanvasClose}
+                                            className="nav-link">
+                                            Comunidad
+                                        </Link>
                                     </NavDropdown>
                                 )
                             }
