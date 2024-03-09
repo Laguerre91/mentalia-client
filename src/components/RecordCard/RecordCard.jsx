@@ -1,18 +1,41 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { Container, Row, Col, Card, Nav, Button } from 'react-bootstrap'
 import './RecordCard.css'
 import MoodAnimation from '../Animations/MoodAnimation'
 
-const RecordCard = ({ _id, user, date, mood, rateDay, worries,
-    didExercise, didHidrate, ateHealthy, hasPsyc, isMedicated,
-    isMenstruating, hasPeriodPain, weather, hoursOfSleep, reflection }) => {
+const RecordCard = ({
+    _id,
+    user,
+    date,
+    mood,
+    rateDay,
+    worries,
+    didExercise,
+    didHidrate,
+    ateHealthy,
+    hasPsyc,
+    isMedicated,
+    isMenstruating,
+    hasPeriodPain,
+    weather,
+    hoursOfSleep,
+    reflection
+}) => {
+
+    const [activeKey, setActiveKey] = useState('#first')
+
+    const handleNavSelect = (selectedKey) => {
+        setActiveKey(selectedKey)
+    }
+
 
     return (
         <>
             <Card
-                bg={'secondary'}
+                bg={'light'}
                 key={_id}
-                text={'white'}
+                text={'dark'}
                 style={{ width: '18rem' }}
                 border="primary"
                 className="mb-2"
@@ -28,13 +51,21 @@ const RecordCard = ({ _id, user, date, mood, rateDay, worries,
                     </Nav>
                 </Card.Header>
                 <Card.Body>
-                    <Card.Title>{date}</Card.Title>
-                    <Card.Text>
-                        <p>El día {date} tuvo una nota de {rateDay}</p>
-                        <p>Hoy me preocupan: {worries}</p>
-                        <p>Dormí {hoursOfSleep} horas</p>
-                    </Card.Text>
-                    <Button variant="primary">Más detalles</Button>
+
+                    {activeKey === '#first' ? (
+                        <>
+                            <Card.Title>{date}</Card.Title>
+                            <Card.Text>
+                                <p>El día {date} tuvo una nota de {rateDay}</p>
+                                <p>Hoy me preocupan: {worries}</p>
+                                <p>Dormí {hoursOfSleep} horas</p>
+                            </Card.Text>
+                        </>
+                    ) : (
+                        <p>Content for Link tab</p>
+                    )}
+
+                    <Button variant="danger">Delete Mood</Button>
                 </Card.Body>
             </Card>
         </>
