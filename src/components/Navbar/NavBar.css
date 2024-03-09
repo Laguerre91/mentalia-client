@@ -25,8 +25,32 @@
     border: 2px solid #81c2de;
 }
 
-.modal-top-right {
-    position: absolute;
-    top: 400px;
-    right: 400px;
+.Navbar .navbar-button-logout {
+    background-color: #81c2de;
+    border: 2px solid #81c2de;
+}
+
+.Navbar .navbar-button-logout:hover {
+    background-color: white;
+    color: #81c2de;
+    border: 2px solid #81c2de;
+}
+
+.Navbar .nav-dropdown {
+    background-color: #fff;
+    border: 2px solid #81c2de;
+    border-radius: 10px;
+}
+
+.Navbar .nav-dropdown a {
+    color: #81c2de;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.Navbar .nav-dropdown a:hover {
+    background-color: #81c2de;
+    color: #fff;
+    border-radius: 8px;
 }
