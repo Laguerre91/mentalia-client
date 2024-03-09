@@ -23,7 +23,7 @@ const RecordCard = ({
     reflection
 }) => {
 
-    const [activeKey, setActiveKey] = useState('#first')
+    const [activeKey, setActiveKey] = useState('#mood')
 
     const handleNavSelect = (selectedKey) => {
         setActiveKey(selectedKey)
@@ -41,31 +41,70 @@ const RecordCard = ({
                 className="mb-2"
             >
                 <Card.Header>
-                    <Nav variant="pills" defaultActiveKey="#first">
-                        <Nav.Item>
-                            <Nav.Link href="#first">Active</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href="#link">Link</Nav.Link>
-                        </Nav.Item>
+                    <Nav variant="pills" activeKey={activeKey} onSelect={handleNavSelect}>
+                        <Row>
+                            <Col xs={4}>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="#mood">1</Nav.Link>
+                                </Nav.Item>
+                            </Col>
+                            <Col xs={4}>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="#moredetails">2</Nav.Link>
+                                </Nav.Item>
+                            </Col>
+                            <Col xs={4}>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="#reflection">3</Nav.Link>
+                                </Nav.Item>
+                            </Col>
+                        </Row>
                     </Nav>
                 </Card.Header>
                 <Card.Body>
-
-                    {activeKey === '#first' ? (
+                    {activeKey === '#mood' ? (
                         <>
-                            <Card.Title>{date}</Card.Title>
                             <Card.Text>
-                                <p>El día {date} tuvo una nota de {rateDay}</p>
-                                <p>Hoy me preocupan: {worries}</p>
-                                <p>Dormí {hoursOfSleep} horas</p>
+                                <p>Carita de {mood}</p>
+                                <p> {rateDay}</p>
+                                <p>Preocupaciones:</p>
+                                <div className="worries-grid">
+                                    {worries.map((worry, index) => (
+                                        <div key={index}>{worry}</div>
+                                    ))}
+                                </div>
                             </Card.Text>
+                            <Card.Title>{date}</Card.Title>
+                        </>
+                    ) : activeKey === '#moredetails' ? (
+                        <>
+                            <div className="emojis">
+                                {didExercise && <span>🏋️‍♂️</span>}
+                                {didHidrate && <span>💧</span>}
+                                {ateHealthy && <span>🥗</span>}
+                                {hasPsyc && <span>🧘</span>}
+                                {isMedicated && <span>💊</span>}
+                                {isMenstruating && <span>🩸</span>}
+                                {hasPeriodPain && <span>😣</span>}
+                            </div>
+                            <p>Dormí {hoursOfSleep} horas</p>
                         </>
                     ) : (
-                        <p>Content for Link tab</p>
+                        <>
+                            <Card.Text>
+                                <p>Reflexión:</p>
+                                <p>{reflection}</p>
+                            </Card.Text>
+                        </>
                     )}
-
-                    <Button variant="danger">Delete Mood</Button>
+                    <div className="mood-btns">
+                        <Button className="w-50" variant="danger">
+                            Delete
+                        </Button>
+                        <Button className="w-50" variant="success">
+                            Edit
+                        </Button>
+                    </div>
                 </Card.Body>
             </Card>
         </>

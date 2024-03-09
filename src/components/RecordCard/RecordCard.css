@@ -2,3 +2,19 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 20%;
 }
+
+.mood-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.worries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.emojis {
+    font-size: 3em;
+}
