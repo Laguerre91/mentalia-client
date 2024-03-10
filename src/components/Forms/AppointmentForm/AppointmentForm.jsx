@@ -15,9 +15,13 @@ const AppointmentForm = ({ getUser }) => {
 
     const { user } = useContext(AuthContext)
 
+    const initialTime = 10 * 60 * 60 * 1000
+    const initialDate = new Date();
+    initialDate.setHours(10, 0, 0, 0)
+
     const initialAppointmentState = {
-        date: format(new Date(), "full"),
-        time: "",
+        date: format(initialDate, "full"),
+        time: initialTime,
         psycologist: '',
         client: user._id,
         comments: ''
@@ -27,8 +31,8 @@ const AppointmentForm = ({ getUser }) => {
 
     const [psycologists, setPsycologists] = useState([])
 
-    const [date, setDate] = useState(new Date())
-    const [time, setTime] = useState(0)
+    const [date, setDate] = useState(initialDate)
+    const [time, setTime] = useState(initialTime)
 
     useEffect(() => {
         getAllPsycologists()
@@ -52,8 +56,13 @@ const AppointmentForm = ({ getUser }) => {
     }
 
     const handleTimeChange = (time) => {
-        setTime(time)
-        const formattedTime = (time / 3600).toFixed(2)
+        setTime(time);
+
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+
+        const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+
         setAppointment({ ...appointment, time: formattedTime })
     }
 
@@ -112,6 +121,7 @@ const AppointmentForm = ({ getUser }) => {
                     onChange={handleTimeChange}
                     start="10:00"
                     end="20:00"
+                    step={30}
                     value={time}
                     required={true}
                     clearIcon={null} />

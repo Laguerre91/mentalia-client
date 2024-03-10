@@ -6,51 +6,51 @@
 .Navbar .navbar-button-signup {
     background-color: white;
     color: #81c2de;
-    border: 2px solid #81c2de;
+    border: 1px solid #81c2de;
 }
 
 .Navbar .navbar-button-signup:hover {
     background-color: #81c2de;
-    border: 2px solid #81c2de;
+    border: 1px solid #81c2de;
 }
 
 .Navbar .navbar-button-login {
     background-color: #81c2de;
-    border: 2px solid #81c2de;
+    border: 1px solid #81c2de;
 }
 
 .Navbar .navbar-button-login:hover {
     background-color: white;
     color: #81c2de;
-    border: 2px solid #81c2de;
+    border: 1px solid #81c2de;
 }
 
 .Navbar .navbar-button-logout {
     background-color: #81c2de;
-    border: 2px solid #81c2de;
+    border: 1px solid #81c2de;
 }
 
 .Navbar .navbar-button-logout:hover {
     background-color: white;
     color: #81c2de;
-    border: 2px solid #81c2de;
+    border: 1px solid #81c2de;
 }
 
 .Navbar .nav-dropdown {
     background-color: #fff;
-    border: 2px solid #81c2de;
-    border-radius: 10px;
+    border: 1px solid #81c2de;
+    border-radius: 7px;
 }
 
 .Navbar .nav-dropdown a {
+    font-size: 0.9em;
     color: #81c2de;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 7px 15px 7px 15px;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .Navbar .nav-dropdown a:hover {
     background-color: #81c2de;
     color: #fff;
-    border-radius: 8px;
 }

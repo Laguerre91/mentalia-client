@@ -2,7 +2,7 @@ import AppointmentDetailsCard from './../AppointmentDetailsCard/AppointmentDetai
 
 import './AppointmentsList.css'
 
-const AppointmentsList = ({ userDetails }) => {
+const AppointmentsList = ({ userDetails, getUser }) => {
 
     return (
         <section>
@@ -11,7 +11,7 @@ const AppointmentsList = ({ userDetails }) => {
 
             {
                 userDetails?.appointments?.map(appointment =>
-                    <AppointmentDetailsCard {...appointment} key={appointment._id} />)
+                    <AppointmentDetailsCard {...appointment} key={appointment._id} getUser={getUser} />)
             }
         </section>
     )

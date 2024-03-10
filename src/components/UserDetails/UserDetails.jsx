@@ -47,6 +47,7 @@ const UserCard = () => {
                     <p>Tu género seleccionado es {user.gender}</p>
                     <p>Tu orientación sexual es {user.sexualOrientation} </p>
                     <p>Situación sentimental: {user.sentimentalStatus}</p>
+                    <img src={user.image} alt="User" />
                     {
                         user.employed === false ?
                             <p>Actualmente desempleado/a</p>

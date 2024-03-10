@@ -1,8 +1,27 @@
-import { Container, Card, Button } from 'react-bootstrap'
+import { useState } from 'react';
+import { Container, Card, Button, Modal } from 'react-bootstrap';
+import AppointmentService from './../../services/appointment.services';
 
-import './AppointmentDetailsCard.css'
+import './AppointmentDetailsCard.css';
 
-const AppointmentDetailsCard = ({ date, time, psycologist, comments }) => {
+const AppointmentDetailsCard = ({ date, time, psycologist, comments, _id, getUser }) => {
+    const [showCancelModal, setShowCancelModal] = useState(false);
+
+    const handleShowCancelModal = () => setShowCancelModal(true);
+    const handleCloseCancelModal = () => setShowCancelModal(false);
+
+    const handleDelete = () => {
+        AppointmentService
+            .deleteAppointment(_id)
+            .then(() => {
+                getUser();
+                handleCloseCancelModal();
+            })
+            .catch(err => {
+                console.error(err);
+                handleCloseCancelModal();
+            });
+    };
 
     return (
         <Container className="AppointmentDetailsCard">
@@ -16,11 +35,39 @@ const AppointmentDetailsCard = ({ date, time, psycologist, comments }) => {
                     <Card.Text>
                         El motivo de la consulta que has añadido es: {comments}
                     </Card.Text>
-                    <Button className='btn-deleteAppointment w-25' variant="danger">Cancelar cita</Button>
+                    <Button
+                        className='btn-deleteAppointment w-25'
+                        variant="danger"
+                        onClick={handleShowCancelModal}
+                    >
+                        Cancelar cita
+                    </Button>
                 </Card.Body>
             </Card>
-        </Container>
-    )
-}
 
-export default AppointmentDetailsCard
+            <Modal
+                show={showCancelModal}
+                onHide={handleCloseCancelModal}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Cancelar cita</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    La cita se cancelará, ¿estás seguro/a que deseas proceder?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseCancelModal}>
+                        Cancelar
+                    </Button>
+                    <Button variant="danger" onClick={handleDelete}>
+                        Confirmar cancelación
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </Container>
+    );
+};
+
+export default AppointmentDetailsCard;

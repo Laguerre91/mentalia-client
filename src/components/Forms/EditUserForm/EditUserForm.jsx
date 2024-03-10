@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react'
 import { AuthContext } from '../../../context/auth.context'
 import UserService from './../../../services/user.services'
+import uploadServices from '../../../services/upload.services'
 import { GENDER_LABELS, SEXUAL_ORIENTATION_LABELS, SENTIMENTAL_STATUS_LABELS } from './../../../consts/user.constants'
 
 import './EditUserForm.css'
@@ -12,6 +13,7 @@ const EditUserForm = ({ getUser }) => {
     const { user } = useContext(AuthContext)
 
     const [updatedUser, setUpdatedUser] = useState({
+        image: user.image || '',
         birth: user.birth || '',
         gender: user.gender || 'Masculino',
         sexualOrientation: user.sexualOrientation || 'Heterosexual',
@@ -24,6 +26,19 @@ const EditUserForm = ({ getUser }) => {
         const { name, value, type, checked } = e.target;
         const inputValue = type === 'checkbox' ? checked : value;
         setUpdatedUser({ ...updatedUser, [name]: inputValue })
+    }
+
+    const handleFileUpload = e => {
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(res => {
+                setUpdatedUser({ ...updatedUser, image: res.data.cloudinary_url })
+            })
+            .catch(err => console.log(err))
     }
 
     const handleSubmit = (e) => {
@@ -64,6 +79,12 @@ const EditUserForm = ({ getUser }) => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={handleSubmit} className='editUser-modal-form'>
+
+                        <Form.Group className="group-userform mb-3" controlId="image">
+                            <Form.Label>Carga tu imagen de perfil</Form.Label>
+                            <Form.Control type="file" onChange={handleFileUpload} />
+                        </Form.Group>
+
                         <Form.Group controlId="formBirth" className="group-userform mb-3">
                             <Form.Label className="test">¿Cuál es tu fecha de nacimiento?</Form.Label>
                             <Form.Control

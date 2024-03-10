@@ -68,7 +68,7 @@ const UserDashboardPage = () => {
 
                 <AppointmentForm getUser={getUser} />
 
-                <AppointmentsList userDetails={userDetails} />
+                <AppointmentsList userDetails={userDetails} getUser={getUser} />
 
             </Container>
         </section>
