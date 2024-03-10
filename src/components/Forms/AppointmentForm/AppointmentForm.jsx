@@ -6,7 +6,9 @@ import { format } from "@formkit/tempo"
 import 'react-date-picker/dist/DatePicker.css'
 import 'react-calendar/dist/Calendar.css'
 
-import { Form, Button, Container } from 'react-bootstrap'
+import './AppointmentForm.css'
+
+import { Form, Button } from 'react-bootstrap'
 
 import PsycologistService from './../../../services/psyc.services'
 import appointmentServices from '../../../services/appointment.services'
@@ -87,9 +89,9 @@ const AppointmentForm = ({ getUser }) => {
     }
 
     return (
-        <Form className='AppointmentForm' onSubmit={handleFormSubmit} >
-            <Form.Group controlId='psycologistSelect'>
-                <Form.Label>Elige tu psicólogo</Form.Label>
+        <Form className='AppointmentForm w-50' onSubmit={handleFormSubmit} >
+            <Form.Group className='form-appointment-group mb-4' controlId='psycologistSelect'>
+                <Form.Label className="form-appoinment-label">Elige tu psicólogo</Form.Label>
                 <Form.Select
                     aria-label='Default select example'
                     onChange={handleInputChange}
@@ -106,17 +108,18 @@ const AppointmentForm = ({ getUser }) => {
                 </Form.Select>
             </Form.Group>
 
-            <Form.Group>
-                <Form.Label>Selecciona una fecha</Form.Label>
+            <Form.Group className='form-appointment-group mb-4'>
+                <Form.Label className="form-appoinment-label">Selecciona una fecha</Form.Label>
                 <DatePicker
+                    className="ms-3 form-appointment-calendar"
                     onChange={handleCalendarChange}
                     value={date}
                     required={true}
                     clearIcon={null} />
             </Form.Group>
 
-            <Form.Group>
-                <Form.Label>Selecciona un horario</Form.Label>
+            <Form.Group className='form-appointment-group mb-4'>
+                <Form.Label className="form-appoinment-label">Selecciona un horario</Form.Label>
                 <TimePicker
                     onChange={handleTimeChange}
                     start="10:00"
@@ -127,8 +130,8 @@ const AppointmentForm = ({ getUser }) => {
                     clearIcon={null} />
             </Form.Group>
 
-            <Form.Group>
-                <Form.Label>Agrega comentarios sobre tu consulta</Form.Label>
+            <Form.Group className='form-appointment-group mb-4'>
+                <Form.Label className="form-appoinment-label">Agrega comentarios sobre tu consulta</Form.Label>
                 <Form.Control
                     as="textarea"
                     rows={3}

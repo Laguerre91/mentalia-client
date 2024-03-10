@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
+import { Image } from 'react-bootstrap'
+
 import EditUserForm from '../Forms/EditUserForm/EditUserForm'
 
 import UserService from '../../services/user.services'
 
 import './UserDetails.css'
 
-const UserCard = () => {
+const UserDetails = () => {
 
     const [user, setUser] = useState([])
     const [loading, setLoading] = useState(true)
@@ -33,7 +35,7 @@ const UserCard = () => {
 
             <div className='user-greetings d-flex m-2 mb-3'>
                 {user.imageUrl ? (
-                    <img className='user-picture w-50 me-1' src={user.imageUrl} alt="User" />
+                    <Image className='w-50' src={user.imageUrl} roundedCircle />
                 ) : (
                     <p className='user-picture-placeholder  me-1'>Carga tu imagen de perfil</p>
                 )}
@@ -66,4 +68,4 @@ const UserCard = () => {
     )
 }
 
-export default UserCard
+export default UserDetails

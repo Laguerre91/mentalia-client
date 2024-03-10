@@ -1,12 +1,13 @@
 import PsycologistsList from "../../components/PsycologistsList/PsycologistsList"
+import './PsycologistsListPage.css'
 
 const PsycologistsListPage = () => {
 
     return (
-        <div className="PsycologistsListPage">
-            <h1>Psicologos</h1>
+        <section className="PsycologistsListPage">
+            <h2 className="psyc-title">Psicologos registrados</h2>
             <PsycologistsList />
-        </div>
+        </section>
     )
 }
 
