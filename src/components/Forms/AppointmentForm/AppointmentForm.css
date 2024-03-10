@@ -1,0 +1,11 @@
+.AppointmentForm {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.AppointmentForm .form-appoinment-label {
+    font-size: 0.9em;
+    margin-bottom: 0;
+}

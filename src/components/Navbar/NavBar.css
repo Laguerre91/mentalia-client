@@ -1,12 +1,16 @@
+.Navbar {
+    height: min-content;
+}
+
 .Navbar .navbar-button {
     font-size: 0.9em;
     padding: 7px 15px 7px 15px;
 }
 
 .Navbar .navbar-button-signup {
-    background-color: white;
-    color: #81c2de;
-    border: 1px solid #81c2de;
+    background-color: rgb(2, 2, 2);
+    color: white;
+    border: 1px solid black;
 }
 
 .Navbar .navbar-button-signup:hover {
@@ -15,8 +19,9 @@
 }
 
 .Navbar .navbar-button-login {
-    background-color: #81c2de;
-    border: 1px solid #81c2de;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
 }
 
 .Navbar .navbar-button-login:hover {

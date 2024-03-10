@@ -1,0 +1,10 @@
+.PsycologistCard {
+    width: min-content;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.PsycologistCard .link-to-psycologist {
+    color: black;
+    text-decoration: none;
+}

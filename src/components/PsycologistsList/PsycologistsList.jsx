@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react"
+import { Container } from "react-bootstrap"
+
+import './PsycologistsList.css'
 
 import PsycologistCard from "../PsycologistCard/PsycologistCard"
 import PsycologistService from './../../services/psyc.services'
@@ -19,11 +22,11 @@ const PsycologistsList = () => {
     }
 
     return (
-        <section className="PsycologistsList">
+        <Container className="PsycologistsList">
             {
                 psycologists.map((psyc) => <PsycologistCard {...psyc} key={psyc._id} />)
             }
-        </section>
+        </Container>
     )
 }
 

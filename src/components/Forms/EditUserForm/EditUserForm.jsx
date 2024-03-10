@@ -13,7 +13,7 @@ const EditUserForm = ({ getUser }) => {
     const { user } = useContext(AuthContext)
 
     const [updatedUser, setUpdatedUser] = useState({
-        imageUrl: user.image || '',
+        imageUrl: user.imageUrl || '',
         birth: user.birth || '',
         gender: user.gender || 'Masculino',
         sexualOrientation: user.sexualOrientation || 'Heterosexual',
