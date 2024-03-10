@@ -45,7 +45,7 @@ const UserDashboardPage = () => {
                         <Button variant="primary" onClick={() => setShowModal(true)}>
                             Mood Diario
                         </Button>
-                        <RecordsList userDetails={userDetails} />
+                        <RecordsList userDetails={userDetails} getUser={getUser} />
                     </Col>
                 </Row>
 
