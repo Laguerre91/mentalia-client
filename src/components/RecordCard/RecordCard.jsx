@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import { Row, Col, Card, Nav, Button } from 'react-bootstrap'
+import { Row, Col, Card, Nav, Button, Modal, Form } from 'react-bootstrap'
 import recordServices from '../../services/record.services'
 import './RecordCard.css'
+import { format } from "@formkit/tempo"
+
 import MoodAnimation from '../Animations/MoodAnimation'
 
 const RecordCard = ({
@@ -25,9 +27,19 @@ const RecordCard = ({
 }) => {
 
     const [activeKey, setActiveKey] = useState('#mood')
+    const [showCancelModal, setShowCancelModal] = useState(false)
+
+    const [showEditModal, setShowEditModal] = useState(false)
+
+    const handleShowCancelModal = () => setShowCancelModal(true)
+    const handleCloseCancelModal = () => setShowCancelModal(false)
 
     const handleNavSelect = (selectedKey) => {
         setActiveKey(selectedKey)
+    }
+
+    const handleEditModal = () => {
+        setShowEditModal(true)
     }
 
     const handleDelete = () => {
@@ -35,11 +47,14 @@ const RecordCard = ({
             .deleteRecord(_id)
             .then(() => {
                 getUser()
+                handleCloseCancelModal()
                 res.sendStatus(204)
             })
-            .catch(err => res.status(500).json(err))
-    };
-
+            .catch(err => {
+                handleCloseCancelModal()
+                res.status(500).json(err)
+            })
+    }
 
     return (
         <>
@@ -106,16 +121,50 @@ const RecordCard = ({
                                 <p>Reflexión:</p>
                                 <p>{reflection}</p>
                             </Card.Text>
+                            <div className="mood-btns">
+                                <Button className="w-50" variant="danger" onClick={handleShowCancelModal}>
+                                    Delete
+                                </Button>
+                                <Button className="w-50" variant="success" onClick={handleEditModal}>
+                                    Edit
+                                </Button>
+                            </div>
+
+                            <Modal
+                                show={showEditModal}
+                                fullscreen={true}
+                                onHide={() => setShowEditModal(false)}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Edita to Mood del {date}</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>Aquí habrá un formulario</Modal.Body>
+                            </Modal>
+
+                            <Modal
+                                show={showCancelModal}
+                                onHide={handleCloseCancelModal}
+                                backdrop="static"
+                                keyboard={false}
+                            >
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Borrar mood</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    ¿Estás seguro/a que deseas eliminar el mood?
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button variant="secondary" onClick={handleCloseCancelModal}>
+                                        Cancelar
+                                    </Button>
+                                    <Button variant="danger" onClick={handleDelete}>
+                                        Borrar mood
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal>
                         </>
                     )}
-                    <div className="mood-btns">
-                        <Button className="w-50" variant="danger" onClick={handleDelete}>
-                            Delete
-                        </Button>
-                        <Button className="w-50" variant="success">
-                            Edit
-                        </Button>
-                    </div>
+
+
                 </Card.Body>
             </Card>
         </>
