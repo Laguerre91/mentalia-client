@@ -1,3 +1,10 @@
-.AppointmentDetailsCard {
-    border: 1px solid black;
+.AppointmentDetailsCard .appointment-card {
+    padding: 10px 15px 10px 15px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.AppointmentDetailsCard .btn-deleteAppointment {
+    font-size: 0.8em;
 }

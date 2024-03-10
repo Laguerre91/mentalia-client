@@ -23,6 +23,10 @@ class AppointmentService {
         return this.axiosApp.post('/api/appointments', requestBody)
     }
 
+    deleteAppointment = (appointmentId) => {
+        return this.axiosApp.delete(`/api/appointments/${appointmentId}`)
+    }
+
 }
 
 export default new AppointmentService()
