@@ -23,6 +23,10 @@ class CommunityService {
         return this.axiosApp.post('/api/comunidad', requestBody)
     }
 
+    getAllPosts = () => {
+        return this.axiosApp.get('/api/comunidad');
+    }
+
     deletePost = (_id) => {
         return this.axiosApp.delete(`/api/comunidad/${_id}`)
     }

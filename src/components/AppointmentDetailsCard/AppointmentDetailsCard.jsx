@@ -5,6 +5,7 @@ import AppointmentService from './../../services/appointment.services';
 import './AppointmentDetailsCard.css';
 
 const AppointmentDetailsCard = ({ date, time, psycologist, comments, _id, getUser }) => {
+
     const [showCancelModal, setShowCancelModal] = useState(false);
 
     const handleShowCancelModal = () => setShowCancelModal(true);
