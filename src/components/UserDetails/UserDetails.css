@@ -1,5 +1,27 @@
 .UserCard {
+    text-align: center;
     background-color: white;
     border-radius: 15px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.UserCard .user-greetings {
+    flex-direction: column;
+    align-items: center;
+}
+
+.UserCard .user-picture-placeholder {
+    color: red;
+}
+
+.UserCard .user-greetings h2 {
+    font-size: 1.5em;
+}
+
+.UserCard .user-picture {
+    border-radius: 100px;
+}
+
+.UserCard .user-details {
+    font-size: 0.8em;
 }

@@ -13,7 +13,7 @@ const EditUserForm = ({ getUser }) => {
     const { user } = useContext(AuthContext)
 
     const [updatedUser, setUpdatedUser] = useState({
-        image: user.image || '',
+        imageUrl: user.image || '',
         birth: user.birth || '',
         gender: user.gender || 'Masculino',
         sexualOrientation: user.sexualOrientation || 'Heterosexual',
@@ -36,7 +36,7 @@ const EditUserForm = ({ getUser }) => {
         uploadServices
             .uploadimage(formData)
             .then(res => {
-                setUpdatedUser({ ...updatedUser, image: res.data.cloudinary_url })
+                setUpdatedUser({ ...updatedUser, imageUrl: res.data.cloudinary_url })
             })
             .catch(err => console.log(err))
     }
@@ -80,7 +80,7 @@ const EditUserForm = ({ getUser }) => {
                 <Modal.Body>
                     <Form onSubmit={handleSubmit} className='editUser-modal-form'>
 
-                        <Form.Group className="group-userform mb-3" controlId="image">
+                        <Form.Group className="group-userform mb-3" controlId="imageUrl">
                             <Form.Label>Carga tu imagen de perfil</Form.Label>
                             <Form.Control type="file" onChange={handleFileUpload} />
                         </Form.Group>

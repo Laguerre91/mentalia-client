@@ -29,14 +29,17 @@ const UserCard = () => {
     }
 
     return (
-        <section className="UserCard p-4">
+        <section className="UserCard p-3">
 
-            <div>
-
-                <h2>¡Hola, {user.username}!</h2>
+            <div className='user-greetings d-flex m-2 mb-3'>
+                {user.imageUrl ? (
+                    <img className='user-picture w-50 me-1' src={user.imageUrl} alt="User" />
+                ) : (
+                    <p className='user-picture-placeholder  me-1'>Carga tu imagen de perfil</p>
+                )}
+                <h2 className='m-3'>¡Hola, {user.username}!</h2>
             </div>
-
-            <p>Lo estás haciendo genial</p>
+            <p className='mb-4'>Lo estás haciendo genial</p>
 
             {loading ? (
                 <p>Cargando datos...</p>
@@ -47,7 +50,6 @@ const UserCard = () => {
                     <p>Tu género seleccionado es {user.gender}</p>
                     <p>Tu orientación sexual es {user.sexualOrientation} </p>
                     <p>Situación sentimental: {user.sentimentalStatus}</p>
-                    <img src={user.image} alt="User" />
                     {
                         user.employed === false ?
                             <p>Actualmente desempleado/a</p>
