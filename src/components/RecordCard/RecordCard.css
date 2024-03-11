@@ -1,12 +1,8 @@
-.RecordCard {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 20%;
-}
-
-.mood-btns {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
+.recordcard {
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
 }
 
 .worries-grid {

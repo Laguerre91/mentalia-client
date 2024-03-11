@@ -81,9 +81,7 @@ const RecordCard = ({
                 bg={'light'}
                 key={_id}
                 text={'dark'}
-                style={{ width: '18rem' }}
-                border="primary"
-                className="mb-2"
+                className="recordcard"
             >
                 <Card.Header>
                     <Nav variant="pills" activeKey={activeKey} onSelect={handleNavSelect}>
@@ -107,19 +105,26 @@ const RecordCard = ({
                     </Nav>
                 </Card.Header>
                 <Card.Body>
+                    <Card.Title>{date}</Card.Title>
+                    <br />
                     {activeKey === '#mood' ? (
                         <>
                             <Card.Text>
-                                <p>Carita de {mood}</p>
-                                <p> {rateDay}</p>
-                                <p>Preocupaciones:</p>
-                                <div className="worries-grid">
-                                    {worries.map((worry, index) => (
-                                        <div key={index}>{worry}</div>
-                                    ))}
-                                </div>
+                                <Row>
+                                    <Col>
+                                        <p>Preocupaciones:</p>
+                                        <div className="worries-grid">
+                                            {worries.map((worry, index) => (
+                                                <div key={index}>{worry}</div>
+                                            ))}
+                                        </div>
+                                    </Col>
+                                    <Col>
+                                        <p> Un día de {rateDay}</p>
+                                        <MoodAnimation moodValue={mood} />
+                                    </Col>
+                                </Row>
                             </Card.Text>
-                            <Card.Title>{date}</Card.Title>
                         </>
                     ) : activeKey === '#moredetails' ? (
                         <>
@@ -142,10 +147,10 @@ const RecordCard = ({
                             </Card.Text>
                             <div className="mood-btns">
                                 <Button className="w-50" variant="danger" onClick={handleShowCancelModal}>
-                                    Delete
+                                    Borrar
                                 </Button>
                                 <Button className="w-50" variant="success" onClick={handleEditModal}>
-                                    Edit
+                                    Editar
                                 </Button>
                             </div>
 

@@ -5,6 +5,9 @@
     padding: 20px; 
     border-radius: 10px;
     overflow: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .record-form .progress-bar {
