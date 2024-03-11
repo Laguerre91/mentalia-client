@@ -26,7 +26,7 @@ const AppointmentDetailsCard = ({ date, time, psycologist, comments, _id, getUse
 
     return (
         <Container className="AppointmentDetailsCard">
-            <Card className='appointment-card w-50'>
+            <Card className='appointment-card'>
                 <Card.Header as="h5">Tu cita</Card.Header>
                 <Card.Body>
                     <Card.Title>Tu cita con {psycologist.name} {psycologist.lastName}</Card.Title>
