@@ -3,7 +3,7 @@ import RecordForm from "../../components/Forms/RecordForm/RecordForm"
 import UserDetails from "../../components/UserDetails/UserDetails"
 import AppointmentForm from "../../components/Forms/AppointmentForm/AppointmentForm"
 import AppointmentsList from "../../components/AppointmentsList/AppointmentsList"
-import RecordsList from "../../components/RecordsList/RecordsList"
+import LatestRecord from "../../components/LatestRecord/LatestRecord"
 import RateDayChart from "../../components/Charts/RateDayChart/RateDayChart"
 
 import './UserDashboardPage.css'
@@ -33,7 +33,6 @@ const UserDashboardPage = () => {
     }
 
 
-
     return (
         <section className="UserDashboardPage">
             <Row>
@@ -55,7 +54,7 @@ const UserDashboardPage = () => {
                 </Col>
 
                 <Col>
-                    <RecordsList userDetails={userDetails} getUser={getUser} />
+                    <LatestRecord userDetails={userDetails} getUser={getUser} />
                     <AppointmentForm getUser={getUser} />
                     <AppointmentsList userDetails={userDetails} getUser={getUser} />
                 </Col>
@@ -68,7 +67,7 @@ const UserDashboardPage = () => {
                 dialogClassName="modal-90w"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>¿Cómo te sientes hoy, cari?</Modal.Title>
+                    <Modal.Title className="modal-title" >¿Cómo te sientes hoy?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
 

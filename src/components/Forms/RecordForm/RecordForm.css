@@ -1,11 +1,93 @@
+.record-form {
+    background-color: #f1edf7;
+    height: 450px;
+    width: auto;
+    padding: 20px; 
+    border-radius: 10px;
+    overflow: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.record-form .progress-bar {
+  background: #7AB7D0;
+}
+
 .worries-btns {
+    margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2px;
     margin-bottom: 10px;
+    text-align: center;
+}
+
+.worries-btns .btn-primary {
+    background-color: #7AB7D0;
+    color: white;
+}
+
+.worries-btns .btn-outline-primary {
+    color: #7AB7D0;
+    border-color: #7AB7D0;
+}
+
+.worries-btns .btn-primary:hover {
+    background-color: #81c2de;
+}
+
+.worries-btns .btn-outline-primary:hover {
+    background-color: #7AB7D0;
+    color: white;
 }
 
 .form-questions {
     margin: 20px;
 }
 
+.form-questions {
+    margin: 20px;
+}
+
+.form-range::-webkit-slider-thumb {
+    width: 40px;
+    height: 40px;
+    background-color: #F7B9B5;
+    border: 2px solid #bfa1ff;
+    border-radius: 50%;
+    -webkit-appearance: none;
+    margin-top: -15px;
+}
+
+.record-form select {
+    margin-top: 30px;
+
+    background-color: whitesmoke;
+    color: #7AB7D0;
+    border: 2px solid #7AB7D0;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    transition: border-color 0.2s ease-in-out;
+}
+
+
+.record-form select:focus {
+    outline: none;
+    border-color: #81c2de;
+}
+
+
+
+/* 
+Colores
+
+morado
+#B6A7D6
+
+azul
+#7AB7D0
+
+rosa
+#F7B9B5 */
