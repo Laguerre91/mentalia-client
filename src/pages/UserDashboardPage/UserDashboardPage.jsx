@@ -68,7 +68,7 @@ const UserDashboardPage = () => {
                 dialogClassName="modal-90w"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>¿Cómo te sientes hoy, cari?</Modal.Title>
+                    <Modal.Title className="modal-title" >¿Cómo te sientes hoy?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
 
