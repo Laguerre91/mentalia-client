@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { Row, Col, Card, Nav, Button, Modal, Form } from 'react-bootstrap'
 import recordServices from '../../services/record.services'
 import './RecordCard.css'
+import EditRecordForm from "../../components/Forms/EditRecordForm/EditRecordForm"
 import { format } from "@formkit/tempo"
-
 import MoodAnimation from '../Animations/MoodAnimation'
 
 const RecordCard = ({
@@ -55,6 +55,25 @@ const RecordCard = ({
                 res.status(500).json(err)
             })
     }
+
+    const recordProps = {
+        _id,
+        date,
+        mood,
+        rateDay,
+        worries,
+        didExercise,
+        didHidrate,
+        ateHealthy,
+        hasPsyc,
+        isMedicated,
+        isMenstruating,
+        hasPeriodPain,
+        weather,
+        hoursOfSleep,
+        reflection
+    }
+
 
     return (
         <>
@@ -132,12 +151,18 @@ const RecordCard = ({
 
                             <Modal
                                 show={showEditModal}
-                                fullscreen={true}
+                                fullscreen={false}
                                 onHide={() => setShowEditModal(false)}>
                                 <Modal.Header closeButton>
-                                    <Modal.Title>Edita to Mood del {date}</Modal.Title>
+                                    <Modal.Title>Edita el Mood del {date}</Modal.Title>
                                 </Modal.Header>
-                                <Modal.Body>Aquí habrá un formulario</Modal.Body>
+                                <Modal.Body>
+                                    <EditRecordForm
+                                        getUser={getUser}
+                                        showEditModal={showEditModal}
+                                        setShowEditModal={setShowEditModal}
+                                        {...recordProps} />
+                                </Modal.Body>
                             </Modal>
 
                             <Modal
@@ -147,17 +172,17 @@ const RecordCard = ({
                                 keyboard={false}
                             >
                                 <Modal.Header closeButton>
-                                    <Modal.Title>Borrar mood</Modal.Title>
+                                    <Modal.Title>Borrar Mood</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
-                                    ¿Estás seguro/a que deseas eliminar el mood?
+                                    ¿Estás seguro/a que deseas eliminar el mood del {date}? No podrás recuperarlo
                                 </Modal.Body>
                                 <Modal.Footer>
                                     <Button variant="secondary" onClick={handleCloseCancelModal}>
                                         Cancelar
                                     </Button>
                                     <Button variant="danger" onClick={handleDelete}>
-                                        Borrar mood
+                                        Borrar
                                     </Button>
                                 </Modal.Footer>
                             </Modal>

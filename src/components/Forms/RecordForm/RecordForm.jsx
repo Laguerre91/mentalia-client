@@ -113,7 +113,7 @@ const RecordForm = ({ onHide, getUser }) => {
                     <Form.Label>Mood = <span>{recordData.mood}</span></Form.Label>
                     <Form.Range
                         min="0"
-                        max="6"
+                        max="4"
                         step="1"
                         onChange={handleInputChange}
                         value={MOOD_LABELS.indexOf(recordData.mood)}

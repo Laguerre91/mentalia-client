@@ -1,5 +1,4 @@
 import axios from "axios"
-import RecordCard from "../components/RecordCard/RecordCard"
 
 class RecordServices {
 
@@ -24,8 +23,8 @@ class RecordServices {
         return this.axiosApp.post('/api/records', requestBody)
     }
 
-    updateRecord = (_id, updatedRecordData) => {
-        return this.axiosApp.put(`/api/records/${_id}`, updatedRecordData)
+    updateRecord = (_id, formData) => {
+        return this.axiosApp.put(`/api/records/${_id}`, formData)
     }
     deleteRecord = (_id) => {
         return this.axiosApp.delete(`/api/records/${_id}`)

@@ -1,48 +1,64 @@
 import "./EditRecordForm.css"
-import React, { useState, useContext } from 'react'
-import { AuthContext } from '../../../context/auth.context'
-import { Form, Button, ProgressBar, ToggleButton, ToggleButtonGroup, Row, Col } from 'react-bootstrap'
+import { useState, useEffect } from "react"
+import { Form, Button, Container, Row, Col, ToggleButtonGroup, ToggleButton } from 'react-bootstrap'
 import { HOURSOFSLEEP, MOOD_LABELS, WEATHER_LABELS, WORRIES } from '../../../consts/record.constants'
-import recordServices from '../../../services/record.services'
-import { format } from "@formkit/tempo"
+import recordServices from "../../../services/record.services"
 
 
-const EditRecordForm = () => {
 
-    const { user } = useContext(AuthContext)
+const EditRecordForm = ({
+    _id,
+    user,
+    date,
+    mood,
+    rateDay,
+    worries,
+    didExercise,
+    didHidrate,
+    ateHealthy,
+    hasPsyc,
+    isMedicated,
+    isMenstruating,
+    hasPeriodPain,
+    weather,
+    hoursOfSleep,
+    reflection,
+    getUser,
+    showEditModal,
+    setShowEditModal
+}) => {
 
-    const [step, setStep] = useState(0)
-    const [recordData, setRecordData] = useState({
-        date: format(new Date(), "full"),
-        user: user ? user._id : '',
-        mood: '',
-        rateDay: '',
-        worries: [],
-        didExercise: false,
-        didHidrate: false,
-        ateHealthy: false,
-        hoursOfSleep: 0,
-        hasPsyc: false,
-        isMedicated: false,
-        isMenstruating: false,
-        hasPeriodPain: false,
-        weather: '',
-        reflection: ''
+    const [formData, setFormData] = useState({
+        _id,
+        mood,
+        rateDay,
+        worries,
+        didExercise,
+        didHidrate,
+        ateHealthy,
+        hasPsyc,
+        isMedicated,
+        isMenstruating,
+        hasPeriodPain,
+        weather,
+        hoursOfSleep,
+        reflection,
     })
+
     const [checked, setChecked] = useState({})
 
-    const [date, setDate] = useState(new Date())
-    const [time, setTime] = useState(0)
+    useEffect(() => {
+        const initialChecked = {}
+        worries.forEach((worry) => {
+            initialChecked[worry] = true
+        })
+        setChecked(initialChecked)
+    }, [worries])
 
-    const handleStep = (count = 1) => {
-        const currentStep = step + count
-        setStep(currentStep)
-    }
-
-    const handleInputChange = (event) => {
+    const handleChange = (event) => {
         const { name, value } = event.target
 
-        setRecordData((prevData) => ({
+        setFormData((prevData) => ({
             ...prevData,
             [name]: name === 'mood'
                 ? MOOD_LABELS[value]
@@ -61,7 +77,7 @@ const EditRecordForm = () => {
             const updatedChecked = { ...prevChecked }
             updatedChecked[value] = !prevChecked[value]
 
-            setRecordData((prevData) => {
+            setFormData((prevData) => {
                 const updatedWorries = [...prevData.worries]
 
                 if (updatedChecked[value]) {
@@ -83,63 +99,73 @@ const EditRecordForm = () => {
     }
 
     const handleSwitch = (name) => {
-        setRecordData((prevData) => ({
+        setFormData((prevData) => ({
             ...prevData,
             [name]: !prevData[name]
         }))
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        console.log('Submitting recordData:', recordData)
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        console.log(`Este es el id: ${_id}`)
+
+        if (!_id) {
+            console.error('ID no válido.');
+            return;
+        }
+
+        console.log('Submitting updated formData:', formData)
 
         recordServices
-            .createRecord(recordData)
-            .then((response) => {
+            .updateRecord(_id, formData)
+            .then(response => {
+                setFormData(response.data)
+                setShowEditModal(false)
                 getUser()
-                onHide()
             })
-            .catch((err) => console.log(err))
+            .catch(err => console.log(err))
     }
 
     return (
-        <Form className='record-form' onSubmit={handleSubmit}>
-            <ProgressBar now={(step / 6) * 100} />
+        <Container>
+            <Form onSubmit={handleSubmit}>
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formMood">
+                            <Form.Label>Mood = <span>{formData.mood}</span></Form.Label>
+                            <Form.Range
+                                min="0"
+                                max="4"
+                                step="1"
+                                onChange={handleChange}
+                                value={MOOD_LABELS.indexOf(formData.mood)}
+                                name="mood"
+                                placeholder={mood}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="formRateDay">
+                            <Form.Label>Nota del día</Form.Label>
+                            <Form.Select
+                                type="text"
+                                name="rateDay"
+                                placeholder={rateDay}
+                                value={formData.rateDay}
+                                onChange={handleChange}>
 
-            {step === 0 && (
-                <Form.Group controlId="formStep0">
-                    <MoodAnimation />
-                    <Form.Label>Mood = <span>{recordData.mood}</span></Form.Label>
-                    <Form.Range
-                        min="0"
-                        max="6"
-                        step="1"
-                        onChange={handleInputChange}
-                        value={MOOD_LABELS.indexOf(recordData.mood)}
-                        name="mood"
-                    />
-                </Form.Group>
-            )}
+                                <option>{rateDay}</option>
 
-            {step === 1 && (
-                <Form.Group controlId="formStep1">
-                    <Form.Select
-                        aria-label="Default select example"
-                        onChange={handleInputChange}
-                        name='rateDay'
-                        value={recordData.rateDay}>
+                                {[...Array(10).keys()].map((value) => (
+                                    <option key={value + 1}>{value + 1}</option>
+                                ))}
+                            </Form.Select>
+                        </Form.Group>
+                    </Col>
+                </Row>
 
-                        <option>¡Pónle nota a tu día!</option>
-
-                        {[...Array(10).keys()].map((value) => (
-                            <option key={value + 1}>{value + 1}</option>
-                        ))}
-                    </Form.Select>
-                </Form.Group>
-            )}
-
-            {step === 2 && (
-                <Form.Group controlId="formStep2">
+                <Form.Group controlId="formWorries">
                     <Form.Label>¿Cuáles son tus preocupaciones hoy?</Form.Label>
                     <ToggleButtonGroup
                         type="checkbox"
@@ -158,146 +184,130 @@ const EditRecordForm = () => {
                                 {elm.label}
                             </ToggleButton>
                         ))}
-
                     </ToggleButtonGroup>
                 </Form.Group>
-            )}
 
-            {step === 3 && (
-                <Form.Group controlId="formStep3">
-                    <Form.Label>Indica tus horas de sueño = <span>{recordData.hoursOfSleep}</span></Form.Label>
-                    <Form.Range
-                        as="range"
-                        min="0"
-                        max="24"
-                        step="1"
-                        name="hoursOfSleep"
-                        value={HOURSOFSLEEP.indexOf(recordData.hoursOfSleep)}
-                        onChange={(handleInputChange)}
-                    />
-                </Form.Group>
-            )}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formHoursOfSleep">
+                            <Form.Label>Indica tus horas de sueño = <span>{formData.hoursOfSleep}</span></Form.Label>
+                            <Form.Range
+                                as="range"
+                                min="0"
+                                max="24"
+                                step="1"
+                                name="hoursOfSleep"
+                                value={HOURSOFSLEEP.indexOf(formData.hoursOfSleep)}
+                                onChange={(handleChange)}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="formStep5">
 
-            {step === 4 && (
-                <Form.Group controlId="formStep4">
+                            <Form.Label>¿Qué tiempo ha hecho hoy? - {formData.weather}</Form.Label>
+
+                            <Form.Range
+                                as="range"
+                                min="0"
+                                max="4"
+                                step="1"
+                                name="weather"
+                                value={WEATHER_LABELS.indexOf(formData.weather)}
+                                onChange={(handleChange)}
+                            />
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Form.Group controlId="formQuestions">
                     <Form.Label>Responde a estas preguntas:</Form.Label>
                     <div className="form-questions">
-                        <Form.Check
-                            type="switch"
-                            id="didexercize-switch"
-                            label="¿Hiciste ejercicio hoy?"
-                            value={recordData.didExercise}
-                            onChange={() => handleSwitch("didExercise")}
-                            name="didExercise"
-                        />
-                        <Form.Check
-                            type="switch"
-                            id="didhidrate-switch"
-                            label="¿Te hidrataste bien?"
-                            value={recordData.didHidrate}
-                            onChange={() => handleSwitch("didHidrate")}
-                            name="didHidrate"
-                        />
-                        <Form.Check
-                            type="switch"
-                            id="atehealthy-switch"
-                            label="¿Te alimentaste de manera saludable?"
-                            value={recordData.ateHealthy}
-                            onChange={() => handleSwitch("ateHealthy")}
-                            name="ateHealthy"
-                        />
-                        <br />
-                        <Form.Check
-                            type="switch"
-                            id="haspsyc-switch"
-                            label="¿Tienes terapeuta psicológico?"
-                            value={recordData.hasPsyc}
-                            onChange={() => handleSwitch("hasPsyc")}
-                            name="hasPsyc"
-                        />
-                        <Form.Check
-                            type="switch"
-                            id="ismedicated-switch"
-                            label="¿Estás tomando medicación?"
-                            value={recordData.isMedicated}
-                            onChange={() => handleSwitch("ateHealthy")}
-                            name="ateHealthy"
-                        />
-                        <br />
                         <Row>
+                            <Col>
+                                <Form.Check
+                                    type="switch"
+                                    id="didexercize-switch"
+                                    label="¿Hiciste ejercicio hoy?"
+                                    value={formData.didExercise}
+                                    onChange={() => handleSwitch("didExercise")}
+                                    name="didExercise"
+                                />
+                                <Form.Check
+                                    type="switch"
+                                    id="didhidrate-switch"
+                                    label="¿Te hidrataste bien?"
+                                    value={formData.didHidrate}
+                                    onChange={() => handleSwitch("didHidrate")}
+                                    name="didHidrate"
+                                />
+                                <Form.Check
+                                    type="switch"
+                                    id="atehealthy-switch"
+                                    label="¿Te alimentaste de manera saludable?"
+                                    value={formData.ateHealthy}
+                                    onChange={() => handleSwitch("ateHealthy")}
+                                    name="ateHealthy"
+                                />
+                            </Col>
+                            <Col>
+                                <Form.Check
+                                    type="switch"
+                                    id="haspsyc-switch"
+                                    label="¿Tienes terapeuta psicológico?"
+                                    value={formData.hasPsyc}
+                                    onChange={() => handleSwitch("hasPsyc")}
+                                    name="hasPsyc"
+                                />
+                                <Form.Check
+                                    type="switch"
+                                    id="ismedicated-switch"
+                                    label="¿Estás tomando medicación?"
+                                    value={formData.isMedicated}
+                                    onChange={() => handleSwitch("isMedicated")}
+                                    name="ateHealthy"
+                                />
+                            </Col>
                             <Col>
                                 <Form.Check
                                     type="switch"
                                     id="ismenstruating-switch"
                                     label="¿Estas menstruando?"
-                                    value={recordData.isMenstruating}
+                                    value={formData.isMenstruating}
                                     onChange={() => handleSwitch("isMenstruating")}
                                     name="isMenstruating"
                                 />
-                            </Col>
-                            <Col>
                                 <Form.Check
                                     type="switch"
                                     id="hasperiodpain-switch"
                                     label="¿Tienes dolor?"
-                                    value={recordData.hasPeriodPain}
+                                    value={formData.hasPeriodPain}
                                     onChange={() => handleSwitch("hasPeriodPain")}
                                     name="hasPeriodPain"
                                 />
                             </Col>
                         </Row>
-
                     </div>
-                </Form.Group>
-            )}
-            {step === 5 && (
-                <Form.Group controlId="formStep5">
 
-                    <Form.Label>¿Qué tiempo ha hecho hoy? - {recordData.weather}</Form.Label>
-
-                    <Form.Range
-                        as="range"
-                        min="0"
-                        max="4"
-                        step="1"
-                        name="weather"
-                        value={WEATHER_LABELS.indexOf(recordData.weather)}
-                        onChange={(handleInputChange)}
-                    />
                 </Form.Group>
-            )}
-            {step === 6 && (
-                <Form.Group controlId="formStep6">
+
+                <Form.Group controlId="formReflection">
                     <Form.Label>Reflexión del día</Form.Label>
                     <Form.Control
                         as="textarea"
                         rows={3}
                         name="reflection"
-                        value={recordData.reflection}
-                        onChange={handleInputChange}
+                        value={formData.reflection}
+                        onChange={handleChange}
                     />
                 </Form.Group>
-            )}
-            <div className="d-flex justify-content-between">
-                {step > 0 && (
-                    <Button variant="secondary" onClick={() => handleStep(-1)}>
-                        Previous
-                    </Button>
-                )}
-                {step < 6 && (
-                    <Button variant="primary" onClick={() => handleStep()}>
-                        Next
-                    </Button>
-                )}
-                {step === 6 && (
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                )}
-            </div>
-        </Form>
+
+                <Button variant="primary" type="submit">
+                    Guardar Cambios
+                </Button>
+            </Form>
+        </Container >
     )
 }
 
-export default RecordForm
-
+export default EditRecordForm
