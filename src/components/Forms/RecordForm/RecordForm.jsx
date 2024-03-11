@@ -109,12 +109,13 @@ const RecordForm = ({ onHide, getUser }) => {
 
             {step === 0 && (
                 <Form.Group controlId="formStep0">
-                    <MoodAnimation />
+                    <MoodAnimation moodValue={recordData.mood} />
                     <Form.Label>Mood = <span>{recordData.mood}</span></Form.Label>
                     <Form.Range
                         min="0"
                         max="4"
                         step="1"
+                        placeholder={'Normal'}
                         onChange={handleInputChange}
                         value={MOOD_LABELS.indexOf(recordData.mood)}
                         name="mood"

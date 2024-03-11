@@ -23,6 +23,14 @@ class RecordServices {
         return this.axiosApp.post('/api/records', requestBody)
     }
 
+    getAllRecords = () => {
+        return this.axiosApp.get('/api/records')
+    }
+
+    getRecord = (_id) => {
+        return this.axiosApp.get(`/api/records/${_id}`)
+    }
+
     updateRecord = (_id, formData) => {
         return this.axiosApp.put(`/api/records/${_id}`, formData)
     }

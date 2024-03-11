@@ -4,6 +4,7 @@ import UserDetails from "../../components/UserDetails/UserDetails"
 import AppointmentForm from "../../components/Forms/AppointmentForm/AppointmentForm"
 import AppointmentsList from "../../components/AppointmentsList/AppointmentsList"
 import RecordsList from "../../components/RecordsList/RecordsList"
+import RateDayChart from "../../components/Charts/RateDayChart/RateDayChart"
 
 import './UserDashboardPage.css'
 
@@ -40,6 +41,7 @@ const UserDashboardPage = () => {
                     <UserDetails />
                 </Col>
                 <Col>
+                    <RateDayChart />
 
                     <Button variant="primary" onClick={() => setShowModal(true)}>
                         Mood Diario
