@@ -1,0 +1,8 @@
+.AppointmentsList {
+    margin-top: 10%;
+}
+
+.AppointmentsList .appointmentsList-title {
+    font-size: 1.5em;
+    color: rgb(86, 85, 85);
+}

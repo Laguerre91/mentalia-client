@@ -42,7 +42,7 @@ const UserDashboardPage = () => {
                     <UserDetails />
                 </Col>
 
-                <Col>
+                <Col md={6}>
                     <div className="user-feelCard">
                         <h4>¿Cómo te sientes hoy, {userDetails.username}?</h4>
                         <p>Cuéntanos como te encuentras hoy</p>

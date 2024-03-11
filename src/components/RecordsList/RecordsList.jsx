@@ -6,9 +6,9 @@ import { Container, Row } from 'react-bootstrap'
 const RecordsList = ({ userDetails, getUser }) => {
 
     return (
-        <Container>
+        <Container className='RecordsList'>
 
-            <h2>Ultimo registro</h2>
+            <h2 className='recordsList-title'>Ultimo registro</h2>
 
             <hr />
 

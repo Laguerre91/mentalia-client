@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Card, Button, Modal } from 'react-bootstrap';
+import { Card, Button, Modal } from 'react-bootstrap';
 import AppointmentService from './../../services/appointment.services';
 
 import './AppointmentDetailsCard.css';
@@ -25,9 +25,8 @@ const AppointmentDetailsCard = ({ date, time, psycologist, comments, _id, getUse
     };
 
     return (
-        <Container className="AppointmentDetailsCard">
+        <div className="AppointmentDetailsCard">
             <Card className='appointment-card'>
-                <Card.Header as="h5">Tu cita</Card.Header>
                 <Card.Body>
                     <Card.Title>Tu cita con {psycologist.name} {psycologist.lastName}</Card.Title>
                     <Card.Text>
@@ -67,7 +66,7 @@ const AppointmentDetailsCard = ({ date, time, psycologist, comments, _id, getUse
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </Container>
+        </div>
     );
 };
 

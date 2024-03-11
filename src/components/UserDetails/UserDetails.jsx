@@ -33,11 +33,11 @@ const UserDetails = () => {
     }
 
     return (
-        <section className="UserCard p-3">
+        <section className="UserCard">
 
             <div className='user-greetings d-flex m-2 mb-3'>
                 {user.imageUrl ? (
-                    <Image className='w-50' src={user.imageUrl} roundedCircle />
+                    <Image className='w-25' src={user.imageUrl} roundedCircle />
                 ) : (
                     <p className='user-picture-placeholder  me-1'>Carga tu imagen de perfil</p>
                 )}

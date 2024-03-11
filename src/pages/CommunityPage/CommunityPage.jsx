@@ -24,6 +24,16 @@ const CommunityPage = ({ getUser }) => {
         getAllPosts()
     }
 
+    const addReply = (postId, replyText) => {
+        CommunityService
+            .addReply(postId, replyText)
+            .then(response => {
+                console.log('Reply added:', response.data);
+                getAllPosts();
+            })
+            .catch(error => console.error('Error adding reply:', error));
+    }
+
     return (
         <div className="CommunityPage">
 
@@ -33,9 +43,12 @@ const CommunityPage = ({ getUser }) => {
             {posts.map(post => (
                 <PostCard
                     key={post._id}
+                    postId={post._id}
                     username={post.username.username}
                     comment={post.comment}
                     date={post.date}
+                    replies={post.replies}
+                    onAddReply={addReply}
                 />
             ))}
         </div>

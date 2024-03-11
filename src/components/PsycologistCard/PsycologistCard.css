@@ -1,10 +1,17 @@
 .PsycologistCard {
+    padding: 20px;
+    border-radius: 15px;
     width: min-content;
     text-align: center;
-    margin-bottom: 40px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
-.PsycologistCard .link-to-psycologist {
-    color: black;
-    text-decoration: none;
+.PsycologistCard .card-text {
+    font-size: 0.9em;
+}
+
+.PsycologistCard .btn-card {
+    background-color: #81c2de;
+    border: none;
+    padding: 5px 20px;
 }

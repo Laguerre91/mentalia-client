@@ -1,9 +1,13 @@
 .UserCard {
+    margin: 0 auto;
+    width: 75%;
+    padding-top: 20px;
+    padding-bottom: 10px;
     font-size: 1.2em;
     text-align: justify;
     background-color: white;
     border-radius: 15px;
-    min-height: 91vh;
+    margin-bottom: 20px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
@@ -23,7 +27,7 @@
 .UserCard .user-details {
     width: 100%;
     margin-left: 10%;
-    margin-bottom: 25%;
+    margin-bottom: 5%;
     padding: 10px;
     font-size: 0.8em;
 }
@@ -32,11 +36,19 @@
     font-size: 0.8em;
     width: 55%;
     margin-top: 10%;
-    margin-left: 20%;
+    margin-left: 25%;
     color: rgb(204, 4, 4);
     cursor: pointer;
 }
 
 svg {
     margin-right: 10px;
+}
+
+@media (min-width: 600px) {
+
+    .UserCard {
+        width: 100%;
+        min-height: 80vh;
+    }
 }
