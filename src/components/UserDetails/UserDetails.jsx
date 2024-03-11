@@ -49,14 +49,14 @@ const UserDetails = () => {
                 user.sexualOrientation &&
                 user.sentimentalStatus !== undefined ? (
                 <div className="user-details">
-                    <p>Tu género seleccionado es {user.gender}</p>
-                    <p>Tu orientación sexual es {user.sexualOrientation} </p>
-                    <p>Situación sentimental: {user.sentimentalStatus}</p>
                     {
                         user.employed === false ?
                             <p>Actualmente desempleado/a</p>
                             :
-                            <p>Trabajando</p>}
+                            <p>Empleado/a</p>}
+                    <p>{user.sentimentalStatus}</p>
+                    <p>{user.gender}</p>
+                    <p>{user.sexualOrientation} </p>
                 </div>
             ) : (
                 <p>

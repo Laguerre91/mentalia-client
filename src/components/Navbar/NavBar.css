@@ -8,9 +8,9 @@
 }
 
 .Navbar .navbar-button-signup {
-    background-color: rgb(2, 2, 2);
+    background-color: #81c2de;
     color: white;
-    border: 1px solid black;
+    border: 1px solid #81c2de;
 }
 
 .Navbar .navbar-button-signup:hover {
@@ -19,9 +19,9 @@
 }
 
 .Navbar .navbar-button-login {
-    color: black;
+    color: #81c2de;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid #81c2de;
 }
 
 .Navbar .navbar-button-login:hover {

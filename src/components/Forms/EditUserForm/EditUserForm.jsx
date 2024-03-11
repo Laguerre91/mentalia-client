@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { AuthContext } from '../../../context/auth.context'
 import UserService from './../../../services/user.services'
 import uploadServices from '../../../services/upload.services'
@@ -20,7 +20,18 @@ const EditUserForm = ({ getUser }) => {
         employed: user.employed || false,
         sentimentalStatus: user.sentimentalStatus || 'Soltero/a',
     })
-    const [showUserModal, setShowUserModal] = useState(false);
+    const [showUserModal, setShowUserModal] = useState(false)
+
+    useEffect(() => {
+        setUpdatedUser({
+            imageUrl: user.imageUrl,
+            birth: user.birth,
+            gender: user.gender,
+            sexualOrientation: user.sexualOrientation,
+            employed: user.employed,
+            sentimentalStatus: user.sentimentalStatus
+        })
+    }, [user])
 
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;

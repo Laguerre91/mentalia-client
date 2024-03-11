@@ -1,4 +1,5 @@
 .UserDashboardPage {
-    padding: 30px;
+    padding: 20px;
     background-color: #E2DCEF;
+    min-height: 100vh;
 }

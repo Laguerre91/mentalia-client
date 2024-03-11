@@ -1,5 +1,5 @@
 import './Hero.css'
-import heroFaces from './../../../assets/Frame7.svg'
+import Faces from './../../../assets/faces.svg'
 import { Button } from 'react-bootstrap'
 
 import { Link } from 'react-router-dom'
@@ -19,7 +19,7 @@ const Hero = () => {
             </div>
 
             <div className='hero-faces'>
-                <img src={heroFaces} alt="sfsd" />
+                <img src={Faces} alt="sfsd" />
             </div>
 
         </section>

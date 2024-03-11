@@ -35,42 +35,40 @@ const UserDashboardPage = () => {
 
     return (
         <section className="UserDashboardPage">
-            <Container>
-                <Row>
-                    <Col md={3}>
-                        <UserDetails />
-                    </Col>
-                    <Col>
+            <Row>
+                <Col md={3}>
+                    <UserDetails />
+                </Col>
+                <Col>
 
-                        <Button variant="primary" onClick={() => setShowModal(true)}>
-                            Mood Diario
-                        </Button>
-                        <RecordsList userDetails={userDetails} getUser={getUser} />
-                    </Col>
-                </Row>
+                    <Button variant="primary" onClick={() => setShowModal(true)}>
+                        Mood Diario
+                    </Button>
+                    <RecordsList userDetails={userDetails} getUser={getUser} />
+                </Col>
+                <Col>
+                    <AppointmentForm getUser={getUser} />
 
-                <Modal
-                    show={showModal}
-                    onHide={() => setShowModal(false)}
-                    dialogClassName="modal-90w"
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>¿Cómo te sientes hoy, cari?</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
+                    <AppointmentsList userDetails={userDetails} getUser={getUser} />
+                </Col>
+            </Row>
 
-                        <RecordForm
-                            onHide={() => setShowModal(false)}
-                            getUser={getUser} />
+            <Modal
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                dialogClassName="modal-90w"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>¿Cómo te sientes hoy, cari?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
 
-                    </Modal.Body>
-                </Modal>
+                    <RecordForm
+                        onHide={() => setShowModal(false)}
+                        getUser={getUser} />
 
-                <AppointmentForm getUser={getUser} />
-
-                <AppointmentsList userDetails={userDetails} getUser={getUser} />
-
-            </Container>
+                </Modal.Body>
+            </Modal>
         </section>
     )
 }
