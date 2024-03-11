@@ -13,6 +13,6 @@ export const WORRIES = [
     { id: 'tbg-btn-12', label: 'Actualidad' }
 ]
 
-export const MOOD_LABELS = ['Muy mal', 'Mal', 'Algo mal', 'Normal', 'Algo bien', 'Bien', 'Muy bien']
+export const MOOD_LABELS = ['Muy mal', 'Mal', 'Normal', 'Bien', 'Muy bien']
 export const WEATHER_LABELS = ['Sol', 'Nubes', 'Lluvia', 'Tormenta', 'Nieve']
 export const HOURSOFSLEEP = [...Array(25).keys()]
