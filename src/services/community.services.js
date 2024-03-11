@@ -23,6 +23,10 @@ class CommunityService {
         return this.axiosApp.post('/api/comunidad/posts', requestBody)
     }
 
+    createReply = (_id) => {
+        return this.axiosApp.post(`/api/comunidad/posts/${_id}/replies`)
+    }
+
     getAllPosts = () => {
         return this.axiosApp.get('/api/comunidad/posts');
     }

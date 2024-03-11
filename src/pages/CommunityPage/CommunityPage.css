@@ -1,0 +1,8 @@
+.CommunityPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #E2DCEF;
+    min-height: 100vh;
+    padding-top: 50px;
+}

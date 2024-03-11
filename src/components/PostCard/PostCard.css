@@ -1,0 +1,13 @@
+.PostCard {
+    padding: 15px;
+}
+
+.post-title {
+    font-weight: 300;
+    font-size: 0.9em;
+}
+
+.post-text {
+    text-align: justify;
+    font-size: 1.2em;
+}

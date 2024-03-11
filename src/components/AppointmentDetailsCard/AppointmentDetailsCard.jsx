@@ -37,7 +37,7 @@ const AppointmentDetailsCard = ({ date, time, psycologist, comments, _id, getUse
                         El motivo de la consulta que has añadido es: {comments}
                     </Card.Text>
                     <Button
-                        className='btn-deleteAppointment w-25'
+                        className='btn-deleteAppointment w-50'
                         variant="danger"
                         onClick={handleShowCancelModal}
                     >

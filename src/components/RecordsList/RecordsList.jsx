@@ -8,7 +8,7 @@ const RecordsList = ({ userDetails, getUser }) => {
     return (
         <Container>
 
-            <h2>Tus Moods:</h2>
+            <h2>Ultimo registro</h2>
 
             <hr />
 
