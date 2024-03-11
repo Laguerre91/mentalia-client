@@ -25,7 +25,7 @@ const CommunityPage = ({ getUser }) => {
             {posts.map(post => (
                 <PostCard
                     key={post._id}
-                    username={post.username}
+                    username={post.username.username}
                     comment={post.comment}
                     date={post.date}
                 />

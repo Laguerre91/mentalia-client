@@ -20,15 +20,15 @@ class CommunityService {
     }
 
     createPost = (requestBody) => {
-        return this.axiosApp.post('/api/comunidad', requestBody)
+        return this.axiosApp.post('/api/comunidad/posts', requestBody)
     }
 
     getAllPosts = () => {
-        return this.axiosApp.get('/api/comunidad');
+        return this.axiosApp.get('/api/comunidad/posts');
     }
 
     deletePost = (_id) => {
-        return this.axiosApp.delete(`/api/comunidad/${_id}`)
+        return this.axiosApp.delete(`/api/comunidad/posts/${_id}`)
     }
 
 }

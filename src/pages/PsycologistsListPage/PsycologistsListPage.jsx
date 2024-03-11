@@ -5,7 +5,7 @@ const PsycologistsListPage = () => {
 
     return (
         <section className="PsycologistsListPage">
-            <h2 className="psyc-title">Psicologos registrados</h2>
+            <h2 className="psyc-title">Red de psicólogos registrados</h2>
             <PsycologistsList />
         </section>
     )

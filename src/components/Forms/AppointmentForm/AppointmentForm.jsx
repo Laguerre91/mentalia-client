@@ -8,7 +8,7 @@ import 'react-calendar/dist/Calendar.css'
 
 import './AppointmentForm.css'
 
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Modal } from 'react-bootstrap'
 
 import PsycologistService from './../../../services/psyc.services'
 import appointmentServices from '../../../services/appointment.services'
@@ -16,6 +16,10 @@ import appointmentServices from '../../../services/appointment.services'
 const AppointmentForm = ({ getUser }) => {
 
     const { user } = useContext(AuthContext)
+    const [showForm, setShowForm] = useState(false);
+
+    const handleClose = () => setShowForm(false);
+    const handleShow = () => setShowForm(true);
 
     const initialTime = 10 * 60 * 60 * 1000
     const initialDate = new Date();
@@ -89,58 +93,67 @@ const AppointmentForm = ({ getUser }) => {
     }
 
     return (
-        <Form className='AppointmentForm w-50' onSubmit={handleFormSubmit} >
-            <Form.Group className='form-appointment-group mb-4' controlId='psycologistSelect'>
-                <Form.Label className="form-appoinment-label">Elige tu psicólogo</Form.Label>
-                <Form.Select
-                    aria-label='Default select example'
-                    onChange={handleInputChange}
-                    value={appointment.psycologist}
-                >
-                    <option>Seleccione un psicólogo</option>
-                    {
-                        psycologists.map((psyc) => (
-                            <option key={psyc._id} value={psyc._id}>
-                                {psyc.name} {psyc.lastName}
-                            </option>
-                        ))
-                    }
-                </Form.Select>
-            </Form.Group>
+        <>
+            <Button variant="primary" onClick={handleShow}>
+                Solicitar una cita
+            </Button>
 
-            <Form.Group className='form-appointment-group mb-4'>
-                <Form.Label className="form-appoinment-label">Selecciona una fecha</Form.Label>
-                <DatePicker
-                    className="ms-3 form-appointment-calendar"
-                    onChange={handleCalendarChange}
-                    value={date}
-                    required={true}
-                    clearIcon={null} />
-            </Form.Group>
+            <Modal show={showForm} onHide={handleClose}>
+                <Modal.Body>
+                    <Form className='AppointmentForm' onSubmit={handleFormSubmit} >
+                        <Form.Group className='form-appointment-group mb-4' controlId='psycologistSelect'>
+                            <Form.Label className="form-appoinment-label">Elige tu psicólogo</Form.Label>
+                            <Form.Select
+                                aria-label='Default select example'
+                                onChange={handleInputChange}
+                                value={appointment.psycologist}
+                            >
+                                <option>Seleccione un psicólogo</option>
+                                {
+                                    psycologists.map((psyc) => (
+                                        <option key={psyc._id} value={psyc._id}>
+                                            {psyc.name} {psyc.lastName}
+                                        </option>
+                                    ))
+                                }
+                            </Form.Select>
+                        </Form.Group>
 
-            <Form.Group className='form-appointment-group mb-4'>
-                <Form.Label className="form-appoinment-label">Selecciona un horario</Form.Label>
-                <TimePicker
-                    onChange={handleTimeChange}
-                    start="10:00"
-                    end="20:00"
-                    step={30}
-                    value={time}
-                    required={true}
-                    clearIcon={null} />
-            </Form.Group>
+                        <Form.Group className='form-appointment-group mb-4'>
+                            <Form.Label className="form-appoinment-label">Selecciona una fecha</Form.Label>
+                            <DatePicker
+                                className="ms-3 form-appointment-calendar"
+                                onChange={handleCalendarChange}
+                                value={date}
+                                required={true}
+                                clearIcon={null} />
+                        </Form.Group>
 
-            <Form.Group className='form-appointment-group mb-4'>
-                <Form.Label className="form-appoinment-label">Agrega comentarios sobre tu consulta</Form.Label>
-                <Form.Control
-                    as="textarea"
-                    rows={3}
-                    onChange={handleCommentsChange}
-                    value={appointment.comments} />
-            </Form.Group>
+                        <Form.Group className='form-appointment-group mb-4'>
+                            <Form.Label className="form-appoinment-label">Selecciona un horario</Form.Label>
+                            <TimePicker
+                                onChange={handleTimeChange}
+                                start="10:00"
+                                end="20:00"
+                                step={30}
+                                value={time}
+                                required={true}
+                                clearIcon={null} />
+                        </Form.Group>
 
-            <Button variant="warning" type="submit">Solicitar</Button>
-        </Form>
+                        <Form.Group className='form-appointment-group mb-4'>
+                            <Form.Label className="form-appoinment-label">Agrega comentarios sobre tu consulta</Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                rows={3}
+                                onChange={handleCommentsChange}
+                                value={appointment.comments} />
+                        </Form.Group>
+                        <Button onClick={handleClose} variant="warning" type="submit">Solicitar</Button>
+                    </Form>
+                </Modal.Body>
+            </Modal>
+        </>
     )
 }
 

@@ -1,5 +1,6 @@
 .UserCard {
-    text-align: center;
+    font-size: 1.2em;
+    text-align: justify;
     background-color: white;
     border-radius: 15px;
     min-height: 91vh;
@@ -15,14 +16,27 @@
     color: red;
 }
 
-.UserCard .user-greetings h2 {
-    font-size: 1.5em;
-}
-
 .UserCard .user-picture {
     border-radius: 100px;
 }
 
 .UserCard .user-details {
+    width: 100%;
+    margin-left: 10%;
+    margin-bottom: 25%;
+    padding: 10px;
     font-size: 0.8em;
+}
+
+.UserCard .btn-logout {
+    font-size: 0.8em;
+    width: 55%;
+    margin-top: 10%;
+    margin-left: 20%;
+    color: rgb(204, 4, 4);
+    cursor: pointer;
+}
+
+svg {
+    margin-right: 10px;
 }
