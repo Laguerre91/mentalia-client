@@ -6,13 +6,20 @@ const RateDayChart = () => {
     const [chartData, setChartData] = useState([]);
 
     useEffect(() => {
-        // Función para obtener los últimos 7 registros y extraer los valores de rateDay
         const fetchLast7DaysData = async () => {
             try {
-                const response = await recordServices.getLast7DaysData(); // Ajusta esta llamada según tu servicio para obtener los últimos 7 registros
+                const response = await recordServices.getAllRecords();
+                const allRecords = response.data;
+
+                // Ordena los registros por fecha de forma descendente
+                const sortedRecords = allRecords.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                // Toma solo los primeros 7 registros (los más recientes)
+                const last7DaysRecords = sortedRecords.slice(0, 7);
+
                 const data = [['Day', 'RateDay']];
 
-                response.data.forEach((record) => {
+                last7DaysRecords.forEach((record) => {
                     data.push([record.date, record.rateDay]);
                 });
 
@@ -23,7 +30,8 @@ const RateDayChart = () => {
         };
 
         fetchLast7DaysData();
-    }, []); // Ajusta las dependencias según tus necesidades
+    }, [])
+
 
     return (
         <div>
@@ -42,7 +50,7 @@ const RateDayChart = () => {
                 }}
             />
         </div>
-    );
-};
+    )
+}
 
 export default RateDayChart;

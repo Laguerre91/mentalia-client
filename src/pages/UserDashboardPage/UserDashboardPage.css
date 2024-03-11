@@ -21,30 +21,30 @@
     border: none;
 }
 
-.modal-content {
+.UserDashboardPage .modal-content {
   background-color: #d9cef2;
 }
 
-.modal-header .btn-close {
+.UserDashboardPage .modal-header .btn-close {
   color: #7AB7D0;
 }
 
-.modal-title {
+.UserDashboardPage .modal-title {
     color: #4f5463;
     text-align: center;
 }
 
-.modal-body {
+.UserDashboardPage .modal-body {
   max-height: 500px;
   overflow-y: auto;
 }
 
-.modal-content {
+.UserDashboardPage .modal-content {
   width: 75%;
   height: 75%;
 }
 
-.modal-dialog {
+.UserDashboardPage .modal-dialog {
   height: 735px;
   width: auto;
 }
