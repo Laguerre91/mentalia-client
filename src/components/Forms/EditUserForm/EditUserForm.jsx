@@ -76,7 +76,7 @@ const EditUserForm = ({ getUser }) => {
 
             <Button
                 variant='dark'
-                className="me-2 mb-2 w-100"
+                className="btn-edit-user me-2 mb-2 w-75"
                 onClick={handleShow}>
                 Actualiza tu perfil
             </Button>
