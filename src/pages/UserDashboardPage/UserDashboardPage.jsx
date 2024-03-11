@@ -43,7 +43,6 @@ const UserDashboardPage = () => {
                 </Col>
 
                 <Col>
-                    <RateDayChart />
                     <div className="user-feelCard">
                         <h4>¿Cómo te sientes hoy, {userDetails.username}?</h4>
                         <p>Cuéntanos como te encuentras hoy</p>
@@ -52,10 +51,11 @@ const UserDashboardPage = () => {
                         </Button>
                     </div>
 
-                    <RecordsList userDetails={userDetails} getUser={getUser} />
+                    <RateDayChart />
                 </Col>
 
                 <Col>
+                    <RecordsList userDetails={userDetails} getUser={getUser} />
                     <AppointmentForm getUser={getUser} />
                     <AppointmentsList userDetails={userDetails} getUser={getUser} />
                 </Col>
