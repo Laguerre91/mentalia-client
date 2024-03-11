@@ -3,3 +3,20 @@
     background-color: #E2DCEF;
     min-height: 100vh;
 }
+
+.UserDashboardPage .user-feelCard {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.UserDashboardPage .user-feelCard p {
+    color: rgb(110, 108, 108);
+}
+
+.UserDashboardPage .btn-userState {
+    background-color: #81c2de;
+    border: none;
+}

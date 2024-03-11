@@ -36,21 +36,28 @@ const UserDashboardPage = () => {
     return (
         <section className="UserDashboardPage">
             <Row>
+
                 <Col md={3}>
                     <UserDetails />
                 </Col>
-                <Col>
 
-                    <Button variant="primary" onClick={() => setShowModal(true)}>
-                        Mood Diario
-                    </Button>
+                <Col>
+                    <div className="user-feelCard">
+                        <h4>¿Cómo te sientes hoy, {userDetails.username}?</h4>
+                        <p>Cuéntanos como te encuentras hoy</p>
+                        <Button className="btn-userState mt-4" onClick={() => setShowModal(true)}>
+                            Registrar estado
+                        </Button>
+                    </div>
+
                     <RecordsList userDetails={userDetails} getUser={getUser} />
                 </Col>
+
                 <Col>
                     <AppointmentForm getUser={getUser} />
-
                     <AppointmentsList userDetails={userDetails} getUser={getUser} />
                 </Col>
+
             </Row>
 
             <Modal
