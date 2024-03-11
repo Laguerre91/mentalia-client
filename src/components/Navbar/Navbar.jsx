@@ -5,6 +5,7 @@ import "./NavBar.css"
 import React from "react"
 import { Navbar, Container, Nav, NavDropdown, Button, Offcanvas, Modal } from 'react-bootstrap'
 import LoginForm from "../Forms/LoginForm/LoginForm"
+import logo from "./../../assets/Mentalia-logo.png"
 
 function NavBar() {
 
@@ -18,7 +19,7 @@ function NavBar() {
     return (
         <Navbar expand="md" className="Navbar">
             <Container fluid>
-                <Link to={'/'}>MENTALIA</Link>
+                <Link to={'/'}><img src={logo} alt="Logo de Mentalia" className="logo"></img></Link>
                 <Navbar.Toggle
                     aria-controls="offcanvasNavbar-expand-md"
                     onClick={() => setShowOffcanvas(!showOffcanvas)}
@@ -31,7 +32,7 @@ function NavBar() {
                     onHide={handleOffcanvasClose}
                 >
                     <Offcanvas.Header closeButton>
-                        <Offcanvas.Title id="offcanvasNavbarLabel-expand-md">MENTALIA</Offcanvas.Title>
+                        <Offcanvas.Title id="offcanvasNavbarLabel-expand-md"><img src={logo} alt="Logo de Mentalia" /></Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav className="justify-content-end flex-grow-1 pe-3">

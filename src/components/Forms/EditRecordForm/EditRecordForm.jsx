@@ -151,7 +151,6 @@ const EditRecordForm = ({
                             <Form.Select
                                 type="text"
                                 name="rateDay"
-                                placeholder={rateDay}
                                 value={formData.rateDay}
                                 onChange={handleChange}>
 
