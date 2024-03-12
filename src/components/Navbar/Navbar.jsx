@@ -96,7 +96,7 @@ function NavBar() {
                                         onClick={() => {
                                             logout()
                                             handleOffcanvasClose()
-                                        }}>Log out</Button>
+                                        }}>Cerrar sesión</Button>
                                 )
                             }
                         </Nav>
