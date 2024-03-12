@@ -4,12 +4,10 @@ import PostCard from "../../components/PostCard/PostCard";
 import CommunityService from './../../services/community.services'
 
 import './CommunityPage.css'
-import { AuthContext } from "../../context/auth.context";
 
-const CommunityPage = ({ getUser }) => {
+const CommunityPage = () => {
+
     const [posts, setPosts] = useState([])
-
-    const { user } = useContext(AuthContext)
 
     useEffect(() => {
         getAllPosts()
@@ -22,36 +20,15 @@ const CommunityPage = ({ getUser }) => {
             .catch(error => console.error("Error fetching posts:", error))
     }
 
-
-    const updatePosts = () => {
-        getAllPosts()
-    }
-
-    const addReply = (postId, replyText) => {
-        CommunityService
-            .addReply(postId, replyText, user._id)
-            .then(response => {
-                getAllPosts();
-            })
-            .catch(error => console.error('Error adding reply:', error));
-    }
-
     return (
         <div className="CommunityPage">
 
-            <CreatePostForm getUser={getUser} updatePosts={updatePosts} />
+            <CreatePostForm updatePosts={getAllPosts} />
 
             <h2>Publicaciones Recientes</h2>
-            {posts.map(post => (
-                <PostCard
-                    key={post._id}
-                    postId={post._id}
-                    owner={post.owner}
-                    comment={post.comment}
-                    date={post.date}
-                    onAddReply={addReply}
-                />
-            ))}
+            {
+                posts.map(post => <PostCard key={post._id} {...post} />)
+            }
         </div>
     );
 };

@@ -1,33 +1,44 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
 import { Card, Badge, Form, Button } from 'react-bootstrap'
 import CommunityService from './../../services/community.services'
 
 import './PostCard.css'
+import { AuthContext } from '../../context/auth.context'
 
-const PostCard = ({ postId, owner, comment, date, onAddReply }) => {
+const PostCard = ({ _id: postId, owner, comment, date }) => {
 
     const [replyText, setReplyText] = useState('')
     const [showReplies, setShowReplies] = useState(false)
     const [replies, setReplies] = useState([])
 
+    const { user } = useContext(AuthContext)
+
     useEffect(() => {
-        // Fetch replies when the component mounts
-        getAllRepliesForPost(postId);
-    }, [postId]);
+        getAllRepliesForPost();
+    }, [postId])
 
 
-    const handleAddReply = () => {
-        getAllRepliesForPost(postId)
-        setReplyText('')
+    const addReply = e => {
+
+        e.preventDefault()
+
+        CommunityService
+            .addReply(postId, replyText, user._id)
+            .then(() => {
+                getAllRepliesForPost();
+            })
+            .catch(error => console.error('Error adding reply:', error));
     }
 
-    const getAllRepliesForPost = (postId) => {
+
+    const getAllRepliesForPost = () => {
         CommunityService
             .getAllRepliesForPost(postId)
             .then(response => setReplies(response.data))
             .catch(err => console.log(err))
     }
+
 
     return (
         <Card className="PostCard mb-3 w-50">
@@ -57,7 +68,7 @@ const PostCard = ({ postId, owner, comment, date, onAddReply }) => {
 
             </Card.Body>
             <hr />
-            <Form className=' mb-4'>
+            <Form className=' mb-4' onSubmit={addReply}>
                 <Form.Group className='form-appointment-group mb-2'>
                     <Form.Control
                         placeholder="Agrega un comentario"
@@ -66,7 +77,7 @@ const PostCard = ({ postId, owner, comment, date, onAddReply }) => {
                         onChange={(e) => setReplyText(e.target.value)}
                     />
                 </Form.Group>
-                <Button className='btn-post' onClick={handleAddReply}>Comentar</Button>
+                <Button className='btn-post' type='submit'>Comentar</Button>
             </Form>
         </Card>
     )
