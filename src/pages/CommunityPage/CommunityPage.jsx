@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import CreatePostForm from "../../components/Forms/CreatePostForm/CreatePostForm";
 import PostCard from "../../components/PostCard/PostCard";
 import CommunityService from './../../services/community.services'
+
+import { Row, Col } from "react-bootstrap";
 
 import './CommunityPage.css'
 
@@ -23,7 +25,11 @@ const CommunityPage = () => {
     return (
         <div className="CommunityPage">
 
-            <CreatePostForm updatePosts={getAllPosts} />
+            <Row>
+                <Col md={12}>
+                    <CreatePostForm updatePosts={getAllPosts} />
+                </Col>
+            </Row>
 
             <h2>Publicaciones Recientes</h2>
             {

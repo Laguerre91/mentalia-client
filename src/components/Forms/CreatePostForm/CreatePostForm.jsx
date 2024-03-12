@@ -40,7 +40,7 @@ const CreatePostForm = ({ updatePosts }) => {
     }
 
     return (
-        <Form onSubmit={handleFormSubmit} className='w-50 mb-4'>
+        <Form onSubmit={handleFormSubmit} className='mb-4'>
             <Form.Group className='form-appointment-group mb-2'>
                 <Form.Label>Hola {user.username}</Form.Label>
                 <Form.Control
