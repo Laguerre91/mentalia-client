@@ -25,16 +25,14 @@ const CommunityPage = () => {
     return (
         <div className="CommunityPage">
 
-            <Row>
-                <Col md={12}>
-                    <CreatePostForm updatePosts={getAllPosts} />
-                </Col>
-            </Row>
+            <CreatePostForm updatePosts={getAllPosts} />
 
-            <h2>Publicaciones Recientes</h2>
-            {
-                posts.map(post => <PostCard key={post._id} {...post} />)
-            }
+            <h2>Publicaciones de la comunidad</h2>
+            <div className="posts-list">
+                {
+                    posts.map(post => <PostCard key={post._id} {...post} />)
+                }
+            </div>
         </div>
     );
 };

@@ -1,6 +1,8 @@
 .PostCard {
     padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    font-size: 0.8em;
+    height: min-content;
 }
 
 .post-username {
@@ -14,8 +16,46 @@
     font-size: 0.9em;
 }
 
+.btn-showReplies {
+    color: black;
+    background-color: #81c2de85;
+    border: none;
+    font-size: 0.9em;
+}
+
+.btn-post {
+    font-size: 1em;
+}
+
+.btn-community {
+    border: 1px solid #81c2de;
+}
+
+.btn-community:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #81c2de;
+}
+
+.btn-showReplies {
+    margin-right: 40%;
+}
+
+.btn-deletePost {
+    background-color: rgba(255, 0, 0, 0.498);
+    border: none;
+    font-size: 0.9em;
+    color: black;
+}
+
 .PostCard .post-user-img {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     width: 10%;
+    height: fit-content;
+}
+
+.post-replies-list {
+    padding: 15px;
 }
 
 .post-text {
@@ -24,15 +64,31 @@
 }
 
 .post-reply-image {
-    width: 8%;
+    width: 10%;
+    height: fit-content;
 }
 
-.post-reply-username {
-    color: #81c2de;
+.post-reply-section {
+    background-color: #81c2de44;
+    padding: 10px;
+    border-radius: 5px;
 }
+
+.addReply-form {
+    padding: 15px;
+}
+
 
 @media (min-width: 600px) {
     .PostCard {
-        width: 50%;
+        width: 45%;
+    }
+
+    .post-reply-image {
+        width: 6%;
+    }
+
+    .btn-showReplies {
+        margin-right: 60%;
     }
 }
