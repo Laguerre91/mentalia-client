@@ -11,12 +11,13 @@ const PostCard = ({ _id: postId, owner, comment, date }) => {
     const [replyText, setReplyText] = useState('')
     const [showReplies, setShowReplies] = useState(false)
     const [replies, setReplies] = useState([])
+    const [deleted, setDeleted] = useState(false)
 
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
         getAllRepliesForPost();
-    }, [postId])
+    }, [postId, deleted])
 
 
     const addReply = e => {
@@ -26,9 +27,9 @@ const PostCard = ({ _id: postId, owner, comment, date }) => {
         CommunityService
             .addReply(postId, replyText, user._id)
             .then(() => {
-                getAllRepliesForPost();
+                getAllRepliesForPost()
             })
-            .catch(error => console.error('Error adding reply:', error));
+            .catch(error => console.error('Error adding reply:', error))
     }
 
 
@@ -37,6 +38,19 @@ const PostCard = ({ _id: postId, owner, comment, date }) => {
             .getAllRepliesForPost(postId)
             .then(response => setReplies(response.data))
             .catch(err => console.log(err))
+    }
+
+    const deletePost = () => {
+        CommunityService
+            .deletePost(postId)
+            .then(() => {
+                setDeleted(true)
+            })
+            .catch(err => console.log(err))
+    }
+
+    if (deleted) {
+        return null
     }
 
 
@@ -52,26 +66,28 @@ const PostCard = ({ _id: postId, owner, comment, date }) => {
 
                 {replies.length > 0 && (
                     <>
-                        <Button variant="link" onClick={() => setShowReplies(!showReplies)}>
+                        <Button className='btn-showReplies btn-community' onClick={() => setShowReplies(!showReplies)}>
                             {showReplies ? 'Ocultar comentarios' : 'Mostrar comentarios'}
                         </Button>
                         {showReplies && (
                             <ul className="list-unstyled mt-4">
                                 {replies.map(reply => (
-                                    <li key={reply._id}>
+                                    <li key={reply._id} className='d-flex post-replies-list'>
                                         <Image className='post-reply-image me-2' src={reply.owner.imageUrl} alt={`Picture of ${reply.owner.username}`} roundedCircle />
-                                        <strong className='post-reply-username'>{reply.owner.username}:</strong> {reply.reply}
+                                        <div className='post-reply-section'>
+                                            <strong className='post-reply-username'>{reply.owner.username}:</strong> {reply.reply}
+                                        </div>
                                     </li>
                                 ))}
                             </ul>
                         )}
                     </>
                 )}
-
+                <Button className='btn-deletePost' onClick={deletePost}>X</Button>
             </Card.Body>
             <hr />
-            <Form className=' mb-4' onSubmit={addReply}>
-                <Form.Group className='form-appointment-group mb-2'>
+            <Form className='addReply-form mb-4' onSubmit={addReply}>
+                <Form.Group className='mb-2'>
                     <Form.Control
                         placeholder="Agrega un comentario"
                         as="textarea"
@@ -79,7 +95,7 @@ const PostCard = ({ _id: postId, owner, comment, date }) => {
                         onChange={(e) => setReplyText(e.target.value)}
                     />
                 </Form.Group>
-                <Button className='btn-post' type='submit'>Comentar</Button>
+                <Button className='btn-post btn-community' type='submit'>Comentar</Button>
             </Form>
         </Card>
     )

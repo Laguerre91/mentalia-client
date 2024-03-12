@@ -50,7 +50,7 @@ const CreatePostForm = ({ updatePosts }) => {
                     onChange={handleInputChange}
                 />
             </Form.Group>
-            <Button className='btn-post' type="submit">Publicar</Button>
+            <Button className='btn-post btn-community' type="submit">Publicar</Button>
         </Form>
     )
 }

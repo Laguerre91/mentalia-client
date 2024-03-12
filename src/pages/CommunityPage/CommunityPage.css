@@ -4,3 +4,9 @@
     min-height: 100vh;
     padding-top: 50px;
 }
+
+.posts-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
