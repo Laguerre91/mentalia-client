@@ -1,4 +1,4 @@
-import { Button, Modal, Container, Row, Col } from "react-bootstrap"
+import { Button, Modal, Row, Col } from "react-bootstrap"
 import RecordForm from "../../components/Forms/RecordForm/RecordForm"
 import UserDetails from "../../components/UserDetails/UserDetails"
 import AppointmentForm from "../../components/Forms/AppointmentForm/AppointmentForm"

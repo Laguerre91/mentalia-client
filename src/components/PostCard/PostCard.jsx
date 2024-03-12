@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
-import { Card, Badge, Form, Button } from 'react-bootstrap'
+import { Card, Badge, Form, Button, Image } from 'react-bootstrap'
 import CommunityService from './../../services/community.services'
 
 import './PostCard.css'
@@ -41,11 +41,12 @@ const PostCard = ({ _id: postId, owner, comment, date }) => {
 
 
     return (
-        <Card className="PostCard mb-3 w-50">
+        <Card className="PostCard mb-3">
             <Card.Body>
                 <Card.Title className='post-title mb-4'>
-                    <Badge bg="info" className="me-3">{owner.username}</Badge>
-                    {date}
+                    <Image className='post-user-img' src={owner.imageUrl} roundedCircle />
+                    <Badge bg='dark' className="post-username me-3 ms-3">{owner.username}</Badge>
+                    <p className='post-date ms-auto p-2'>{date}</p>
                 </Card.Title>
                 <Card.Text className='post-text'>{comment}</Card.Text>
 
@@ -55,10 +56,11 @@ const PostCard = ({ _id: postId, owner, comment, date }) => {
                             {showReplies ? 'Ocultar comentarios' : 'Mostrar comentarios'}
                         </Button>
                         {showReplies && (
-                            <ul className="list-unstyled">
+                            <ul className="list-unstyled mt-4">
                                 {replies.map(reply => (
                                     <li key={reply._id}>
-                                        <strong>{reply.owner.username}:</strong> {reply.reply}
+                                        <Image className='post-reply-image me-2' src={reply.owner.imageUrl} alt={`Picture of ${reply.owner.username}`} roundedCircle />
+                                        <strong className='post-reply-username'>{reply.owner.username}:</strong> {reply.reply}
                                     </li>
                                 ))}
                             </ul>

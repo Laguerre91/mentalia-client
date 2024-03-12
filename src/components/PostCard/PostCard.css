@@ -3,12 +3,36 @@
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
+.post-username {
+    font-size: 1em;
+}
+
 .post-title {
+    display: flex;
+    align-items: center;
     font-weight: 300;
     font-size: 0.9em;
+}
+
+.PostCard .post-user-img {
+    width: 10%;
 }
 
 .post-text {
     text-align: justify;
     font-size: 1.2em;
+}
+
+.post-reply-image {
+    width: 8%;
+}
+
+.post-reply-username {
+    color: #81c2de;
+}
+
+@media (min-width: 600px) {
+    .PostCard {
+        width: 50%;
+    }
 }
