@@ -14,3 +14,12 @@
 .emojis {
     font-size: 3em;
 }
+
+.recordcard .nav-pills .nav-link {
+  color: #7AB7D0;
+}
+
+.recordcard .nav-pills .nav-link.active,
+.recordcard .nav-pills .nav-link:hover {
+  background-color: #a4ccd8;
+}

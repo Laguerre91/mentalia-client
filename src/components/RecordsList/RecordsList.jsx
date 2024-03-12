@@ -2,13 +2,12 @@ import { useEffect, useContext, useState } from "react"
 import { Container, Row, Col } from "react-bootstrap"
 import RecordCard from "../RecordCard/RecordCard"
 import UserService from "../../services/user.services"
-import { AuthContext } from "../../context/auth.context"
 import { useParams } from "react-router-dom"
 
 import "./RecordsList.css"
 
 const RecordList = () => {
-    const { user } = useContext(AuthContext)
+
     const { userId } = useParams()
 
     const [userDetails, setUserDetails] = useState({ records: [] })
@@ -20,7 +19,10 @@ const RecordList = () => {
     const getUser = () => {
         UserService
             .getUser(userId)
-            .then(({ data }) => setUserDetails(data))
+            .then(({ data }) => {
+                setUserDetails(data)
+                getUser()
+            })
             .catch((err) => console.log(err))
     }
 
