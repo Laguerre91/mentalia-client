@@ -23,13 +23,17 @@ class CommunityService {
         return this.axiosApp.post('/api/comunidad/posts', requestBody)
     }
 
-    addReply = (_id, replyText) => {
-        const requestBody = { comment: replyText };
+    addReply = (_id, replyText, owner) => {
+        const requestBody = { reply: replyText, owner };
         return this.axiosApp.post(`/api/comunidad/posts/${_id}/replies`, requestBody);
     }
 
     getAllPosts = () => {
         return this.axiosApp.get('/api/comunidad/posts');
+    }
+
+    getAllRepliesForPost = (postId) => {
+        return this.axiosApp.get(`/api/comunidad/posts/${postId}/replies`);
     }
 
     deletePost = (_id) => {

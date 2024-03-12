@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CreatePostForm from "../../components/Forms/CreatePostForm/CreatePostForm";
 import PostCard from "../../components/PostCard/PostCard";
 import CommunityService from './../../services/community.services'
-import UserDetails from "../../components/UserDetails/UserDetails";
 
 import './CommunityPage.css'
+import { AuthContext } from "../../context/auth.context";
 
 const CommunityPage = ({ getUser }) => {
     const [posts, setPosts] = useState([])
+
+    const { user } = useContext(AuthContext)
 
     useEffect(() => {
         getAllPosts()
@@ -20,15 +22,15 @@ const CommunityPage = ({ getUser }) => {
             .catch(error => console.error("Error fetching posts:", error))
     }
 
+
     const updatePosts = () => {
         getAllPosts()
     }
 
     const addReply = (postId, replyText) => {
         CommunityService
-            .addReply(postId, replyText)
+            .addReply(postId, replyText, user._id)
             .then(response => {
-                console.log('Reply added:', response.data);
                 getAllPosts();
             })
             .catch(error => console.error('Error adding reply:', error));
@@ -44,10 +46,9 @@ const CommunityPage = ({ getUser }) => {
                 <PostCard
                     key={post._id}
                     postId={post._id}
-                    username={post.username.username}
+                    owner={post.owner}
                     comment={post.comment}
                     date={post.date}
-                    replies={post.replies}
                     onAddReply={addReply}
                 />
             ))}

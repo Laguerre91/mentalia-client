@@ -1,24 +1,39 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card, Badge, Form, Button } from 'react-bootstrap'
+import CommunityService from './../../services/community.services'
 
 import './PostCard.css'
 
-const PostCard = ({ postId, username, comment, date, replies, onAddReply }) => {
+const PostCard = ({ postId, owner, comment, date, onAddReply }) => {
 
-    const [replyText, setReplyText] = useState('');
-    const [showReplies, setShowReplies] = useState(false);
+    const [replyText, setReplyText] = useState('')
+    const [showReplies, setShowReplies] = useState(false)
+    const [replies, setReplies] = useState([])
+
+    useEffect(() => {
+        // Fetch replies when the component mounts
+        getAllRepliesForPost(postId);
+    }, [postId]);
+
 
     const handleAddReply = () => {
-        onAddReply(postId, replyText);
-        setReplyText('');
+        getAllRepliesForPost(postId)
+        setReplyText('')
+    }
+
+    const getAllRepliesForPost = (postId) => {
+        CommunityService
+            .getAllRepliesForPost(postId)
+            .then(response => setReplies(response.data))
+            .catch(err => console.log(err))
     }
 
     return (
         <Card className="PostCard mb-3 w-50">
             <Card.Body>
                 <Card.Title className='post-title mb-4'>
-                    <Badge bg="info" className="me-3">{username}</Badge>
+                    <Badge bg="info" className="me-3">{owner.username}</Badge>
                     {date}
                 </Card.Title>
                 <Card.Text className='post-text'>{comment}</Card.Text>
@@ -32,7 +47,7 @@ const PostCard = ({ postId, username, comment, date, replies, onAddReply }) => {
                             <ul className="list-unstyled">
                                 {replies.map(reply => (
                                     <li key={reply._id}>
-                                        <strong>{reply.username.username}:</strong> {reply.comment}
+                                        <strong>{reply.owner.username}:</strong> {reply.reply}
                                     </li>
                                 ))}
                             </ul>

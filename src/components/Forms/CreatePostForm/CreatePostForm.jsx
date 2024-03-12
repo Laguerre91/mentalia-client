@@ -10,7 +10,7 @@ const CreatePostForm = ({ updatePosts }) => {
     const { user } = useContext(AuthContext)
 
     const initialPostState = {
-        username: user._id,
+        owner: user._id,
         comment: '',
         date: format(new Date(), "full"),
     }
