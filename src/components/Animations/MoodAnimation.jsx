@@ -4,8 +4,6 @@ import normal from '../../assets/normal.svg'
 import bad from '../../assets/mal.svg'
 import verybad from '../../assets/muy-mal.svg'
 
-import "./MoodAnimation.css"
-
 
 
 const MoodAnimation = ({ moodValue }) => {

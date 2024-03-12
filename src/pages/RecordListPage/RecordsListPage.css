@@ -1,6 +1,7 @@
 .RecordsListPage {
     padding-top: 40px;
     background-color: #E2DCEF;
+    min-height: 100vh;
 }
 
 .RecordsListPage .record-title {
