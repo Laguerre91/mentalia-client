@@ -22,7 +22,7 @@ const AppRoutes = () => {
 
             <Route element={<PrivateRoute />}>
                 <Route path="/usuario/:userId" element={<UserDashboardPage />} />
-                <Route path="/usuario/records" element={<RecordsListPage />} />
+                <Route path="/usuario/:userId/records" element={<RecordsListPage />} />
                 <Route path="/psicologos" element={<PsycologistsListPage />} />
                 <Route path="/comunidad" element={<CommunityPage />} />
             </Route>

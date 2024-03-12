@@ -1,23 +1,40 @@
-import RecordCard from '../RecordCard/RecordCard'
+import { useEffect, useContext, useState } from "react"
+import { Container, Row, Col } from "react-bootstrap"
+import RecordCard from "../RecordCard/RecordCard"
+import UserService from "../../services/user.services"
+import { AuthContext } from "../../context/auth.context"
+import { useParams } from "react-router-dom"
 
-import './RecordsList.css'
-import { Container, Row } from 'react-bootstrap'
+import "./RecordsList.css"
 
-const RecordsList = ({ userDetails, getUser }) => {
+const RecordList = () => {
+    const { user } = useContext(AuthContext)
+    const { userId } = useParams()
+
+    const [userDetails, setUserDetails] = useState({ records: [] })
+
+    useEffect(() => {
+        getUser()
+    }, [userId])
+
+    const getUser = () => {
+        UserService
+            .getUser(userId)
+            .then(({ data }) => setUserDetails(data))
+            .catch((err) => console.log(err))
+    }
 
     return (
-        <Container className='RecordsList'>
-
-            <Row>
-                {
-                    userDetails && userDetails.records && userDetails.records.map(record => <RecordCard {...record} key={record._id} getUser={getUser} />)
-                }
+        <Container className="RecordsList">
+            <Row xs={1} md={2} lg={3} className="g-5">
+                {userDetails.records.map((record) => (
+                    <Col key={record._id}>
+                        <RecordCard {...record} />
+                    </Col>
+                ))}
             </Row>
-
-
         </Container>
-
     )
 }
 
-export default RecordsList
+export default RecordList
