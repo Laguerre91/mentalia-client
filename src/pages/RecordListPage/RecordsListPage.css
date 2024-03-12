@@ -1,0 +1,9 @@
+.RecordsListPage {
+    padding-top: 40px;
+    background-color: #E2DCEF;
+}
+
+.RecordsListPage .record-title {
+    text-align: center;
+    margin-bottom: 60px;
+}

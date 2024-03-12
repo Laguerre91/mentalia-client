@@ -1,6 +1,7 @@
 import RecordCard from '../RecordCard/RecordCard'
 import './LatestRecord.css'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const LatestRecord = ({ userDetails, getUser }) => {
 
@@ -13,6 +14,9 @@ const LatestRecord = ({ userDetails, getUser }) => {
                     <RecordCard {...userDetails.records[userDetails.records.length - 1]} getUser={getUser} />
                 )}
             </Row>
+
+            <Link><Button>Ver todos los Moods</Button></Link>
+
         </Container>
     )
 }
