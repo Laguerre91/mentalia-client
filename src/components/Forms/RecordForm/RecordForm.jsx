@@ -17,7 +17,7 @@ const RecordForm = ({ onHide, getUser }) => {
         date: format(new Date(), "full"),
         user: user ? user._id : '',
         mood: 'Normal',
-        rateDay: '',
+        rateDay: 1,
         worries: [],
         didExercise: false,
         didHidrate: false,
@@ -27,7 +27,7 @@ const RecordForm = ({ onHide, getUser }) => {
         isMedicated: false,
         isMenstruating: false,
         hasPeriodPain: false,
-        weather: '',
+        weather: 'Sol',
         reflection: ''
     })
     const [checked, setChecked] = useState({})
@@ -109,7 +109,10 @@ const RecordForm = ({ onHide, getUser }) => {
             {
                 step === 0 && (
                     <Form.Group controlId="formStep0">
-                        <MoodAnimation moodValue={recordData.mood} />
+                        <div className="animation">
+                            <MoodAnimation moodValue={recordData.mood} />
+                        </div>
+
                         <Form.Range
                             min="0"
                             max="4"
@@ -124,19 +127,18 @@ const RecordForm = ({ onHide, getUser }) => {
 
             {
                 step === 1 && (
-                    <Form.Group controlId="formStep1">
-                        <Form.Select
-                            aria-label="Default select example"
-                            onChange={handleInputChange}
-                            name='rateDay'
-                            value={recordData.rateDay}>
-
-                            <option>¡Pónle nota a tu día!</option>
-
-                            {[...Array(10).keys()].map((value) => (
-                                <option key={value + 1}>{value + 1}</option>
-                            ))}
-                        </Form.Select>
+                    <Form.Group className='form-group' controlId="formStep1">
+                        <Form.Label className='label'>Pónle una nota a tu día:</Form.Label>
+                        <h1 className='number'>{recordData.rateDay}</h1>
+                        <Form.Range
+                            as="range"
+                            min="1"
+                            max="10"
+                            step="1"
+                            name="rateDay"
+                            value={recordData.rateDay}
+                            onChange={(handleInputChange)}
+                        />
                     </Form.Group>
                 )
             }
@@ -144,7 +146,7 @@ const RecordForm = ({ onHide, getUser }) => {
             {
                 step === 2 && (
                     <Form.Group controlId="formStep2">
-                        <Form.Label>¿Cuáles son tus preocupaciones hoy?</Form.Label>
+                        <Form.Label className='label'>¿Cuáles son tus preocupaciones hoy?</Form.Label>
                         <ToggleButtonGroup
                             type="checkbox"
                             className='worries-btns'>
@@ -170,8 +172,9 @@ const RecordForm = ({ onHide, getUser }) => {
 
             {
                 step === 3 && (
-                    <Form.Group controlId="formStep3">
-                        <Form.Label>Indica tus horas de sueño = <span>{recordData.hoursOfSleep}</span></Form.Label>
+                    <Form.Group className='form-group' controlId="formStep3">
+                        <Form.Label className='label'>Indica cuantas horas dormiste:</Form.Label>
+                        <h1 className='number'>{recordData.hoursOfSleep}</h1>
                         <Form.Range
                             as="range"
                             min="0"
@@ -188,7 +191,7 @@ const RecordForm = ({ onHide, getUser }) => {
             {
                 step === 4 && (
                     <Form.Group controlId="formStep4">
-                        <Form.Label>Responde a estas preguntas:</Form.Label>
+                        <Form.Label className='label'>Responde a estas preguntas:</Form.Label>
                         <div className="form-questions">
                             <Form.Check
                                 type="switch"
@@ -262,8 +265,11 @@ const RecordForm = ({ onHide, getUser }) => {
             {
                 step === 5 && (
                     <Form.Group controlId="formStep5">
+                        <Form.Label className='label'>¿Qué tiempo ha hecho hoy? - {recordData.weather}</Form.Label>
 
-                        <Form.Label>¿Qué tiempo ha hecho hoy? - {recordData.weather}</Form.Label>
+                        {/* <div className="animation">
+                            <WeatherAnimation moodValue={recordData.weather} />
+                        </div> */}
 
                         <Form.Range
                             as="range"
@@ -280,7 +286,7 @@ const RecordForm = ({ onHide, getUser }) => {
             {
                 step === 6 && (
                     <Form.Group controlId="formStep6">
-                        <Form.Label>Reflexión del día</Form.Label>
+                        <Form.Label className='label'>Reflexión del día</Form.Label>
                         <Form.Control
                             as="textarea"
                             rows={3}
@@ -303,7 +309,7 @@ const RecordForm = ({ onHide, getUser }) => {
                     </Button>
                 )}
                 {step === 6 && (
-                    <Button className="submit" type="submit">
+                    <Button className="btn-submit" type="submit">
                         Submit
                     </Button>
                 )}

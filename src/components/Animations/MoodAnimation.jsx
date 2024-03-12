@@ -33,7 +33,9 @@ const MoodAnimation = ({ moodValue }) => {
     }
 
     return (
-        <img src={moodImage} alt={moodValue} />
+        <div className="faces">
+            <img src={moodImage} alt={moodValue} />
+        </div>
     )
 }
 

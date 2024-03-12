@@ -14,6 +14,28 @@
   background: #7AB7D0;
 }
 
+.record-form .form-group {
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 20px;
+}
+
+.form-group .number {
+    font-size: 120px;
+    color: #7AB7D0;
+    text-align: center;
+}
+
+.record-form .animation {
+    width: 80%;
+    margin: auto;
+}
+
 .worries-btns {
     margin-top: 20px;
     display: grid;
@@ -76,6 +98,37 @@
 .record-form select:focus {
     outline: none;
     border-color: #81c2de;
+}
+
+.btn-prev {
+    background-color: rgb(162, 162, 162);
+    border-color: rgb(162, 162, 162);
+}
+
+.btn-prev:hover {
+    background-color: rgb(119, 119, 119);
+    border-color: rgb(119, 119, 119);
+}
+
+.btn-next {
+    background-color: #7AB7D0;
+    border-color: #7AB7D0;
+}
+
+.btn-next:hover {
+    background-color: #679aae;
+    border-color: #679aae;
+}
+
+.btn-submit {
+    background-color: #7AB7D0;
+    border-color: #7AB7D0;
+}
+
+.btn-submit:hover {
+    background-color: #679aae;
+    border-color: #679aae;
+
 }
 
 
