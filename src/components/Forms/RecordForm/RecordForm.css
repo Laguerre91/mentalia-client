@@ -82,22 +82,9 @@
     margin-top: -15px;
 }
 
-.record-form select {
-    margin-top: 30px;
-
-    background-color: whitesmoke;
-    color: #7AB7D0;
-    border: 2px solid #7AB7D0;
-    border-radius: 5px;
-    padding: 8px;
-    width: 100%;
-    transition: border-color 0.2s ease-in-out;
-}
-
-
-.record-form select:focus {
-    outline: none;
-    border-color: #81c2de;
+.weather-icons {
+    width: 80%;
+    margin: auto;
 }
 
 .btn-prev {

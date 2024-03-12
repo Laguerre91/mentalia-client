@@ -110,7 +110,7 @@ const RecordForm = ({ onHide, getUser }) => {
             {
                 step === 0 && (
                     <Form.Group controlId="formStep0">
-                        <div className="mood-animation">
+                        <div className="animation">
                             <MoodAnimation moodValue={recordData.mood} />
                         </div>
 
@@ -267,7 +267,7 @@ const RecordForm = ({ onHide, getUser }) => {
                 step === 5 && (
                     <Form.Group controlId="formStep5">
 
-                        <div className="weather-animation">
+                        <div className="animation">
                             <WeatherAnimation weatherValue={recordData.weather} />
                         </div>
 
