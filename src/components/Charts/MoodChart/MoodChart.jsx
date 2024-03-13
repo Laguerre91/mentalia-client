@@ -38,24 +38,30 @@ const MoodChart = () => {
 
     return (
         <div>
-            <h2>Moods</h2>
+            <h2 className='title'>Moods</h2>
             <Chart
                 width={'100%'}
-                height={'300px'}
+                height={'200px'}
                 chartType="PieChart"
                 loader={<div>Loading Chart</div>}
                 data={chartData}
                 options={{
-                    title: 'Moods',
                     pieHole: 0.5,
                     slices: {
-                        0: { color: '#FF0000' }, // Muy mal
-                        1: { color: '#FF5733' }, // Mal
-                        2: { color: '#FFFF00' }, // Normal
-                        3: { color: '#33FF00' }, // Bien
-                        4: { color: '#00FF00' }  // Muy bien
+                        0: { color: '#F7A4A6' }, // Muy mal
+                        1: { color: '#AFE0E9' }, // Mal
+                        2: { color: '#FCE573' }, // Normal
+                        3: { color: '#F7B1CB' }, // Bien
+                        4: { color: '#98D2AD' }  // Muy bien
                     },
                     backgroundColor: 'transparent',
+                    pieSliceTextStyle: {
+                        fontSize: 20
+                    },
+                    chartArea: {
+                        width: '100 %',
+                        height: '80%'
+                    }
                 }}
             />
         </div>
