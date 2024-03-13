@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Chart } from 'react-google-charts'
 import recordServices from '../../../services/record.services'
+import { formatDate } from '../../../utils/utils'
 import './RateDayChart.css'
 
 const RateDayChart = () => {
@@ -13,12 +14,13 @@ const RateDayChart = () => {
                 const allRecords = response.data
 
                 const sortedRecords = allRecords.sort((a, b) => new Date(b.date) - new Date(a.date))
-                const lastSevenDays = sortedRecords.slice(0, 7)
+                const lastSevenDays = sortedRecords.slice(0, 7).reverse()
 
                 const data = [['Day', 'RateDay']]
 
                 lastSevenDays.forEach((record) => {
-                    data.push([record.date, record.rateDay])
+                    const formattedDate = formatDate(new Date(record.date))
+                    data.push([formattedDate, record.rateDay])
                 })
 
                 setChartData(data)

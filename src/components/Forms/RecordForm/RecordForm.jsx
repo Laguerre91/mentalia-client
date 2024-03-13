@@ -1,11 +1,10 @@
 import './RecordForm.css'
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { AuthContext } from '../../../context/auth.context'
 import { Form, Button, ProgressBar, ToggleButton, ToggleButtonGroup, Row, Col } from 'react-bootstrap'
 import MoodAnimation from '../../Animations/MoodAnimation'
 import { HOURSOFSLEEP, MOOD_LABELS, WEATHER_LABELS, WORRIES } from '../../../consts/record.constants'
 import recordServices from '../../../services/record.services'
-import { format } from "@formkit/tempo"
 import WeatherAnimation from '../../Animations/WeatherAnimation'
 
 
@@ -15,7 +14,7 @@ const RecordForm = ({ onHide, getUser }) => {
 
     const [step, setStep] = useState(0)
     const [recordData, setRecordData] = useState({
-        date: format(new Date(), "full"),
+        date: new Date,
         user: user ? user._id : '',
         mood: 'Normal',
         rateDay: 1,
@@ -32,9 +31,6 @@ const RecordForm = ({ onHide, getUser }) => {
         reflection: ''
     })
     const [checked, setChecked] = useState({})
-
-    const [date, setDate] = useState(new Date())
-    const [time, setTime] = useState(0)
 
     const handleStep = (count = 1) => {
         const currentStep = step + count

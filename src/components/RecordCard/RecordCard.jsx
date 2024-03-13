@@ -3,7 +3,7 @@ import { Row, Col, Card, Nav, Button, Modal, Form } from 'react-bootstrap'
 import recordServices from '../../services/record.services'
 import './RecordCard.css'
 import EditRecordForm from "../../components/Forms/EditRecordForm/EditRecordForm"
-import { format } from "@formkit/tempo"
+import { formatDate } from "../../utils/utils"
 import MoodAnimation from '../Animations/MoodAnimation'
 
 const RecordCard = ({
@@ -105,7 +105,7 @@ const RecordCard = ({
                     </Nav>
                 </Card.Header>
                 <Card.Body>
-                    <Card.Title>{date}</Card.Title>
+                    <Card.Title>{formatDate(new Date(date))}</Card.Title>
                     <br />
                     {activeKey === '#mood' ? (
                         <>
