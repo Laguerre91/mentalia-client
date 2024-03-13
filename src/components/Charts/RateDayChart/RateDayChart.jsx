@@ -13,7 +13,6 @@ const RateDayChart = () => {
                 const allRecords = response.data
 
                 const sortedRecords = allRecords.sort((a, b) => new Date(b.date) - new Date(a.date))
-
                 const lastSevenDays = sortedRecords.slice(0, 7)
 
                 const data = [['Day', 'RateDay']]
@@ -33,7 +32,7 @@ const RateDayChart = () => {
 
     return (
         <>
-            <h2>Últimos 7 Días</h2>
+            <h2 className='title'>Últimos 7 Días</h2>
             <div className="chart-container">
                 <Chart
                     width={'100%'}

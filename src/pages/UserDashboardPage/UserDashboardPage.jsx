@@ -5,6 +5,8 @@ import AppointmentForm from "../../components/Forms/AppointmentForm/AppointmentF
 import AppointmentsList from "../../components/AppointmentsList/AppointmentsList"
 import LatestRecord from "../../components/LatestRecord/LatestRecord"
 import RateDayChart from "../../components/Charts/RateDayChart/RateDayChart"
+import SleepChart from "../../components/Charts/SleepChart/SleepChart"
+import MoodChart from "../../components/Charts/MoodChart/MoodChart"
 
 import './UserDashboardPage.css'
 
@@ -51,6 +53,8 @@ const UserDashboardPage = () => {
                     </div>
 
                     <RateDayChart />
+                    <SleepChart />
+                    <MoodChart />
                 </Col>
 
                 <Col md={3} className="records-and-appointments-column">
