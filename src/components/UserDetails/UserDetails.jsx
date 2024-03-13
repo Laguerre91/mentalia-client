@@ -6,7 +6,7 @@ import { Image } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
 
 import EditUserForm from '../Forms/EditUserForm/EditUserForm'
-
+import AppointmentForm from './../Forms/AppointmentForm/AppointmentForm'
 import UserService from '../../services/user.services'
 
 import './UserDetails.css'
@@ -92,7 +92,6 @@ const UserDetails = () => {
                     Por favor, completa la información en el formulario para obtener detalles sobre tu perfil.
                 </p>
             )}
-
             < EditUserForm getUser={getUser} />
 
             <div className='d-flex btn-logout'>

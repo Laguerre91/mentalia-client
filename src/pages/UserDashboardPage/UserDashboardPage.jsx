@@ -39,6 +39,8 @@ const UserDashboardPage = () => {
 
                 <Col md={3}>
                     <UserDetails />
+                    <AppointmentForm getUser={getUser} />
+                    <AppointmentsList userDetails={userDetails} getUser={getUser} />
                 </Col>
 
                 <Col md={6}>
@@ -55,8 +57,6 @@ const UserDashboardPage = () => {
 
                 <Col md={3} className="records-and-appointments-column">
                     <LatestRecord userDetails={userDetails} getUser={getUser} />
-                    <AppointmentForm getUser={getUser} />
-                    <AppointmentsList userDetails={userDetails} getUser={getUser} />
                 </Col>
 
             </Row>

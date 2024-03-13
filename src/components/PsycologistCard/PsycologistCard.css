@@ -1,7 +1,6 @@
 .PsycologistCard {
     padding: 20px;
     border-radius: 15px;
-    width: min-content;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
@@ -14,4 +13,22 @@
     background-color: #81c2de;
     border: none;
     padding: 5px 20px;
+}
+
+.PsycologistCard .psyc-image {
+    border: 1px solid rgba(0, 0, 0, 0.128);
+    box-shadow: rgba(0, 0, 0, 0.092) 1.95px 1.95px 2.6px;
+    width: 100%;
+}
+
+.PsycologistCard .btns-contact-appointment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 600px) {
+    .PsycologistCard {
+        width: 30%;
+    }
 }
