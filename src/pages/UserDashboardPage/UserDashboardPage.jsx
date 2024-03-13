@@ -53,7 +53,7 @@ const UserDashboardPage = () => {
                     <RateDayChart />
                 </Col>
 
-                <Col>
+                <Col md={3} className="records-and-appointments-column">
                     <LatestRecord userDetails={userDetails} getUser={getUser} />
                     <AppointmentForm getUser={getUser} />
                     <AppointmentsList userDetails={userDetails} getUser={getUser} />
