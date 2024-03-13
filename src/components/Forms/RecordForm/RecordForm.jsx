@@ -6,6 +6,7 @@ import MoodAnimation from '../../Animations/MoodAnimation'
 import { HOURSOFSLEEP, MOOD_LABELS, WEATHER_LABELS, WORRIES } from '../../../consts/record.constants'
 import recordServices from '../../../services/record.services'
 import { format } from "@formkit/tempo"
+import WeatherAnimation from '../../Animations/WeatherAnimation'
 
 
 const RecordForm = ({ onHide, getUser }) => {
@@ -265,11 +266,10 @@ const RecordForm = ({ onHide, getUser }) => {
             {
                 step === 5 && (
                     <Form.Group controlId="formStep5">
-                        <Form.Label className='label'>¿Qué tiempo ha hecho hoy? - {recordData.weather}</Form.Label>
 
-                        {/* <div className="animation">
-                            <WeatherAnimation moodValue={recordData.weather} />
-                        </div> */}
+                        <div className="animation">
+                            <WeatherAnimation weatherValue={recordData.weather} />
+                        </div>
 
                         <Form.Range
                             as="range"

@@ -146,10 +146,10 @@ const RecordCard = ({
                                 <p>{reflection}</p>
                             </Card.Text>
                             <div className="mood-btns">
-                                <Button className="w-50" variant="danger" onClick={handleShowCancelModal}>
+                                <Button className="w-30" variant="danger" onClick={handleShowCancelModal}>
                                     Borrar
                                 </Button>
-                                <Button className="w-50" variant="success" onClick={handleEditModal}>
+                                <Button className="w-30" variant="success" onClick={handleEditModal}>
                                     Editar
                                 </Button>
                             </div>
