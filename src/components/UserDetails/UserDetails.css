@@ -33,10 +33,9 @@
 }
 
 .UserCard .btn-logout {
-    font-size: 0.8em;
-    width: 55%;
+    font-size: 0.7em;
     margin-top: 10%;
-    margin-left: 25%;
+    margin-left: 27%;
     color: rgb(204, 4, 4);
     cursor: pointer;
 }

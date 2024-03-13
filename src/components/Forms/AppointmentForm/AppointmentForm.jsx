@@ -94,7 +94,7 @@ const AppointmentForm = ({ getUser }) => {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button className='btn-applyForDate' onClick={handleShow}>
                 Solicitar una cita
             </Button>
 
@@ -149,7 +149,7 @@ const AppointmentForm = ({ getUser }) => {
                                 onChange={handleCommentsChange}
                                 value={appointment.comments} />
                         </Form.Group>
-                        <Button onClick={handleClose} variant="warning" type="submit">Solicitar</Button>
+                        <Button onClick={handleClose} className='btn-appForm' type="submit">Solicitar</Button>
                     </Form>
                 </Modal.Body>
             </Modal>

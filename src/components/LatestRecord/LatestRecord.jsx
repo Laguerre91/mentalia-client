@@ -12,7 +12,7 @@ const LatestRecord = ({ userDetails, getUser }) => {
 
     return (
         <Container className="latest-record">
-            <h2>Ultimo registro</h2>
+            <h2 className='latestRecord-title'>Ultimo registro</h2>
             <hr />
             <Row >
                 {userDetails && userDetails.records && userDetails.records.length > 0 && (
