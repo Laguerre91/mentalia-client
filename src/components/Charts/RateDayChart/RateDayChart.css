@@ -1,0 +1,11 @@
+.google-visualization-columnchart-bar:hover {
+    filter: brightness(120%);
+    transition: filter 0.3s ease-in-out;
+}
+
+
+.chart-container {
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}

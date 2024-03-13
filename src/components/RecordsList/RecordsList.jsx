@@ -21,7 +21,6 @@ const RecordList = () => {
             .getUser(userId)
             .then(({ data }) => {
                 setUserDetails(data)
-                getUser()
             })
             .catch((err) => console.log(err))
     }
