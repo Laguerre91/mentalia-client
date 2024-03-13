@@ -1,4 +1,5 @@
 import PsycologistsList from "../../components/PsycologistsList/PsycologistsList"
+
 import './PsycologistsListPage.css'
 
 const PsycologistsListPage = () => {

@@ -1,11 +1,15 @@
 import { useState } from 'react';
+
+
 import { Card, Button, Modal } from 'react-bootstrap'
+
+import AppointmentForm from "../../components/Forms/AppointmentForm/AppointmentForm"
 
 import './PsycologistCard.css'
 
 const PsycologistCard = ({ _id, name, profileImage, yearsOfExperience, rate, contact }) => {
 
-    const [showContactInfo, setShowContactInfo] = useState(false);
+    const [showContactInfo, setShowContactInfo] = useState(false)
 
     const handleContactClick = () => {
         setShowContactInfo(true);
@@ -27,7 +31,8 @@ const PsycologistCard = ({ _id, name, profileImage, yearsOfExperience, rate, con
                     {yearsOfExperience} años de experiencia
                     Promedio de calificacion: {rate}
                 </Card.Text>
-                <Button className='btn-card' onClick={handleContactClick}>Contactar</Button>
+                <Button className='btn-card mb-2' onClick={handleContactClick}>Contactar</Button>
+                <AppointmentForm />
             </Card.Body>
 
             <Modal show={showContactInfo} onHide={handleCloseContactInfo}>

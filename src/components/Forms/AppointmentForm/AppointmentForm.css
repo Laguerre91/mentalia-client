@@ -19,3 +19,8 @@
     background-color: #81c2de;
     border: none;
 }
+
+.btn-applyForDate:hover {
+    background-color: white;
+    color: #81c2de;
+}

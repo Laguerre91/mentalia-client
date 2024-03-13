@@ -71,14 +71,21 @@ const UserDetails = () => {
                         <Icon.Heart />
                         <p>{user.sentimentalStatus}</p>
                     </div>
-                    <div className='d-flex'>
-                        <Icon.GenderTrans />
-                        <p>{user.gender}</p>
-                    </div>
-                    <div className='d-flex'>
-                        🏳️‍🌈
-                        <p className='ms-2'>{user.sexualOrientation} </p>
-                    </div>
+                    {
+                        user.gender === "Prefiero no responder" ?
+                            <div className='d-none'></div> :
+                            <div className='d-flex'>
+                                <Icon.GenderTrans />
+                                <p>{user.gender}</p>
+                            </div>
+                    }
+                    {
+                        user.sexualOrientation === "Prefiero no responder" ? <div className='d-none'></div> :
+                            <div className='d-flex'>
+                                🏳️‍🌈
+                                <p className='ms-2'>{user.sexualOrientation} </p>
+                            </div>
+                    }
                 </div>
             ) : (
                 <p>

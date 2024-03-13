@@ -9,6 +9,7 @@ import 'react-calendar/dist/Calendar.css'
 import './AppointmentForm.css'
 
 import { Form, Button, Modal } from 'react-bootstrap'
+import * as Icon from 'react-bootstrap-icons'
 
 import PsycologistService from './../../../services/psyc.services'
 import appointmentServices from '../../../services/appointment.services'
@@ -95,6 +96,7 @@ const AppointmentForm = ({ getUser }) => {
     return (
         <>
             <Button className='btn-applyForDate' onClick={handleShow}>
+                <Icon.Calendar4Event />
                 Solicitar una cita
             </Button>
 
