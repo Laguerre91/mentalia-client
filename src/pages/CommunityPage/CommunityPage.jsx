@@ -27,7 +27,7 @@ const CommunityPage = () => {
 
             <CreatePostForm updatePosts={getAllPosts} />
 
-            <h2>Publicaciones de la comunidad</h2>
+            <h2 className="">Publicaciones de la comunidad</h2>
             <div className="posts-list">
                 {
                     posts.map(post => <PostCard key={post._id} {...post} />)
