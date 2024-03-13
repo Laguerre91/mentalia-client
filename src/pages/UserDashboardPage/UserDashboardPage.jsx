@@ -34,7 +34,6 @@ const UserDashboardPage = () => {
             .catch((err) => console.log(err))
     }
 
-
     return (
         <section className="UserDashboardPage">
             <Row>

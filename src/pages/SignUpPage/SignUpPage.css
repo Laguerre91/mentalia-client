@@ -1,8 +1,3 @@
-.SignupPage .signup-form-container {
-    min-height: 100vh;
-    min-width: 100vw;
-}
-
 .SignupPage .signup-form {
     position: relative;
     left: 10%;
