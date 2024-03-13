@@ -30,11 +30,8 @@ const SignupForm = () => {
 
         e.preventDefault();
 
-        const { email, password, username } = userData
-        const requestBody = { email, password, username };
-
         AuthService
-            .signUpUser(requestBody)
+            .signUpUser(userData)
             .then(() => {
                 navigate('/login');
             })

@@ -1,36 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import { Chart } from 'react-google-charts'
-import recordServices from '../../../services/record.services'
+import UserService from "../../../services/user.services"
 import { formatDate } from '../../../utils/utils'
 import './RateDayChart.css'
+import { useParams } from 'react-router-dom'
 
 const RateDayChart = () => {
-    const [chartData, setChartData] = useState([])
+    const { userId } = useParams()
+    const [chartData, setChartData] = useState({ records: [] })
 
     useEffect(() => {
-        const lastSevenDays = async () => {
-            try {
-                const response = await recordServices.getAllRecords()
-                const allRecords = response.data
+        const lastSevenDays = () => {
+            UserService
+                .getUser(userId)
+                .then(response => {
+                    const allRecords = response.data.records
 
-                const sortedRecords = allRecords.sort((a, b) => new Date(b.date) - new Date(a.date))
-                const lastSevenDays = sortedRecords.slice(0, 7).reverse()
+                    const sortedRecords = allRecords.sort((a, b) => new Date(b.date) - new Date(a.date))
+                    const lastSevenDays = sortedRecords.slice(0, 7).reverse()
 
-                const data = [['Day', 'RateDay']]
+                    const data = [['Day', 'RateDay']]
 
-                lastSevenDays.forEach((record) => {
-                    const formattedDate = formatDate(new Date(record.date))
-                    data.push([formattedDate, record.rateDay])
+                    lastSevenDays.forEach(record => {
+                        const formattedDate = formatDate(new Date(record.date))
+                        data.push([formattedDate, record.rateDay])
+                    })
+
+                    setChartData(data)
                 })
-
-                setChartData(data)
-            } catch (error) {
-                console.error('Error fetching data:', error)
-            }
+                .catch(error => {
+                    console.error('Error fetching data:', error)
+                })
         }
 
         lastSevenDays()
-    }, [])
+    }, [userId])
 
     return (
         <>
