@@ -128,6 +128,7 @@ const AppointmentForm = ({ getUser }) => {
                                 onChange={handleCalendarChange}
                                 value={date}
                                 required={true}
+                                minDate={new Date()}
                                 clearIcon={null} />
                         </Form.Group>
 

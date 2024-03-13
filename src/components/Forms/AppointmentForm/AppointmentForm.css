@@ -10,6 +10,10 @@
     margin-bottom: 0;
 }
 
+.AppointmentForm .form-appointment-calendar {
+    border-radius: 10px;
+}
+
 .btn-appForm {
     background-color: #81c2de;
     border: none;

@@ -38,12 +38,22 @@ const PostCard = ({ _id: postId, owner, comment, date }) => {
     };
 
     const deletePost = () => {
-        CommunityService.deletePost(postId)
-            .then(() => {
-                setDeleted(true);
-            })
-            .catch((err) => console.log(err));
+        if (user && owner._id === user._id) {
+            CommunityService
+                .deletePost(postId)
+                .then(() => {
+                    setDeleted(true);
+                })
+                .catch((err) => console.log(err));
+        }
     };
+
+    const renderDeleteButton = user && owner._id === user._id && (
+        <Icon.Trash3Fill
+            onClick={deletePost}
+            color='Crimson'
+            size={22} />
+    );
 
     const onDeleteReply = (deletedReplyId) => {
         const updatedReplies = replies.filter((reply) => reply._id !== deletedReplyId);
@@ -80,10 +90,7 @@ const PostCard = ({ _id: postId, owner, comment, date }) => {
                         )}
                     </>
                 )}
-                <Icon.Trash3Fill
-                    onClick={deletePost}
-                    color='Crimson'
-                    size={22} />
+                {renderDeleteButton}
             </Card.Body>
             <hr />
             <Form className='addReply-form mb-4' onSubmit={addReply}>
