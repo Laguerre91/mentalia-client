@@ -13,9 +13,21 @@
 .btn-appForm {
     background-color: #81c2de;
     border: none;
+    border: 1px solid #81c2de;
+}
+
+.btn-appForm:hover {
+    background-color: white;
+    color: #81c2de;
+    border: 1px solid #81c2de;
 }
 
 .btn-applyForDate {
     background-color: #81c2de;
     border: none;
+}
+
+.btn-applyForDate:hover {
+    background-color: white;
+    color: #81c2de;
 }

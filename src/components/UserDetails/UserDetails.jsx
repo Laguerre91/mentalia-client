@@ -6,7 +6,7 @@ import { Image } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
 
 import EditUserForm from '../Forms/EditUserForm/EditUserForm'
-
+import AppointmentForm from './../Forms/AppointmentForm/AppointmentForm'
 import UserService from '../../services/user.services'
 
 import './UserDetails.css'
@@ -71,21 +71,27 @@ const UserDetails = () => {
                         <Icon.Heart />
                         <p>{user.sentimentalStatus}</p>
                     </div>
-                    <div className='d-flex'>
-                        <Icon.GenderTrans />
-                        <p>{user.gender}</p>
-                    </div>
-                    <div className='d-flex'>
-                        🏳️‍🌈
-                        <p className='ms-2'>{user.sexualOrientation} </p>
-                    </div>
+                    {
+                        user.gender === "Prefiero no responder" ?
+                            <div className='d-none'></div> :
+                            <div className='d-flex'>
+                                <Icon.GenderTrans />
+                                <p>{user.gender}</p>
+                            </div>
+                    }
+                    {
+                        user.sexualOrientation === "Prefiero no responder" ? <div className='d-none'></div> :
+                            <div className='d-flex'>
+                                🏳️‍🌈
+                                <p className='ms-2'>{user.sexualOrientation} </p>
+                            </div>
+                    }
                 </div>
             ) : (
                 <p>
                     Por favor, completa la información en el formulario para obtener detalles sobre tu perfil.
                 </p>
             )}
-
             < EditUserForm getUser={getUser} />
 
             <div className='d-flex btn-logout'>

@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import { AuthContext } from '../../../context/auth.context'
-import { Form, Button, Image } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import { format } from "@formkit/tempo"
 import CommunityService from './../../../services/community.services'
 
@@ -40,10 +40,11 @@ const CreatePostForm = ({ updatePosts }) => {
     }
 
     return (
-        <Form onSubmit={handleFormSubmit} className='mb-4'>
+        <Form onSubmit={handleFormSubmit} className='form-addPost mb-5'>
             <Form.Group className='form-appointment-group mb-2'>
-                <Form.Label>Hola {user.username}</Form.Label>
+                <Form.Label className='form-addPost-username'>¡Hola, {user.username}!</Form.Label>
                 <Form.Control
+                    className='form-textArea'
                     placeholder="Comparte tus ideas con la comunidad"
                     as="textarea"
                     value={newPost.comment}

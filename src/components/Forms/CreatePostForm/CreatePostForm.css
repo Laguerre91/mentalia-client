@@ -1,4 +1,28 @@
+.form-addPost {
+    border-radius: 20px;
+    padding: 10px 30px;
+    background-color: white;
+    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.form-addPost-username {
+    font-weight: 500;
+}
+
+.form-textArea {
+    border: 1px solid rgba(0, 0, 0, 0.306);
+    border-radius: 20px;
+}
+
 .btn-post {
+    padding: 5px 15px;
     background-color: #81c2de;
     border: none;
+}
+
+@media (min-width: 600px) {
+    .form-addPost {
+        width: 50%;
+    }
 }

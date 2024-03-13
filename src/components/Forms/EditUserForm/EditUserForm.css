@@ -15,3 +15,9 @@
     margin-left: 12%;
     border: 1px solid #81c2de;
 }
+
+.btn-edit-user:hover {
+    background-color: white;
+    color: #81c2de;
+    border: 1px solid #81c2de;
+}

@@ -40,6 +40,10 @@ class CommunityService {
         return this.axiosApp.delete(`/api/comunidad/posts/${_id}`)
     }
 
+    deleteReply = (_id) => {
+        return this.axiosApp.delete(`/api/comunidad/replies/${_id}`)
+    }
+
 }
 
 export default new CommunityService()
