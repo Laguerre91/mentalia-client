@@ -37,8 +37,7 @@ const UserDashboardPage = () => {
     return (
         <section className="UserDashboardPage">
             <Row>
-
-                <Col md={3}>
+                <Col md={3} className="user-column">
                     <UserDetails />
                     <AppointmentForm getUser={getUser} />
                     <AppointmentsList userDetails={userDetails} getUser={getUser} />

@@ -5,8 +5,9 @@
     padding-top: 50px;
 }
 
-.posts-list {
+.CommunityPage .posts-list {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-top: 110px;
 }

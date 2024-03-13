@@ -27,7 +27,7 @@ const ReplyCard = ({ reply, onDeleteReply }) => {
 
     return (
         <li className='d-flex post-replies-list'>
-            <Image className='post-reply-image me-2' src={reply.owner.imageUrl} alt={`Picture of ${reply.owner.username}`} roundedCircle />
+            <img className='post-reply-image me-2' src={reply.owner.imageUrl} alt={`Picture of ${reply.owner.username}`} />
             <div className='d-flex flex-column post-reply-section'>
                 <strong className='post-reply-username mb-1'>{reply.owner.username}</strong>
                 <p className="mb-0">{reply.reply}</p>
