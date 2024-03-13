@@ -68,7 +68,7 @@ const PostCard = ({ _id: postId, owner, comment, date }) => {
         <Card className='PostCard mb-3'>
             <Card.Body>
                 <Card.Title className='post-title mb-4'>
-                    <Image className='post-user-img' src={owner.imageUrl} roundedCircle />
+                    <img className='post-user-img' src={owner.imageUrl} />
                     <Badge bg='dark' className='post-username me-3 ms-3'>
                         {owner.username}
                     </Badge>

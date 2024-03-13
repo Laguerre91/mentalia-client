@@ -6,7 +6,6 @@ import { Image } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
 
 import EditUserForm from '../Forms/EditUserForm/EditUserForm'
-import AppointmentForm from './../Forms/AppointmentForm/AppointmentForm'
 import UserService from '../../services/user.services'
 
 import './UserDetails.css'
@@ -38,9 +37,9 @@ const UserDetails = () => {
 
             <div className='user-greetings d-flex m-2 mb-3'>
                 {user.imageUrl ? (
-                    <Image className='w-25' src={user.imageUrl} roundedCircle />
+                    <img className='user-picture' src={user.imageUrl} />
                 ) : (
-                    <p className='user-picture-placeholder  me-1'>Carga tu imagen de perfil</p>
+                    <p className='user-picture-placeholder me-1'>Carga tu imagen de perfil</p>
                 )}
                 <h2 className='m-2'>¡Hola, {user.username}!</h2>
             </div>
@@ -88,7 +87,8 @@ const UserDetails = () => {
                     }
                 </div>
             ) : (
-                <p>
+                <p className='user-noInfo'>
+                    <Icon.InfoCircle />
                     Por favor, completa la información en el formulario para obtener detalles sobre tu perfil.
                 </p>
             )}

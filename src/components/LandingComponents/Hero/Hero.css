@@ -18,7 +18,7 @@
 .hero .hero-title {
     width: 80%;
     margin-left: 10%;
-    font-size: 2.5em;
+    font-size: 2em;
     padding: 15px;
     font-weight: 700;
     margin-bottom: 30px;
@@ -29,6 +29,7 @@
     left: 10%;
     width: 80%;
     font-weight: 300;
+    font-size: 1.1em;
 }
 
 .hero .hero-btn-signup {
@@ -56,6 +57,7 @@
     }
 
     .hero .hero-description {
+        font-size: 1.4em;
         left: 20%;
         width: 60%;
     }

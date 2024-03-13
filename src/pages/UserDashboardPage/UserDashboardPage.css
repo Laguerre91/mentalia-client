@@ -4,6 +4,10 @@
   min-height: 100vh;
 }
 
+.UserDashboardPage .user-column {
+  text-align: center;
+}
+
 .UserDashboardPage .user-feelCard {
   background-color: white;
   padding: 30px;
@@ -52,4 +56,3 @@
 .UserDashboardPage .records-and-appointments-column {
   text-align: center;
 }
-

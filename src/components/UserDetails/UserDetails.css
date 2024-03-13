@@ -17,11 +17,21 @@
 }
 
 .UserCard .user-picture-placeholder {
+    font-size: 0.7em;
     color: red;
 }
 
+.UserCard .user-noInfo {
+    text-align: start;
+    padding: 30px;
+    font-size: 0.8em;
+}
+
 .UserCard .user-picture {
+    width: 80px;
+    height: 80px;
     border-radius: 100px;
+    object-fit: cover;
 }
 
 .UserCard .user-details {

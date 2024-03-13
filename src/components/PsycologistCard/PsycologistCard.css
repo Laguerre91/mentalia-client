@@ -16,8 +16,6 @@
 }
 
 .PsycologistCard .psyc-image {
-    border: 1px solid rgba(0, 0, 0, 0.128);
-    box-shadow: rgba(0, 0, 0, 0.092) 1.95px 1.95px 2.6px;
     width: 100%;
 }
 
