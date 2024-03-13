@@ -1,25 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { Chart } from 'react-google-charts'
-import recordServices from '../../../services/record.services'
+import UserService from '../../../services/user.services'
+import { formatDate } from '../../../utils/utils'
+
 import './SleepChart.css'
 
 
 const SleepChart = () => {
-    const [chartData, setChartData] = useState([])
+    const { userId } = useParams()
+    const [chartData, setChartData] = useState({ records: [] })
 
     useEffect(() => {
-        const getLastSevenDaysSleep = () => {
-            recordServices.getAllRecords()
+        const lastSevenDays = () => {
+            UserService
+                .getUser(userId)
                 .then(response => {
-                    const allRecords = response.data
+                    const allRecords = response.data.records
 
                     const sortedRecords = allRecords.sort((a, b) => new Date(b.date) - new Date(a.date))
-                    const lastSevenDays = sortedRecords.slice(0, 7)
+                    const lastSevenDays = sortedRecords.slice(0, 7).reverse()
 
                     const data = [['Date', 'Hours of Sleep']]
 
-                    lastSevenDays.forEach((record) => {
-                        data.push([record.date, record.hoursOfSleep])
+                    lastSevenDays.forEach(record => {
+                        const formattedDate = formatDate(new Date(record.date))
+                        data.push([formattedDate, record.hoursOfSleep])
                     })
 
                     setChartData(data)
@@ -29,7 +35,7 @@ const SleepChart = () => {
                 })
         }
 
-        getLastSevenDaysSleep()
+        lastSevenDays()
     }, [])
 
     return (
@@ -44,6 +50,8 @@ const SleepChart = () => {
                     data={chartData}
                     options={{
                         vAxis: {
+                            minValue: 0,
+                            maxValue: 12,
                             gridlines: { color: 'transparent' },
                         },
                         legend: 'none',

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { Chart } from 'react-google-charts'
 import UserService from "../../../services/user.services"
 import { formatDate } from '../../../utils/utils'
+
 import './RateDayChart.css'
-import { useParams } from 'react-router-dom'
 
 const RateDayChart = () => {
     const { userId } = useParams()
