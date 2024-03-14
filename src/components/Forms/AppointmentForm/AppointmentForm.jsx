@@ -28,7 +28,7 @@ const AppointmentForm = ({ getUser }) => {
 
     const initialAppointmentState = {
         date: format(initialDate, "full"),
-        time: initialTime,
+        time: '10:00',
         psycologist: '',
         client: user._id,
         comments: ''
@@ -39,7 +39,7 @@ const AppointmentForm = ({ getUser }) => {
     const [psycologists, setPsycologists] = useState([])
 
     const [date, setDate] = useState(initialDate)
-    const [time, setTime] = useState(initialTime)
+    const [time, setTime] = useState('10:00')
 
     useEffect(() => {
         getAllPsycologists()

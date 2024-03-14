@@ -2,6 +2,8 @@ import './SecondDescriptionSection.css'
 import { Col, Row, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
+import Blob2 from './../../../assets/Vector.svg'
+
 const SecondDescriptionSection = () => {
     return (
         <section className='SecondDescriptionSection'>
@@ -14,7 +16,7 @@ const SecondDescriptionSection = () => {
                     </Link>
                 </Col>
                 <Col>
-
+                    <img className='w-75 mt-5' src={Blob2} alt="Image" />
                 </Col>
             </Row>
         </section>

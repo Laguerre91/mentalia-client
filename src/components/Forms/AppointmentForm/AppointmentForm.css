@@ -35,3 +35,33 @@
     background-color: white;
     color: #81c2de;
 }
+
+.react-calendar {
+    width: 300px !important;
+    background: #f4f7f7 !important;
+    border: 1px solid #8ecce7c7 !important;
+}
+
+.react-calendar__tile--active {
+    border-radius: 25px !important;
+    background: #32a6d8 !important;
+}
+
+.react-calendar__tile--now {
+    border-radius: 25px !important;
+    background: rgba(227, 188, 227, 0.854) !important;
+}
+
+.react-calendar__navigation button:disabled {
+    background-color: rgba(156, 192, 218, 0.835) !important;
+}
+
+.react-calendar__tile:disabled {
+    background-color: rgba(207, 215, 221, 0.812) !important;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+    border-radius: 25px !important;
+    background: #32a6d8 !important;
+}
