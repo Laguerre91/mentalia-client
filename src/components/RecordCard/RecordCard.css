@@ -5,14 +5,29 @@
     padding: 10px;
 }
 
-.recordcard .card-title {
-    font-size: 18px;
+.recordcard .title {
+    font-size: 15px;
+    color: #7AB7D0;
+}
+
+.recordcard .title span {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.recordcard .weather-animation {
+    font-size: 2em; 
 }
 
 .worries-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-badge {
+    background-color: #F7B9B5 !important;
+    color: white;
+    margin: 5px;
 }
 
 .emojis {
