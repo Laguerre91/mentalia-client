@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { Row, Col, Card, Nav, Button, Modal, Form } from 'react-bootstrap'
+import { Row, Col, Card, Nav, Button, Modal, Badge } from 'react-bootstrap'
 import recordServices from '../../services/record.services'
 import './RecordCard.css'
 import EditRecordForm from "../../components/Forms/EditRecordForm/EditRecordForm"
 import { formatDate } from "../../utils/utils"
 import MoodAnimation from '../Animations/MoodAnimation'
+import WeatherAnimation from '../Animations/WeatherAnimation'
 
 const RecordCard = ({
     _id,
@@ -104,40 +105,48 @@ const RecordCard = ({
                         </Row>
                     </Nav>
                 </Card.Header>
+                <Card.Title className='title'>
+                    {formatDate(new Date(date))}
+                </Card.Title>
                 <Card.Body>
-                    <Card.Title>{formatDate(new Date(date))}</Card.Title>
-                    <br />
                     {activeKey === '#mood' ? (
                         <>
                             <Card.Text>
                                 <Row>
                                     <Col>
-                                        <p>Preocupaciones:</p>
-                                        <div className="worries-grid">
-                                            {worries.map((worry, index) => (
-                                                <div key={index}>{worry}</div>
-                                            ))}
-                                        </div>
+                                        <MoodAnimation moodValue={mood} />
                                     </Col>
                                     <Col>
-                                        <p> Un día de {rateDay}</p>
-                                        <MoodAnimation moodValue={mood} />
+                                        <WeatherAnimation weatherValue={weather} />
                                     </Col>
                                 </Row>
                             </Card.Text>
                         </>
                     ) : activeKey === '#moredetails' ? (
                         <>
-                            <div className="emojis">
-                                {didExercise && <span>🏋️‍♂️</span>}
-                                {didHidrate && <span>💧</span>}
-                                {ateHealthy && <span>🥗</span>}
-                                {hasPsyc && <span>🧘</span>}
-                                {isMedicated && <span>💊</span>}
-                                {isMenstruating && <span>🩸</span>}
-                                {hasPeriodPain && <span>😣</span>}
-                            </div>
-                            <p>Dormí {hoursOfSleep} horas</p>
+                            <Row>
+                                <Col className="worries-grid">
+
+                                    {worries.map((worry, index) => (
+                                        <Badge key={index} className="custom-badge">
+                                            {worry}
+                                        </Badge>
+                                    ))}
+
+                                </Col>
+                                <br />
+                                <Col>
+                                    <div className="emojis">
+                                        {didExercise && <span>🏋️‍♂️</span>}
+                                        {didHidrate && <span>💧</span>}
+                                        {ateHealthy && <span>🥗</span>}
+                                        {hasPsyc && <span>🧘</span>}
+                                        {isMedicated && <span>💊</span>}
+                                        {isMenstruating && <span>🩸</span>}
+                                        {hasPeriodPain && <span>😣</span>}
+                                    </div>
+                                </Col>
+                            </Row>
                         </>
                     ) : (
                         <>

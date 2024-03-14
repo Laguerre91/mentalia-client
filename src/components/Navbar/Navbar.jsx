@@ -17,7 +17,7 @@ function NavBar() {
     const handleModalClose = () => setShowModal(false)
 
     return (
-        <Navbar expand="md" className="Navbar">
+        <Navbar expand="lg" className="Navbar bg-body-tertiary">
             <Container fluid>
                 <Link to={'/'}><img src={logo} alt="Logo de Mentalia" className="logo"></img></Link>
                 <Navbar.Toggle
@@ -25,6 +25,7 @@ function NavBar() {
                     onClick={() => setShowOffcanvas(!showOffcanvas)}
                 />
                 <Navbar.Offcanvas
+                    className="offcanvas"
                     id="offcanvasNavbar-expand-md"
                     aria-labelledby="offcanvasNavbarLabel-expand-md"
                     placement="end"
