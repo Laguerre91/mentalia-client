@@ -42,7 +42,7 @@ const AboutUsPage = () => {
                 </div>
             </div>
             <div className='aboutUs-description w-50'>
-                <p>Somos estudiantes entusiastas de desarrollo web en Ironhack, comprometidos con el aprendizaje y la innovación. Mi compañero Francisco y yo formamos un equipo dinámico que combina habilidades creativas y técnicas. <br />
+                <p>Somos Francisco y Lara, estudiantes entusiastas de desarrollo web en Ironhack, comprometidos con el aprendizaje y la innovación. Formamos un equipo dinámico que combina habilidades creativas y técnicas. <br />
                     Este proyecto no solo es el resultado de nuestro arduo trabajo, sino también un testimonio de nuestro compromiso con la excelencia y la innovación en el campo del desarrollo web. Estamos emocionados de presentar nuestro proyecto final como un paso más en nuestro viaje hacia el éxito en la industria tecnológica.
                 </p>
             </div>
