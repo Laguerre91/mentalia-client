@@ -30,7 +30,7 @@ const RecordList = () => {
             <Row xs={1} md={2} lg={3} className="g-5">
                 {userDetails.records.map((record) => (
                     <Col key={record._id}>
-                        <RecordCard {...record} />
+                        <RecordCard {...record} getUser={getUser} />
                     </Col>
                 ))}
             </Row>

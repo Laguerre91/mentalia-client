@@ -87,19 +87,24 @@ const RecordCard = ({
                 <Card.Header>
                     <Nav variant="pills" activeKey={activeKey} onSelect={handleNavSelect}>
                         <Row>
-                            <Col xs={4}>
+                            <Col xs={3}>
                                 <Nav.Item>
                                     <Nav.Link eventKey="#mood">1</Nav.Link>
                                 </Nav.Item>
                             </Col>
-                            <Col xs={4}>
+                            <Col xs={3}>
                                 <Nav.Item>
-                                    <Nav.Link eventKey="#moredetails">2</Nav.Link>
+                                    <Nav.Link eventKey="#stats">2</Nav.Link>
                                 </Nav.Item>
                             </Col>
-                            <Col xs={4}>
+                            <Col xs={3}>
                                 <Nav.Item>
-                                    <Nav.Link eventKey="#reflection">3</Nav.Link>
+                                    <Nav.Link eventKey="#moredetails">3</Nav.Link>
+                                </Nav.Item>
+                            </Col>
+                            <Col xs={3}>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="#reflection">4</Nav.Link>
                                 </Nav.Item>
                             </Col>
                         </Row>
@@ -121,6 +126,19 @@ const RecordCard = ({
                                     </Col>
                                 </Row>
                             </Card.Text>
+                        </>
+                    ) : activeKey === '#stats' ? (
+                        <>
+                            <Row className='stats'>
+                                <Col className="rateDay">
+                                    <h1>{rateDay}</h1>
+                                    <p>Nota del día</p>
+                                </Col>
+                                <br />
+                                <Col className='hoursOfSleep'>
+                                    <h1>{hoursOfSleep}</h1>
+                                    <p>Horas de sueño</p>                                </Col>
+                            </Row>
                         </>
                     ) : activeKey === '#moredetails' ? (
                         <>
@@ -150,8 +168,8 @@ const RecordCard = ({
                         </>
                     ) : (
                         <>
-                            <Card.Text>
-                                <p>Reflexión:</p>
+                            <Card.Text className='reflection'>
+                                <h2>Reflexión:</h2>
                                 <p>{reflection}</p>
                             </Card.Text>
                             <div className="mood-btns">

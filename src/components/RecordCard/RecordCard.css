@@ -7,7 +7,7 @@
 
 .recordcard .title {
     font-size: 15px;
-    color: #7AB7D0;
+    color: #585757;
 }
 
 .recordcard .title span {
@@ -16,7 +16,17 @@
 }
 
 .recordcard .weather-animation {
-    font-size: 2em; 
+  font-size: 2em; 
+}
+
+.stats h1 {
+  font-size: 3em;
+  color: #F7A4A6;
+}
+
+.stats p {
+  font-size: .7em;
+  color: #585757;
 }
 
 .worries-grid {
@@ -27,11 +37,17 @@
 .custom-badge {
     background-color: #F7B9B5 !important;
     color: white;
-    margin: 5px;
+    margin  : 5px;
 }
 
 .emojis {
     font-size: 3em;
+}
+
+.recordcard .card-header {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
 }
 
 .recordcard .nav-pills .nav-link {
@@ -73,4 +89,14 @@
 .recordcard .mood-btns .btn-success {
   padding: 5px 12px; 
   font-size: 14px; 
+}
+
+.reflection h2 {
+  font-size: 1.5em;
+  color: #7AB7D0;
+}
+
+.reflection p {
+  font-size: 1em;
+  color: #585757;
 }

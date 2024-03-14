@@ -3,7 +3,9 @@
 }
 
 .Navbar .logo {
-    width: 20%;
+    width: 40%;
+    display: block;
+    padding-left: 20px;
 }
 
 .Navbar .navbar-button {
@@ -65,4 +67,16 @@
 .Navbar .nav-dropdown a:hover {
     background-color: #81c2de;
     color: #fff;
+}
+
+.responsive-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (min-width:600px) {
+    .Navbar .logo {
+        width: 20%;
+        padding-left: 20px;
+    }
 }
