@@ -40,6 +40,7 @@ const RateDayChart = () => {
         lastSevenDays()
     }, [userId])
 
+
     return (
         <>
             <h2 className='title'>Últimos 7 Días</h2>
@@ -47,28 +48,32 @@ const RateDayChart = () => {
                 <div>Loading...</div>
             ) : (
                 <div className="chart-container">
-                    <Chart
-                        width={'100%'}
-                        height={'300px'}
-                        chartType="ColumnChart"
-                        loader={<div>Loading Chart</div>}
-                        data={chartData}
-                        options={{
-                            hAxis: { textPosition: 'none' },
-                            vAxis: {
-                                minValue: 0,
-                                maxValue: 10,
-                                gridlines: { color: 'transparent' },
-                            },
-                            legend: 'none',
-                            series: {
-                                0: { type: 'bars' },
-                            },
-                            bar: { borderRadius: 20 },
-                            colors: ['#7AB7D0'],
-                        }}
-                    />
-                </div>
+                    {chartData.length > 1 ? (
+                        <Chart
+                            width={'100%'}
+                            height={'300px'}
+                            chartType="ColumnChart"
+                            loader={<div>Loading Chart</div>}
+                            data={chartData}
+                            options={{
+                                hAxis: { textPosition: 'none' },
+                                vAxis: {
+                                    minValue: 0,
+                                    maxValue: 10,
+                                    gridlines: { color: 'transparent' },
+                                },
+                                legend: 'none',
+                                series: {
+                                    0: { type: 'bars' },
+                                },
+                                bar: { borderRadius: 20 },
+                                colors: ['#7AB7D0'],
+                            }}
+                        />
+                    ) : (
+                        <div className='no-data'>No hay datos disponibles... <br /> ¡Registra tu primer mood!</div>
+                    )}
+                </div >
             )}
         </>
     )
