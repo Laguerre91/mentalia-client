@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { AuthContext } from '../../context/auth.context'
 
-import { Image } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
 
 import EditUserForm from '../Forms/EditUserForm/EditUserForm'
