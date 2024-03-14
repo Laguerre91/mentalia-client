@@ -1,7 +1,5 @@
 import axios from "axios"
 
-const API_URL = "http://localhost:5005"
-
 class AuthService {
 
     constructor() {
@@ -22,11 +20,11 @@ class AuthService {
     }
 
     signUpUser = (requestBody) => {
-        return this.axiosApp.post(`${API_URL}/api/auth/signup`, requestBody)
+        return this.axiosApp.post(`/api/auth/signup`, requestBody)
     }
 
     loginUser = (requestBody) => {
-        return this.axiosApp.post(`${API_URL}/api/auth/login`, requestBody)
+        return this.axiosApp.post(`/api/auth/login`, requestBody)
     }
 
 }
