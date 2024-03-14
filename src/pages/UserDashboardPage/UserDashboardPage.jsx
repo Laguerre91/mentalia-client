@@ -46,7 +46,7 @@ const UserDashboardPage = () => {
                 <Col md={6}>
                     <div className="user-feelCard">
                         <h4>¿Cómo te sientes hoy, {userDetails.username}?</h4>
-                        <p>Cuéntanos como te encuentras hoy</p>
+                        <p>Registra to mood!</p>
                         <Button className="btn-userState mt-4" onClick={() => setShowModal(true)}>
                             Registrar estado
                         </Button>

@@ -11,3 +11,9 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
+
+.no-data {
+    padding: 50px;
+    color: #585757;
+    background-color: rgba(195, 195, 195, 0.208);
+}

@@ -5,7 +5,7 @@ import UserService from '../../../services/user.services'
 
 const MoodChart = () => {
     const { userId } = useParams()
-    const [chartData, setChartData] = useState([])
+    const [chartData, setChartData] = useState([['Day', 'RateDay'], ['No data', 0]])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
