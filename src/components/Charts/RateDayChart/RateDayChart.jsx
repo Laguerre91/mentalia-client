@@ -9,6 +9,8 @@ import './RateDayChart.css'
 const RateDayChart = () => {
     const { userId } = useParams()
     const [chartData, setChartData] = useState({ records: [] })
+    const [loading, setLoading] = useState(true)
+
 
     useEffect(() => {
         const lastSevenDays = () => {
@@ -28,6 +30,7 @@ const RateDayChart = () => {
                     })
 
                     setChartData(data)
+                    setLoading(false)
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error)
@@ -40,29 +43,33 @@ const RateDayChart = () => {
     return (
         <>
             <h2 className='title'>Últimos 7 Días</h2>
-            <div className="chart-container">
-                <Chart
-                    width={'100%'}
-                    height={'300px'}
-                    chartType="ColumnChart"
-                    loader={<div>Loading Chart</div>}
-                    data={chartData}
-                    options={{
-                        hAxis: { textPosition: 'none' },
-                        vAxis: {
-                            minValue: 0,
-                            maxValue: 10,
-                            gridlines: { color: 'transparent' },
-                        },
-                        legend: 'none',
-                        series: {
-                            0: { type: 'bars' },
-                        },
-                        bar: { borderRadius: 20 },
-                        colors: ['#7AB7D0'],
-                    }}
-                />
-            </div>
+            {loading ? (
+                <div>Loading...</div>
+            ) : (
+                <div className="chart-container">
+                    <Chart
+                        width={'100%'}
+                        height={'300px'}
+                        chartType="ColumnChart"
+                        loader={<div>Loading Chart</div>}
+                        data={chartData}
+                        options={{
+                            hAxis: { textPosition: 'none' },
+                            vAxis: {
+                                minValue: 0,
+                                maxValue: 10,
+                                gridlines: { color: 'transparent' },
+                            },
+                            legend: 'none',
+                            series: {
+                                0: { type: 'bars' },
+                            },
+                            bar: { borderRadius: 20 },
+                            colors: ['#7AB7D0'],
+                        }}
+                    />
+                </div>
+            )}
         </>
     )
 }

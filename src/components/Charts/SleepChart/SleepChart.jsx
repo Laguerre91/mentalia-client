@@ -10,6 +10,8 @@ import './SleepChart.css'
 const SleepChart = () => {
     const { userId } = useParams()
     const [chartData, setChartData] = useState({ records: [] })
+    const [loading, setLoading] = useState(true)
+
 
     useEffect(() => {
         const lastSevenDays = () => {
@@ -29,6 +31,7 @@ const SleepChart = () => {
                     })
 
                     setChartData(data)
+                    setLoading(false)
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error)
@@ -41,33 +44,37 @@ const SleepChart = () => {
     return (
         <>
             <h2 className='title'>Horas de sueño</h2>
-            <div className="chart-container">
-                <Chart
-                    width={'100%'}
-                    height={'300px'}
-                    chartType="AreaChart"
-                    loader={<div>Loading Chart</div>}
-                    data={chartData}
-                    options={{
-                        vAxis: {
-                            minValue: 0,
-                            maxValue: 12,
-                            gridlines: { color: 'transparent' },
-                        },
-                        legend: 'none',
-                        areaOpacity: 0.5,
-                        curveType: 'smooth',
-                        chartArea: { width: '80%', height: '70%' },
-                        lineWidth: 3,
-                        colors: ['#7AB7D0'],
-                        animation: {
-                            startup: true,
-                            easing: 'linear',
-                            duration: 1000,
-                        },
-                    }}
-                />
-            </div>
+            {loading ? (
+                <div>Loading...</div>
+            ) : (
+                <div className="chart-container">
+                    <Chart
+                        width={'100%'}
+                        height={'300px'}
+                        chartType="AreaChart"
+                        loader={<div>Loading Chart</div>}
+                        data={chartData}
+                        options={{
+                            vAxis: {
+                                minValue: 0,
+                                maxValue: 12,
+                                gridlines: { color: 'transparent' },
+                            },
+                            legend: 'none',
+                            areaOpacity: 0.5,
+                            curveType: 'smooth',
+                            chartArea: { width: '80%', height: '70%' },
+                            lineWidth: 3,
+                            colors: ['#7AB7D0'],
+                            animation: {
+                                startup: true,
+                                easing: 'linear',
+                                duration: 1000,
+                            },
+                        }}
+                    />
+                </div>
+            )}
         </>
     )
 }

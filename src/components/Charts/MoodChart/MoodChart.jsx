@@ -11,7 +11,8 @@ const MoodChart = () => {
     useEffect(() => {
         const fetchMoodData = () => {
 
-            UserService.getUser(userId)
+            UserService
+                .getUser(userId)
                 .then(response => {
                     const allRecords = response.data.records
 
