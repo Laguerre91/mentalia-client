@@ -10,7 +10,7 @@ function SignupPage() {
 
     return (
         <div className="SignupPage">
-            <Row className="signup-form-container">
+            <Row className="signup-form-container w-0">
                 <Col xs={12} md={6} className="signup-form">
                     <h2>Registrarse</h2>
 
@@ -21,7 +21,7 @@ function SignupPage() {
                     </div>
                 </Col>
                 <Col className="image-form">
-                    <img src={iphoneImage} alt="iphone" />
+                    <img className="signup-phone" src={iphoneImage} alt="iphone" />
                 </Col>
             </Row>
 

@@ -76,12 +76,12 @@ function NavBar() {
                                         to="/signup"
                                         onClick={handleOffcanvasClose}>
 
-                                        <Button className="navbar-button navbar-button-signup me-4">Registrarse</Button>
+                                        <Button className="navbar-button navbar-button-signup me-4 mb-2" variant="dark">Registrarse</Button>
                                     </Link>
 
                                     <Link onClick={handleOffcanvasClose}>
 
-                                        <Button className="navbar-button navbar-button-login me-3" onClick={() => setShowModal(true)}>
+                                        <Button className="navbar-button navbar-button-login me-3" variant="dark" onClick={() => setShowModal(true)}>
                                             Iniciar Sesión
                                         </Button>
 
