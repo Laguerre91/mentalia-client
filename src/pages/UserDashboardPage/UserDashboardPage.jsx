@@ -1,4 +1,9 @@
 import { Button, Modal, Row, Col } from "react-bootstrap"
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+
+import UserService from './../../services/user.services'
+
 import RecordForm from "../../components/Forms/RecordForm/RecordForm"
 import UserDetails from "../../components/UserDetails/UserDetails"
 import AppointmentForm from "../../components/Forms/AppointmentForm/AppointmentForm"
@@ -9,11 +14,6 @@ import SleepChart from "../../components/Charts/SleepChart/SleepChart"
 import MoodChart from "../../components/Charts/MoodChart/MoodChart"
 
 import './UserDashboardPage.css'
-
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-
-import UserService from './../../services/user.services'
 
 const UserDashboardPage = () => {
 

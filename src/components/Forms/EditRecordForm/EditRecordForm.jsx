@@ -4,8 +4,6 @@ import { Form, Button, Container, Row, Col, ToggleButtonGroup, ToggleButton } fr
 import { HOURSOFSLEEP, MOOD_LABELS, WEATHER_LABELS, WORRIES } from '../../../consts/record.constants'
 import recordServices from "../../../services/record.services"
 
-
-
 const EditRecordForm = ({
     _id,
     user,
@@ -93,7 +91,6 @@ const EditRecordForm = ({
                     worries: updatedWorries,
                 }
             })
-
             return updatedChecked
         })
     }
@@ -111,8 +108,8 @@ const EditRecordForm = ({
         console.log(`Este es el id: ${_id}`)
 
         if (!_id) {
-            console.error('ID no válido.');
-            return;
+            console.error('ID no válido.')
+            return
         }
 
         console.log('Submitting updated formData:', formData)
