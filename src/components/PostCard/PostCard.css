@@ -1,0 +1,75 @@
+.PostCard {
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    font-size: 0.8em;
+    height: min-content;
+}
+
+.post-username {
+    font-size: 1em;
+}
+
+.post-title {
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+    font-size: 0.9em;
+}
+
+.btn-showReplies {
+    color: black;
+    background-color: #81c2de85;
+    border: none;
+    font-size: 0.9em;
+}
+
+.btn-post {
+    font-size: 1em;
+}
+
+.btn-community {
+    border: 1px solid #81c2de;
+}
+
+.btn-community:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #81c2de;
+}
+
+.btn-showReplies {
+    margin-right: 40%;
+}
+
+.PostCard .post-user-img {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    object-fit: cover;
+
+}
+
+.post-text {
+    text-align: justify;
+    font-size: 1.2em;
+}
+
+.addReply-form {
+    padding: 15px;
+}
+
+
+@media (min-width: 600px) {
+    .PostCard {
+        width: 45%;
+    }
+
+    .post-reply-image {
+        width: 6%;
+    }
+
+    .btn-showReplies {
+        margin-right: 60%;
+    }
+}

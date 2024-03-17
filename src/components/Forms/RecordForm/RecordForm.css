@@ -1,0 +1,133 @@
+.record-form {
+    background-color: #f1edf7;
+    height: 450px;
+    width: auto;
+    padding: 20px; 
+    border-radius: 10px;
+    overflow: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.record-form .progress-bar {
+  background: #7AB7D0;
+}
+
+.record-form .form-group {
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 20px;
+}
+
+.form-group .number {
+    font-size: 120px;
+    color: #7AB7D0;
+    text-align: center;
+}
+
+.record-form .animation {
+    width: 80%;
+    margin: auto;
+}
+
+.worries-btns {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.worries-btns .btn-primary {
+    background-color: #7AB7D0;
+    color: white;
+}
+
+.worries-btns .btn-outline-primary {
+    color: #7AB7D0;
+    border-color: #7AB7D0;
+}
+
+.worries-btns .btn-primary:hover {
+    background-color: #81c2de;
+}
+
+.worries-btns .btn-outline-primary:hover {
+    background-color: #7AB7D0;
+    color: white;
+}
+
+.form-questions {
+    margin: 20px;
+}
+
+.form-questions {
+    margin: 20px;
+}
+
+.form-range::-webkit-slider-thumb {
+    width: 40px;
+    height: 40px;
+    background-color: #F7B9B5;
+    border: 2px solid #bfa1ff;
+    border-radius: 50%;
+    -webkit-appearance: none;
+    margin-top: -15px;
+}
+
+.weather-icons {
+    width: 80%;
+    margin: auto;
+}
+
+.btn-prev {
+    background-color: rgb(162, 162, 162);
+    border-color: rgb(162, 162, 162);
+}
+
+.btn-prev:hover {
+    background-color: rgb(119, 119, 119);
+    border-color: rgb(119, 119, 119);
+}
+
+.btn-next {
+    background-color: #7AB7D0;
+    border-color: #7AB7D0;
+}
+
+.btn-next:hover {
+    background-color: #679aae;
+    border-color: #679aae;
+}
+
+.btn-submit {
+    background-color: #7AB7D0;
+    border-color: #7AB7D0;
+}
+
+.btn-submit:hover {
+    background-color: #679aae;
+    border-color: #679aae;
+
+}
+
+
+
+/* 
+Colores
+
+morado
+#B6A7D6
+
+azul
+#7AB7D0
+
+rosa
+#F7B9B5 */

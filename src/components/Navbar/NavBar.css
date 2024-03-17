@@ -1,0 +1,82 @@
+.Navbar {
+    height: min-content;
+}
+
+.Navbar .logo {
+    width: 40%;
+    display: block;
+    padding-left: 20px;
+}
+
+.Navbar .navbar-button {
+    font-size: 0.9em;
+    padding: 7px 15px 7px 15px;
+}
+
+.Navbar .navbar-button-signup {
+    background-color: #81c2de;
+    color: white;
+    border: 1px solid #81c2de;
+}
+
+.Navbar .navbar-button-signup:hover {
+    background-color: #81c2de;
+    border: 1px solid #81c2de;
+}
+
+.Navbar .navbar-button-login {
+    color: #81c2de;
+    background-color: white;
+    border: 1px solid #81c2de;
+}
+
+.Navbar .navbar-button-login:hover {
+    background-color: white;
+    color: #81c2de;
+    border: 1px solid #81c2de;
+}
+
+.Navbar .navbar-button-logout {
+    background-color: #81c2de;
+    border: 1px solid #81c2de;
+}
+
+.Navbar .navbar-button-logout:hover {
+    background-color: white;
+    color: #81c2de;
+    border: 1px solid #81c2de;
+}
+
+.Navbar .nav-dropdown {
+    text-align: center;
+    width: 20%;
+    margin-right: 25px;
+    background-color: #fff;
+    border: 1px solid #81c2de;
+    border-radius: 7px;
+}
+
+.Navbar .nav-dropdown a {
+    font-size: 0.9em;
+    color: #81c2de;
+    text-decoration: none;
+    padding: 7px 15px 7px 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.Navbar .nav-dropdown a:hover {
+    background-color: #81c2de;
+    color: #fff;
+}
+
+.responsive-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (min-width:600px) {
+    .Navbar .logo {
+        width: 20%;
+        padding-left: 20px;
+    }
+}

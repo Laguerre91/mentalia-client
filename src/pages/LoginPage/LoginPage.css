@@ -1,0 +1,26 @@
+.LoginPage h2 {
+    margin-top: 20px;
+    margin-left: 12%;
+    width: 100%;
+}
+
+.LoginPage .login-form {
+    position: relative;
+    padding: 50px;
+}
+
+.login-form-container {
+    padding-top: 40px;
+}
+
+@media (min-width: 600px) {
+
+    .LoginPage h2 {
+        margin-left: 0px;
+        text-align: center;
+    }
+
+    .LoginPage .login-form {
+        left: 10%;
+    }
+}

@@ -1,0 +1,13 @@
+.CommunityPage {
+    padding: 40px;
+    background-color: #E2DCEF;
+    min-height: 100vh;
+    padding-top: 50px;
+}
+
+.CommunityPage .posts-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 110px;
+}

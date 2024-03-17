@@ -1,0 +1,21 @@
+.SignupPage .signup-form {
+    position: relative;
+    left: 10%;
+    padding: 50px;
+}
+
+.SignupPage .signup-account {
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.SignupPage .image-form img {
+    position: relative;
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    .SignupPage .image-form img {
+        right: 15%;
+    }
+}

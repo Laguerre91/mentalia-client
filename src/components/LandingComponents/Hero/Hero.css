@@ -1,0 +1,68 @@
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    min-height: 100vh;
+    background-color: white;
+    background-image: url(./../../../assets/Vector2.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 92vh;
+}
+
+.hero .hero-container {
+    position: absolute;
+    top: 5%;
+}
+
+.hero .hero-title {
+    width: 80%;
+    margin-left: 10%;
+    font-size: 2em;
+    padding: 15px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.hero .hero-description {
+    position: relative;
+    left: 10%;
+    width: 80%;
+    font-weight: 300;
+    font-size: 1.1em;
+}
+
+.hero .hero-btn-signup {
+    margin-top: 50px;
+    font-weight: 500;
+    padding: 5px 20px;
+    background-color: #81c2de;
+    color: white;
+    border: 1px solid #81c2de;
+}
+
+.hero .hero-faces {
+    position: absolute;
+    bottom: 0px;
+}
+
+@media (min-width: 600px) {
+
+    .hero .hero-container {
+        top: 5%;
+    }
+
+    .hero .hero-title {
+        font-size: 4em;
+    }
+
+    .hero .hero-description {
+        font-size: 1.4em;
+        left: 20%;
+        width: 60%;
+    }
+
+    .hero .hero-btn-signup {
+        margin-top: 15px;
+    }
+}

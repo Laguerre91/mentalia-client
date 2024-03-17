@@ -1,0 +1,24 @@
+.btn-delete-icon {
+    color: rgb(214, 5, 5);
+    font-size: 0.8em;
+    margin: 0;
+    cursor: pointer;
+}
+
+.post-replies-list {
+    padding: 15px;
+}
+
+.post-reply-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+
+.post-reply-section {
+    background-color: #81c2de44;
+    padding: 10px;
+    padding-left: 15px;
+    border-radius: 5px;
+}

@@ -1,0 +1,102 @@
+.recordcard {
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+.recordcard .title {
+    font-size: 15px;
+    color: #585757;
+}
+
+.recordcard .title span {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.recordcard .weather-animation {
+  font-size: 2em; 
+}
+
+.stats h1 {
+  font-size: 3em;
+  color: #F7A4A6;
+}
+
+.stats p {
+  font-size: .7em;
+  color: #585757;
+}
+
+.worries-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-badge {
+    background-color: #F7B9B5 !important;
+    color: white;
+    margin  : 5px;
+}
+
+.emojis {
+    font-size: 3em;
+}
+
+.recordcard .card-header {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.recordcard .nav-pills .nav-link {
+  color: #7AB7D0;
+}
+
+.recordcard .nav-pills .nav-link.active,
+.recordcard .nav-pills .nav-link:hover {
+  background-color: #b7e2ee;
+  border-color: #b7e2ee;
+}
+
+.mood-btns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.recordcard .mood-btns .btn-danger {
+  background-color: #F7A4A6;
+  border-color: #F7A4A6;
+}
+
+.recordcard .mood-btns .btn-danger:hover {
+  background-color: #f27274;
+  border-color: #f27274;
+}
+
+.recordcard .mood-btns .btn-success {
+  background-color: #98D2AD;
+  border-color: #98D2AD
+}
+
+.recordcard .mood-btns .btn-success:hover {
+  background-color: #68b885;
+  border-color: #68b885
+}
+
+.recordcard .mood-btns .btn-danger,
+.recordcard .mood-btns .btn-success {
+  padding: 5px 12px; 
+  font-size: 14px; 
+}
+
+.reflection h2 {
+  font-size: 1.5em;
+  color: #7AB7D0;
+}
+
+.reflection p {
+  font-size: 1em;
+  color: #585757;
+}
