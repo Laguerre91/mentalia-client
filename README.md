@@ -7,6 +7,7 @@ In the future, we will implement the option for psychologists to register, where
 **Technologies used**
 
 Frontend: React, Bootstrap
+----
 Backend: Express, Node.js, MongoDB
 
 
@@ -21,6 +22,7 @@ Backend: Express, Node.js, MongoDB
 | /sobre-nosotros | About us page     | no            |
 | *               | 404 page          | no            |
 
+-------------------------------------------------------
 
 **Members of the development team**
 
