@@ -137,7 +137,8 @@ const RecordCard = ({
                                 <br />
                                 <Col className='hoursOfSleep'>
                                     <h1>{hoursOfSleep}</h1>
-                                    <p>Horas de sueño</p>                                </Col>
+                                    <p>Horas de sueño</p>
+                                </Col>
                             </Row>
                         </>
                     ) : activeKey === '#moredetails' ? (
@@ -220,12 +221,9 @@ const RecordCard = ({
                             </Modal>
                         </>
                     )}
-
-
                 </Card.Body>
             </Card>
         </>
-
     )
 }
 

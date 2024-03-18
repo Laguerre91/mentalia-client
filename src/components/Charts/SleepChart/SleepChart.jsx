@@ -45,7 +45,7 @@ const SleepChart = () => {
         <>
             <h2 className='title'>Horas de sueño</h2>
             {loading ? (
-                <div>Loading...</div>
+                <div>Cargando datos...</div>
             ) : (
                 <div className="chart-container">
                     {chartData.length > 1 ? (

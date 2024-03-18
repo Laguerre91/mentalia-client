@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Chart } from 'react-google-charts'
 import UserService from "../../../services/user.services"
@@ -45,7 +45,7 @@ const RateDayChart = () => {
         <>
             <h2 className='title'>Últimos 7 Días</h2>
             {loading ? (
-                <div>Loading...</div>
+                <div>Cargando datos...</div>
             ) : (
                 <div className="chart-container">
                     {chartData.length > 1 ? (
@@ -68,6 +68,11 @@ const RateDayChart = () => {
                                 },
                                 bar: { borderRadius: 20 },
                                 colors: ['#7AB7D0'],
+                                animation: {
+                                    startup: true,
+                                    easing: 'linear',
+                                    duration: 1000,
+                                },
                             }}
                         />
                     ) : (

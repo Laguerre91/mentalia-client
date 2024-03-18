@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Chart } from 'react-google-charts'
 import { useParams } from 'react-router-dom'
 import UserService from '../../../services/user.services'
@@ -18,9 +18,9 @@ const MoodChart = () => {
 
                     const moodCount = {
                         'Muy mal': 0,
-                        Mal: 0,
-                        Normal: 0,
-                        Bien: 0,
+                        'Mal': 0,
+                        'Normal': 0,
+                        'Bien': 0,
                         'Muy bien': 0,
                     }
 
@@ -49,7 +49,7 @@ const MoodChart = () => {
         <div>
             <h2 className='title'>Moods</h2>
             {loading ? (
-                <div>Loading...</div>
+                <div>Cargando datos...</div>
             ) : (
                 <Chart
                     width={'100%'}
@@ -71,7 +71,12 @@ const MoodChart = () => {
                         chartArea: {
                             width: '100 %',
                             height: '80%'
-                        }
+                        },
+                        animation: {
+                            startup: true,
+                            easing: 'linear',
+                            duration: 1000,
+                        },
                     }}
                 />
             )}
