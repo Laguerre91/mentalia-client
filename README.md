@@ -29,10 +29,13 @@ Backend: Express, Node.js, MongoDB
 Francisco Pazos Rey 
 -------------
 Github: <https://github.com/franpazos>
+
 LinkedIn: <https://www.linkedin.com/in/franpazos/>
 
 Lara Aguerre
 --------------
+Github: <https://github.com/Laguerre91>
+
 LinkedIn: <https://www.linkedin.com/in/lara-aguerre-developer>
 
 DEPLOY
