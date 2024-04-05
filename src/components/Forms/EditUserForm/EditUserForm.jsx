@@ -8,13 +8,13 @@ import './EditUserForm.css'
 
 import { Form, Button, Modal } from 'react-bootstrap'
 
-const EditUserForm = ({ getUser }) => {
+const EditUserForm = ({ getUser, handleUserUpdate }) => {
 
     const { user } = useContext(AuthContext)
 
     const [updatedUser, setUpdatedUser] = useState({
         imageUrl: user.imageUrl || '',
-        birth: user.birth || '',
+        birth: user.birth ? new Date(user.birth) : new Date(),
         gender: user.gender || 'Masculino',
         sexualOrientation: user.sexualOrientation || 'Heterosexual',
         employed: user.employed || false,
@@ -24,12 +24,12 @@ const EditUserForm = ({ getUser }) => {
 
     useEffect(() => {
         setUpdatedUser({
-            imageUrl: user.imageUrl,
-            birth: user.birth,
-            gender: user.gender,
-            sexualOrientation: user.sexualOrientation,
-            employed: user.employed,
-            sentimentalStatus: user.sentimentalStatus
+            imageUrl: user.imageUrl || '',
+            birth: user.birth ? new Date(user.birth) : new Date(),
+            gender: user.gender || 'Masculino',
+            sexualOrientation: user.sexualOrientation || 'Heterosexual',
+            employed: user.employed || false,
+            sentimentalStatus: user.sentimentalStatus || 'Soltero/a',
         })
     }, [user])
 
@@ -59,7 +59,7 @@ const EditUserForm = ({ getUser }) => {
         UserService
             .updateUser(user._id, updatedUser)
             .then(response => {
-                setUpdatedUser(response.data)
+                handleUserUpdate(response.data)
                 setShowUserModal(false)
                 getUser()
             })
@@ -106,7 +106,6 @@ const EditUserForm = ({ getUser }) => {
                                 onChange={handleInputChange}
                             />
                         </Form.Group>
-
                         <Form.Group controlId="formGender" className="group-userform mb-3">
                             <Form.Label className="test">Selecciona tu género</Form.Label>
                             <Form.Select name="gender" value={updatedUser.gender} onChange={handleInputChange}>

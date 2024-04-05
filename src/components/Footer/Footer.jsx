@@ -9,27 +9,24 @@ import './Footer.css'
 const Footer = () => {
 
     return (
+
         <footer className='Footer'>
             <Row className='footer-row align-items-center'>
-                <Col className='footer-col-logo'>
-                    <img className='footer-logo' src={Logo} alt="Mentalia logo" />
-                </Col>
                 <Col >
                     <ul className='footer-links'>
                         <Link to={"/sobre-nosotros"}>
-                            <li>Quienes somos</li>
+                            <li> <Icon.PersonArmsUp /> Quienes somos</li>
                         </Link>
                         <a href="https://github.com/Laguerre91/mentalia-client" target='_blank'>
                             <li><Icon.Github />Repositorio</li>
                         </a>
                     </ul>
                 </Col>
-                <Col className='footer-copyright'>
+                <img className='footer-logo mb-2' src={Logo} alt="Mentalia logo" />
+                <Col className='footer-copyright me-4'>
                     <p>&copy; 2024 Mentalia. Hecho con ❤️</p>
                 </Col>
             </Row>
-
-
         </footer>
     )
 }

@@ -1,6 +1,5 @@
 .UserCard {
     margin: 0 auto;
-    width: 75%;
     padding-top: 20px;
     padding-bottom: 10px;
     font-size: 1.2em;
@@ -44,8 +43,8 @@
 
 .UserCard .btn-logout {
     font-size: 0.7em;
-    margin-top: 10%;
-    margin-left: 27%;
+    margin-top: 15%;
+    margin-left: 30%;
     color: rgb(204, 4, 4);
     cursor: pointer;
 }
@@ -59,5 +58,9 @@ svg {
     .UserCard {
         width: 100%;
         min-height: 80vh;
+    }
+
+    .UserCard .btn-logout {
+        margin-left: 27%;
     }
 }

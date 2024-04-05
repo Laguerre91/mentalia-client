@@ -12,7 +12,8 @@ const SignupForm = () => {
     const [userData, setUserData] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     })
     const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -29,6 +30,11 @@ const SignupForm = () => {
     const handleSignupSubmit = (e) => {
 
         e.preventDefault();
+
+        if (userData.password !== userData.confirmPassword) {
+            setErrorMessage("Las contraseñas no coinciden");
+            return;
+        }
 
         AuthService
             .signUpUser(userData)
@@ -64,6 +70,17 @@ const SignupForm = () => {
                         name="password"
                         placeholder="Ingresa tu contraseña"
                         value={userData.password}
+                        onChange={handleInputChange} />
+                </Form.Group>
+
+                <Form.Group className="mb-4" controlId="formGroupConfirmPassword">
+                    <Form.Label className="signup-text">Confirmar contraseña</Form.Label>
+                    <Form.Control
+                        className="form-input w-75"
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Repite tu contraseña"
+                        value={userData.confirmPassword}
                         onChange={handleInputChange} />
                 </Form.Group>
 

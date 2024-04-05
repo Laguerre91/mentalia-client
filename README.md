@@ -41,3 +41,7 @@ LinkedIn: <https://www.linkedin.com/in/lara-aguerre-developer>
 DEPLOY
 ---
 <https://mentalia.netlify.app/>
+
+API DEPLOY
+---
+<https://mentalia-server.fly.dev/>

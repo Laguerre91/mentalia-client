@@ -25,7 +25,7 @@ const AppointmentDetailsCard = ({ date, time, psycologist, comments, _id, getUse
     };
 
     return (
-        <div className="AppointmentDetailsCard">
+        <div className="AppointmentDetailsCard mb-4">
             <Card className='appointment-card'>
                 <Card.Body>
                     <Card.Title>Tu cita con {psycologist.name} {psycologist.lastName}</Card.Title>
