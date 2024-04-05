@@ -14,7 +14,7 @@ const EditUserForm = ({ getUser, handleUserUpdate }) => {
 
     const [updatedUser, setUpdatedUser] = useState({
         imageUrl: user.imageUrl || '',
-        birth: user.birth || new Date(),
+        birth: user.birth ? new Date(user.birth) : new Date(),
         gender: user.gender || 'Masculino',
         sexualOrientation: user.sexualOrientation || 'Heterosexual',
         employed: user.employed || false,
@@ -25,7 +25,7 @@ const EditUserForm = ({ getUser, handleUserUpdate }) => {
     useEffect(() => {
         setUpdatedUser({
             imageUrl: user.imageUrl || '',
-            birth: user.birth || new Date(),
+            birth: user.birth ? new Date(user.birth) : new Date(),
             gender: user.gender || 'Masculino',
             sexualOrientation: user.sexualOrientation || 'Heterosexual',
             employed: user.employed || false,
@@ -101,12 +101,11 @@ const EditUserForm = ({ getUser, handleUserUpdate }) => {
                             <Form.Control
                                 type="date"
                                 name="birth"
-                                value={updatedUser.birth instanceof Date ? updatedUser.birth.toISOString().split('T')[0] : ''}
+                                value={updatedUser.birth}
                                 max={new Date().toISOString().split('T')[0]}
                                 onChange={handleInputChange}
                             />
                         </Form.Group>
-
                         <Form.Group controlId="formGender" className="group-userform mb-3">
                             <Form.Label className="test">Selecciona tu género</Form.Label>
                             <Form.Select name="gender" value={updatedUser.gender} onChange={handleInputChange}>
