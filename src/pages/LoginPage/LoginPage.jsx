@@ -7,18 +7,20 @@ import './LoginPage.css'
 const LoginPage = () => {
     return (
 
-        <Row className="LoginPage login-form-container m-0">
-            <Col className="login-form" xs={12} md={6}>
-                <h2>Inicia sesión</h2>
-                <LoginForm />
-            </Col>
-            <Col className="m-0">
-                <Image
-                    className="w-50"
-                    src={Blob}
-                    alt="Image" />
-            </Col>
-        </Row>
+        <div className="LoginPage ">
+            <Row className="login-form-container m-0">
+                <Col className="login-form" xs={12} md={6}>
+                    <h2>Inicia sesión</h2>
+                    <LoginForm />
+                </Col>
+                <Col className="m-0">
+                    <Image
+                        className="w-50"
+                        src={Blob}
+                        alt="Image" />
+                </Col>
+            </Row>
+        </div>
 
     )
 }
