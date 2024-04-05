@@ -11,7 +11,7 @@ import './UserDetails.css'
 
 const UserDetails = () => {
 
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState({})
     const [loading, setLoading] = useState(true)
 
     const { userId } = useParams()
@@ -31,12 +31,18 @@ const UserDetails = () => {
             .catch((err) => console.log(err))
     }
 
+    const handleUserUpdate = (updatedUserData) => {
+        setUser(prevUser => ({
+            ...prevUser,
+            ...updatedUserData
+        }));
+    }
+
     return (
         <section className="UserCard">
-
             <div className='user-greetings d-flex m-2 mb-3'>
                 {user.imageUrl ? (
-                    <img className='user-picture' src={user.imageUrl} />
+                    <img className='user-picture' src={user.imageUrl} alt="User" />
                 ) : (
                     <p className='user-picture-placeholder me-1'>Carga tu imagen de perfil</p>
                 )}
@@ -45,53 +51,55 @@ const UserDetails = () => {
 
             {loading ? (
                 <p>Cargando datos...</p>
-            ) : user.gender &&
-                user.sexualOrientation &&
-                user.sentimentalStatus !== undefined ? (
-                <div className="user-details">
-                    {
-                        user.employed === false ?
-                            <div className='d-flex'>
-                                <Icon.SuitcaseLg />
-                                <p >
-                                    Desempleado/a
-                                </p>
-
-                            </div>
-                            :
-                            <div className='d-flex'>
-                                <Icon.SuitcaseLg />
-                                <p>Empleado/a</p>
-                            </div>
-
-                    }
-                    <div className='d-flex '>
-                        <Icon.Heart />
-                        <p>{user.sentimentalStatus}</p>
-                    </div>
-                    {
-                        user.gender === "Prefiero no responder" ?
-                            <div className='d-none'></div> :
-                            <div className='d-flex'>
-                                <Icon.GenderTrans />
-                                <p>{user.gender}</p>
-                            </div>
-                    }
-                    {
-                        user.sexualOrientation === "Prefiero no responder" ? <div className='d-none'></div> :
-                            <div className='d-flex'>
-                                🏳️‍🌈
-                                <p className='ms-2'>{user.sexualOrientation} </p>
-                            </div>
-                    }
-                </div>
             ) : (
-                <p className='user-noInfo'>
-                    <Icon.InfoCircle />
-                    Por favor, completa la información en el formulario para obtener detalles sobre tu perfil.
-                </p>
+                user.gender &&
+                    user.sexualOrientation &&
+                    user.sentimentalStatus !== undefined ? (
+                    <div className="user-details">
+                        {
+                            user.employed === false ?
+                                <div className='d-flex'>
+                                    <Icon.SuitcaseLg />
+                                    <p >
+                                        Desempleado/a
+                                    </p>
+
+                                </div>
+                                :
+                                <div className='d-flex'>
+                                    <Icon.SuitcaseLg />
+                                    <p>Empleado/a</p>
+                                </div>
+
+                        }
+                        <div className='d-flex '>
+                            <Icon.Heart />
+                            <p>{user.sentimentalStatus}</p>
+                        </div>
+                        {
+                            user.gender === "Prefiero no responder" ?
+                                <div className='d-none'></div> :
+                                <div className='d-flex'>
+                                    <Icon.GenderTrans />
+                                    <p>{user.gender}</p>
+                                </div>
+                        }
+                        {
+                            user.sexualOrientation === "Prefiero no responder" ? <div className='d-none'></div> :
+                                <div className='d-flex'>
+                                    🏳️‍🌈
+                                    <p className='ms-2'>{user.sexualOrientation} </p>
+                                </div>
+                        }
+                    </div>
+                ) : (
+                    <p className='user-noInfo'>
+                        <Icon.InfoCircle />
+                        Por favor, completa la información en el formulario para obtener detalles sobre tu perfil.
+                    </p>
+                )
             )}
-            < EditUserForm getUser={getUser} />
+            <EditUserForm getUser={getUser} handleUserUpdate={handleUserUpdate} />
 
             <div className='d-flex btn-logout'>
                 <Icon.Lock />

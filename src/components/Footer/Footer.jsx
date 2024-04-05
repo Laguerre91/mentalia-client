@@ -9,6 +9,7 @@ import './Footer.css'
 const Footer = () => {
 
     return (
+
         <footer className='Footer'>
             <Row className='footer-row align-items-center'>
                 <Col className='footer-col-logo'>
@@ -28,8 +29,6 @@ const Footer = () => {
                     <p>&copy; 2024 Mentalia. Hecho con ❤️</p>
                 </Col>
             </Row>
-
-
         </footer>
     )
 }

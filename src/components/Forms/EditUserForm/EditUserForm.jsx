@@ -8,13 +8,13 @@ import './EditUserForm.css'
 
 import { Form, Button, Modal } from 'react-bootstrap'
 
-const EditUserForm = ({ getUser }) => {
+const EditUserForm = ({ getUser, handleUserUpdate }) => {
 
     const { user } = useContext(AuthContext)
 
     const [updatedUser, setUpdatedUser] = useState({
         imageUrl: user.imageUrl || '',
-        birth: user.birth || '',
+        birth: user.birth || new Date(),
         gender: user.gender || 'Masculino',
         sexualOrientation: user.sexualOrientation || 'Heterosexual',
         employed: user.employed || false,
@@ -24,12 +24,12 @@ const EditUserForm = ({ getUser }) => {
 
     useEffect(() => {
         setUpdatedUser({
-            imageUrl: user.imageUrl,
-            birth: user.birth,
-            gender: user.gender,
-            sexualOrientation: user.sexualOrientation,
-            employed: user.employed,
-            sentimentalStatus: user.sentimentalStatus
+            imageUrl: user.imageUrl || '',
+            birth: user.birth || new Date(),
+            gender: user.gender || 'Masculino',
+            sexualOrientation: user.sexualOrientation || 'Heterosexual',
+            employed: user.employed || false,
+            sentimentalStatus: user.sentimentalStatus || 'Soltero/a',
         })
     }, [user])
 
@@ -59,7 +59,7 @@ const EditUserForm = ({ getUser }) => {
         UserService
             .updateUser(user._id, updatedUser)
             .then(response => {
-                setUpdatedUser(response.data)
+                handleUserUpdate(response.data)
                 setShowUserModal(false)
                 getUser()
             })
@@ -101,7 +101,7 @@ const EditUserForm = ({ getUser }) => {
                             <Form.Control
                                 type="date"
                                 name="birth"
-                                value={updatedUser.birth}
+                                value={updatedUser.birth instanceof Date ? updatedUser.birth.toISOString().split('T')[0] : ''}
                                 max={new Date().toISOString().split('T')[0]}
                                 onChange={handleInputChange}
                             />
