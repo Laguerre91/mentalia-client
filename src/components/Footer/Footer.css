@@ -7,6 +7,10 @@
     margin-bottom: 10px;
 }
 
+.Footer .footer-links {
+    list-style: none;
+}
+
 .Footer .footer-copyright {
     text-align: center;
     color: gray;

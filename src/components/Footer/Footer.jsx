@@ -15,7 +15,7 @@ const Footer = () => {
                 <Col >
                     <ul className='footer-links'>
                         <Link to={"/sobre-nosotros"}>
-                            <li>Quienes somos</li>
+                            <li> <Icon.PersonArmsUp /> Quienes somos</li>
                         </Link>
                         <a href="https://github.com/Laguerre91/mentalia-client" target='_blank'>
                             <li><Icon.Github />Repositorio</li>
