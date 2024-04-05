@@ -4,10 +4,7 @@
 }
 
 .Footer .footer-row {
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .Footer .footer-copyright {
@@ -16,16 +13,8 @@
     font-size: 0.9em;
 }
 
-.Footer .footer-col-logo {
-    text-align: center;
-}
-
 .Footer .footer-logo {
-    width: 70%;
-}
-
-.Footer ul {
-    list-style: none;
+    width: 50%;
 }
 
 .Footer .footer-links {
@@ -46,7 +35,12 @@
 }
 
 @media (min-width: 600px) {
+
+    .Footer .footer-copyright {
+        text-align: end;
+    }
+
     .Footer .footer-logo {
-        width: 30%;
+        width: 15%;
     }
 }
