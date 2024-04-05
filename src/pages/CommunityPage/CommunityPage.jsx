@@ -18,7 +18,10 @@ const CommunityPage = () => {
     const getAllPosts = () => {
         CommunityService
             .getAllPosts()
-            .then(response => setPosts(response.data))
+            .then(response => {
+                const sortedPosts = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                setPosts(sortedPosts);
+            })
             .catch(error => console.error("Error fetching posts:", error))
     }
 
