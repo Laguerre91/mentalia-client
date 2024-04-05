@@ -67,11 +67,11 @@ const SleepChart = () => {
                                 chartArea: { width: '80%', height: '70%' },
                                 lineWidth: 3,
                                 colors: ['#7AB7D0'],
-                                animation: {
-                                    startup: true,
-                                    easing: 'linear',
-                                    duration: 1000,
-                                },
+                                // animation: {
+                                //     startup: true,
+                                //     easing: 'linear',
+                                //     duration: 1000,
+                                // },
                             }}
                         />
                     ) : (

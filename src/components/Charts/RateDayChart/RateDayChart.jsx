@@ -36,8 +36,8 @@ const RateDayChart = () => {
                     console.error('Error fetching data:', error)
                 })
         }
-
         lastSevenDays()
+
     }, [userId])
 
 
@@ -68,11 +68,11 @@ const RateDayChart = () => {
                                 },
                                 bar: { borderRadius: 20 },
                                 colors: ['#7AB7D0'],
-                                animation: {
-                                    startup: true,
-                                    easing: 'linear',
-                                    duration: 1000,
-                                },
+                                // animation: {
+                                //     startup: true,
+                                //     easing: 'linear',
+                                //     duration: 1000,
+                                // },
                             }}
                         />
                     ) : (
