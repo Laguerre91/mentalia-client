@@ -14,16 +14,16 @@
 .Footer .footer-copyright {
     text-align: center;
     color: gray;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 .Footer .footer-logo {
-    width: 50%;
+    width: 45%;
 }
 
 .Footer .footer-links {
     color: gray;
-    font-size: 0.9em;
+    font-size: 0.7em;
 }
 
 .Footer .footer-links li {
@@ -41,10 +41,15 @@
 @media (min-width: 600px) {
 
     .Footer .footer-copyright {
+        font-size: 0.9em;
         text-align: end;
     }
 
     .Footer .footer-logo {
-        width: 15%;
+        width: 12%;
+    }
+
+    .Footer .footer-links {
+        font-size: 0.9em;
     }
 }
